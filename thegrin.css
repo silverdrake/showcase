@@ -1,0 +1,17 @@
+body{
+    background-color:           #000000;
+    color:                      #eeeeee;
+    font-family:                sans-serif;
+}
+
+a:link, a:hover, a:visited
+{
+    color:                      yellow;
+}
+
+div.graphics_preview
+{
+   float:                       right;
+    margin-right:               1em;
+    margin-left:                1em;
+}
