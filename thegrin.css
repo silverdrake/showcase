@@ -2,6 +2,7 @@ body{
     background-color:           #000000;
     color:                      #eeeeee;
     font-family:                sans-serif;
+    padding:                    0 8px;
 }
 
 a:link, a:hover, a:visited
@@ -14,4 +15,16 @@ div.graphics_preview
    float:                       right;
     margin-right:               1em;
     margin-left:                1em;
+}
+
+h1
+{
+    background-color:           gold;
+    color:                      black;
+    padding-left:               4px;
+}
+
+dt{
+    font-weight:                bold;
+    font-style:                 italic;
 }
