@@ -1,0 +1,48 @@
+{
+	"towns": {
+		"ALPHA":
+			{
+				"name": "Alpha",
+				"coords": [32, 40]
+			},
+		"BETA": {
+				"name": "Beta",
+				"coords": [26, 32]
+			},
+		"GAMMA":
+			{
+				"name": "Gamma",
+				"coords": [32, 26]
+			},
+		"DELTA":
+			{
+				"name": "Delta",
+				"coords": [42, 32]
+			},
+		"ENOCH":
+			{
+				"name": "Enoch",
+				"coords": [32, 32]
+			},
+		"CITYNW":
+		{
+			"name": "CityNorthWest",
+			"coords": [37, 29]
+		}
+	},
+	"passes": {
+		"TESTPASS1A": {
+			"name": "Old man's trail",
+			"entry": [30, 30],
+			"exit": [28, 30],
+			"sequence": ["M", "M", "F", "F", "M"]
+		},
+		"TESTPASS1B":
+		{
+			"name": "Old man's trail",
+			"entry": [28, 30],
+			"exit": [30, 30],
+			"sequence": ["M", "F", "F", "M", "M"]
+		}
+	}
+}
