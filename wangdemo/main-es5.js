@@ -110,6 +110,17 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"journeyrender\" #renderholder>\n\t<div id=\"viewrender\" #renderview></div>\n</div>\n\n<div id=\"journeyinfo\" #sceneinfo>\n\tTravelling {{getDirectionDescription()}} to {{journeyscene.dest.name}}, day {{journeyscene.stepid}}/{{journeyscene.course.length}};\n\n\t\t<br>\n\n\t<div class=\"journeycontrols\">\n\t<button class=\"journeychoice\" (click)=\"setCamp()\">SET CAMP</button> <button class=\"journeychoice\" (click)=\"continueJourney()\">JOURNEY ONWARDS</button> <button class=\"journeychoice\" (click)=\"showMap()\">SHOW MAP</button>\n\n\t</div>\n\n\n</div>\n");
             /***/ 
         }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/passage-through/passage-through.component.html": 
+        /*!*************************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/passage-through/passage-through.component.html ***!
+          \*************************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<ng-template *ngIf=\"isTrailing(); then TrailingScene; else AccessScene\">\n\n</ng-template>\n\n<ng-template #AccessScene>\n\n\t<div class=\"trailview\"></div>\n\t<div class=\"trailcontext\">\n\n\t\t<div class=\"traildescdebug\">\n\t\t\tAt the start of {{ trail.passage.name }}, {{trail.passage.length()}} days journey.\n\t\t</div>\n\n\t\t\t<button class=\"trailcontrols\"  (click)=\"journeyOnwards()\">ENTER</button>\n\t\t\t<button class=\"trailcontrols\" (click)=\"leaveTrail()\">LEAVE</button>\n\t</div>\n\n</ng-template>\n\n<ng-template #TrailingScene>\n\n\t<div class=\"trailview\"></div>\n\t<div class=\"trailcontext\">\n\n\t\t<div class=\"traildescdebug\">\n\t\t\tDay {{trail.progress + 1}} of {{trail.passage.length()}} through the {{ trail.passage.name }}.\n\t\t</div>\n\n\t\t<button class=\"trailcontrols\" (click)=\"journeyOnwards()\">FORWARD</button>\n\n\t</div>\n\n\n</ng-template>\n");
+            /***/ 
+        }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/roaming-step/roaming-step.component.html": 
         /*!*******************************************************************************************************************!*\
           !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/roaming-step/roaming-step.component.html ***!
@@ -548,6 +559,7 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony import */ var _storyteller_scenes_journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./storyteller/scenes/journey-step/journey-step.component */ "./src/app/storyteller/scenes/journey-step/journey-step.component.ts");
             /* harmony import */ var _storyteller_scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./storyteller/scenes/town-ui/town-ui.component */ "./src/app/storyteller/scenes/town-ui/town-ui.component.ts");
             /* harmony import */ var _storyteller_scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./storyteller/scenes/roaming-step/roaming-step.component */ "./src/app/storyteller/scenes/roaming-step/roaming-step.component.ts");
+            /* harmony import */ var _storyteller_scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./storyteller/scenes/passage-through/passage-through.component */ "./src/app/storyteller/scenes/passage-through/passage-through.component.ts");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -565,6 +577,7 @@ var __extends = (this && this.__extends) || (function () {
                         _storyteller_scenes_journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_13__["JourneyStepComponent"],
                         _storyteller_scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_14__["TownUIComponent"],
                         _storyteller_scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_15__["RoamingStepComponent"],
+                        _storyteller_scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_16__["PassageThroughComponent"],
                     ],
                     imports: [
                         _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"],
@@ -581,7 +594,8 @@ var __extends = (this && this.__extends) || (function () {
                         _storyteller_scenes_world_map_view_world_map_view_component__WEBPACK_IMPORTED_MODULE_12__["WorldMapViewComponent"],
                         _storyteller_scenes_journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_13__["JourneyStepComponent"],
                         _storyteller_scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_15__["RoamingStepComponent"],
-                        _storyteller_scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_14__["TownUIComponent"]
+                        _storyteller_scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_14__["TownUIComponent"],
+                        _storyteller_scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_16__["PassageThroughComponent"]
                     ]
                 })
             ], AppModule);
@@ -616,10 +630,12 @@ var __extends = (this && this.__extends) || (function () {
                     this.destination = dest;
                 };
                 JourneyDeparture.prototype.getFollowingScene = function () {
-                    // let next = new Journey(this.game, this.destination);
-                    var direction = _world_world_position__WEBPACK_IMPORTED_MODULE_3__["WorldPosition"].getRelativeGeneralDirection(this.game.hero.coordinates, this.destination.pos);
-                    var next = new _roaming__WEBPACK_IMPORTED_MODULE_2__["Roaming"](this.game, this.game.hero.coordinates, direction);
-                    // next.setStops(this.game.hero.coordinates, this.destination["coords"]);
+                    var next = null;
+                    if (!this.destination.matchesPosition(this.game.hero.pos)) {
+                        var direction = _world_world_position__WEBPACK_IMPORTED_MODULE_3__["WorldPosition"].getRelativeGeneralDirection(this.game.hero.pos, this.destination.pos);
+                        next = new _roaming__WEBPACK_IMPORTED_MODULE_2__["Roaming"](this.game, this.game.hero.pos, direction);
+                        // next.setStops(this.game.hero.coordinates, this.destination["coords"]);
+                    }
                     return next;
                 };
                 return JourneyDeparture;
@@ -642,7 +658,7 @@ var __extends = (this && this.__extends) || (function () {
                 // NOTE that start is optional and will default to player's position
                 function Journey(game, dest, start) {
                     var _this = _super.call(this, game) || this;
-                    _this.start = !start ? game.hero.coordinates : start;
+                    _this.start = !start ? game.hero.pos : start;
                     _this.dest = dest;
                     _this.course = game.worldmap.getCourse(_this.start, _this.dest.pos);
                     _this.stepid = 0;
@@ -672,6 +688,62 @@ var __extends = (this && this.__extends) || (function () {
             }(_wander_scene__WEBPACK_IMPORTED_MODULE_1__["WanderScene"]));
             /***/ 
         }),
+        /***/ "./src/app/rpg-engine/scenes/passage-trail.ts": 
+        /*!****************************************************!*\
+          !*** ./src/app/rpg-engine/scenes/passage-trail.ts ***!
+          \****************************************************/
+        /*! exports provided: PassageTrail */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PassageTrail", function () { return PassageTrail; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _wander_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../wander-scene */ "./src/app/rpg-engine/wander-scene.ts");
+            /* harmony import */ var _journey_departure__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./journey-departure */ "./src/app/rpg-engine/scenes/journey-departure.ts");
+            var PassageTrail = /** @class */ (function (_super) {
+                __extends(PassageTrail, _super);
+                function PassageTrail(game, passage, started) {
+                    if (started === void 0) { started = false; }
+                    var _this = _super.call(this, game) || this;
+                    _this.passage = passage;
+                    // progress is the speed, negative allows to go back and reverse
+                    _this.resetTrail(started);
+                    _this.days = 0;
+                    _this.leaving = false;
+                    return _this;
+                }
+                PassageTrail.prototype.resetTrail = function (started) {
+                    if (started === void 0) { started = false; }
+                    var reversed = this.passage.exitpoint.matches(this.game.hero.pos);
+                    this.trail_start = reversed ? this.passage.exitpoint : this.passage.pos;
+                    this.trail_end = reversed ? this.passage.pos : this.passage.exitpoint;
+                    this.trail_length = this.passage.length();
+                    this.progress = started ? 0 : -1;
+                };
+                PassageTrail.prototype.sceneFinished = function () {
+                    // boolean set by UI
+                    console.log("is at exit? " + this.isAtExitPoint() + "is leaving? " + this.leaving);
+                    return this.isAtExitPoint() && this.leaving;
+                };
+                PassageTrail.prototype.getFollowingScene = function () {
+                    return new _journey_departure__WEBPACK_IMPORTED_MODULE_2__["JourneyDeparture"](this.game);
+                };
+                PassageTrail.prototype.isAtExitPoint = function () {
+                    return this.progress === -1 || this.progress === this.passage.length();
+                };
+                PassageTrail.prototype.step = function () {
+                    this.progress += 1;
+                    // this.progress += direction;
+                    this.progress = Math.min(Math.max(this.progress, -1), this.passage.length());
+                    if (this.progress === this.passage.length()) {
+                        this.game.hero.setCoordinates(this.trail_end);
+                        this.resetTrail();
+                    }
+                };
+                return PassageTrail;
+            }(_wander_scene__WEBPACK_IMPORTED_MODULE_1__["WanderScene"]));
+            /***/ 
+        }),
         /***/ "./src/app/rpg-engine/scenes/roaming.ts": 
         /*!**********************************************!*\
           !*** ./src/app/rpg-engine/scenes/roaming.ts ***!
@@ -689,7 +761,7 @@ var __extends = (this && this.__extends) || (function () {
                 function Roaming(game, start, direction) {
                     var _this = _super.call(this, game) || this;
                     _this.direction = !direction ? [0, -1] : direction;
-                    _this.start = !start ? _this.game.hero.coordinates : start;
+                    _this.start = !start ? _this.game.hero.pos : start;
                     _this.current = _this.start;
                     _this.steps = 0;
                     _this.startloc = _this.game.worldmap.getLocationAt(_this.start.getCoords());
@@ -885,7 +957,7 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony import */ var _world_world_position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./world/world-position */ "./src/app/rpg-engine/world/world-position.ts");
             var WanderHero = /** @class */ (function () {
                 function WanderHero() {
-                    this.coordinates = null;
+                    this.pos = null;
                 }
                 WanderHero.fromJSON = function (src) {
                     var hero = new WanderHero();
@@ -895,8 +967,8 @@ var __extends = (this && this.__extends) || (function () {
                     return hero;
                 };
                 WanderHero.prototype.setCoordinates = function (pos) {
-                    console.log("replacing coords", this.coordinates, "w pos ", pos);
-                    this.coordinates = pos;
+                    // console.log("replacing coords", this.pos, "w pos ", pos);
+                    this.pos = pos;
                 };
                 return WanderHero;
             }());
@@ -906,11 +978,13 @@ var __extends = (this && this.__extends) || (function () {
         /*!********************************************!*\
           !*** ./src/app/rpg-engine/wander-scene.ts ***!
           \********************************************/
-        /*! exports provided: WanderScene */
+        /*! exports provided: WanderScene, WanderSceneTrigger, WanderSceneTriggerCondition */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderScene", function () { return WanderScene; });
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderSceneTrigger", function () { return WanderSceneTrigger; });
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderSceneTriggerCondition", function () { return WanderSceneTriggerCondition; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             var WanderScene = /** @class */ (function () {
                 function WanderScene(game) {
@@ -942,6 +1016,84 @@ var __extends = (this && this.__extends) || (function () {
             }());
             WanderScene.LEAVESTATE_UNFINISHED = -1;
             WanderScene.LEAVESTATE_FINISHED = 0;
+            /**
+             * Wrapper for Map type for syntactical cleanup
+             */
+            var LeaveStatesMap = /** @class */ (function (_super) {
+                __extends(LeaveStatesMap, _super);
+                function LeaveStatesMap() {
+                    return _super !== null && _super.apply(this, arguments) || this;
+                }
+                return LeaveStatesMap;
+            }(Map));
+            var WanderSceneTrigger = /** @class */ (function () {
+                function WanderSceneTrigger() {
+                    this.needed = [];
+                    this.blockers = [];
+                }
+                /**
+                 * Adds a condition, by default as needed unless specified as blocker
+                 * @param condition trigger condition for this scene
+                 * @param asblocker whether the condition is a blocker, defaults to needed
+                 */
+                WanderSceneTrigger.prototype.addCondition = function (condition, asblocker) {
+                    if (asblocker === void 0) { asblocker = false; }
+                    (asblocker ? this.blockers : this.needed).push(condition);
+                };
+                WanderSceneTrigger.prototype.isActive = function (leavestates) {
+                    for (var _i = 0, _a = this.blockers; _i < _a.length; _i++) {
+                        var triggercondition = _a[_i];
+                        if (triggercondition.checkCondition(leavestates)) {
+                            return false;
+                        }
+                    }
+                    for (var _b = 0, _c = this.needed; _b < _c.length; _b++) {
+                        var triggercondition = _c[_b];
+                        if (!triggercondition.checkCondition(leavestates)) {
+                            return false;
+                        }
+                    }
+                    return true;
+                };
+                WanderSceneTrigger.createFromJSON = function (src) {
+                    var trigger = new WanderSceneTrigger();
+                    if (src.hasOwnProperty("c_for")) {
+                        for (var _i = 0, _a = src["c_for"]; _i < _a.length; _i++) {
+                            var conditiondef = _a[_i];
+                            trigger.addCondition(WanderSceneTriggerCondition.createFromJSON(conditiondef), false);
+                        }
+                    }
+                    if (src.hasOwnProperty("c_against")) {
+                        for (var _b = 0, _c = src["c_against"]; _b < _c.length; _b++) {
+                            var conditiondef = _c[_b];
+                            trigger.addCondition(WanderSceneTriggerCondition.createFromJSON(conditiondef), true);
+                        }
+                    }
+                    return trigger;
+                };
+                return WanderSceneTrigger;
+            }());
+            var WanderSceneTriggerCondition = /** @class */ (function () {
+                function WanderSceneTriggerCondition(sceneid, valuestate, mustmeet) {
+                    this.sceneid = sceneid;
+                    this.statevalue = valuestate;
+                    this.mustmeet = mustmeet;
+                }
+                WanderSceneTriggerCondition.prototype.checkCondition = function (leavestates) {
+                    var leavestate = leavestates.has(this.sceneid) ? leavestates.get(this.sceneid) : WanderScene.LEAVESTATE_UNFINISHED;
+                    return this.mustmeet ? leavestate === this.statevalue : leavestate !== this.statevalue;
+                };
+                WanderSceneTriggerCondition.createFromJSON = function (src) {
+                    var sceneid = src["sceneid"];
+                    var statevalue = src["endstate"];
+                    var mustmeet = true;
+                    if (src.hasOwnProperty("mustnot")) {
+                        mustmeet = !src["mustnot"];
+                    }
+                    return new WanderSceneTriggerCondition(sceneid, statevalue, mustmeet);
+                };
+                return WanderSceneTriggerCondition;
+            }());
             /***/ 
         }),
         /***/ "./src/app/rpg-engine/world/locs/Place.ts": 
@@ -961,6 +1113,9 @@ var __extends = (this && this.__extends) || (function () {
                 // public abstract getName (): string;
                 Place.prototype.getCoords = function () {
                     return this.pos.getCoords();
+                };
+                Place.prototype.matchesPosition = function (pos) {
+                    return this.pos.matches(pos);
                 };
                 return Place;
             }());
@@ -1015,6 +1170,9 @@ var __extends = (this && this.__extends) || (function () {
                     _this.course = course;
                     return _this;
                 }
+                TerrainPass.prototype.length = function () {
+                    return this.course.length;
+                };
                 TerrainPass.fromJSON = function (placeid, desc) {
                     var entrypoint = desc["entry"];
                     var exitpoint = desc["exit"];
@@ -1022,6 +1180,9 @@ var __extends = (this && this.__extends) || (function () {
                     var loaded = new TerrainPass(placeid, new _world_position__WEBPACK_IMPORTED_MODULE_2__["WorldPosition"](entrypoint[0], entrypoint[1]), new _world_position__WEBPACK_IMPORTED_MODULE_2__["WorldPosition"](exitpoint[0], exitpoint[1]), course);
                     loaded.name = desc["name"];
                     return loaded;
+                };
+                TerrainPass.prototype.matchesPosition = function (pos) {
+                    return this.pos.matches(pos) || this.exitpoint.matches(pos);
                 };
                 return TerrainPass;
             }(_Place__WEBPACK_IMPORTED_MODULE_1__["Place"]));
@@ -1220,6 +1381,10 @@ var __extends = (this && this.__extends) || (function () {
                 };
                 WorldPosition.prototype.getShifted = function (x, y) {
                     return new WorldPosition(this.x + x, this.y + y);
+                };
+                WorldPosition.prototype.matches = function (other) {
+                    console.log("checking if we have a match between ", this, "and", other);
+                    return this.x === other.x && this.y === other.y;
                 };
                 WorldPosition.getRelativeGeneralDirection = function (pfrom, pto) {
                     var distX = pto.x - pfrom.x;
@@ -1798,34 +1963,11 @@ var __extends = (this && this.__extends) || (function () {
                 function JourneyStepComponent(sceneref) {
                     var _this = _super.call(this, sceneref) || this;
                     _this.sceneref = sceneref;
-                    // TILESBYTERRRAIN = {
-                    // 	"M": "basetilemountain400.png",
-                    // 	"H": "basetilehills400.png",
-                    // 	"F": "basetileforest400.png",
-                    // 	"P": "basetileplains400.png",
-                    // };
-                    _this.TILESBYTERRRAIN = {
-                        "M": "basetilemountain.png",
-                        "H": "basetilehills.png",
-                        "F": "basetileforest.png",
-                        "P": "basetileplains.png",
-                    };
-                    _this.PATH_TILES = "assets/graph/fptiles/";
-                    _this.MARKERSBYID = {
-                        "towns": "basetilecitadel.png",
-                    };
-                    _this.PATH_MARKERS = "assets/graph/fptiles/";
-                    _this.EXTRAIMGS = {
-                        // "skybgr": "/assets/graph/bgr/sunspearsky.jpg",
-                        "skybgr": "assets/graph/bgr/sunspearsky_gscale.png"
-                    };
                     _this.journeyscene = _this.sceneref.scene;
                     console.log("journey path: ", JSON.stringify(_this.journeyscene.course));
                     return _this;
                 }
                 JourneyStepComponent.prototype.ngOnInit = function () {
-                    // this.loadAssets();
-                    // this.prepareAssetsHolders();
                 };
                 JourneyStepComponent.prototype.ngAfterViewInit = function () {
                     this.viewrenderer = new _lib_walk_renderer__WEBPACK_IMPORTED_MODULE_4__["WalkRenderer"](this.journeyscene.game.worldmap, this.renderview);
@@ -2219,6 +2361,66 @@ var __extends = (this && this.__extends) || (function () {
             }());
             /***/ 
         }),
+        /***/ "./src/app/storyteller/scenes/passage-through/passage-through.component.scss": 
+        /*!***********************************************************************************!*\
+          !*** ./src/app/storyteller/scenes/passage-through/passage-through.component.scss ***!
+          \***********************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = (".trailview {\n  position: fixed;\n  left: 1vw;\n  right: 1vw;\n  top: 1vw;\n  height: 48vh;\n  border: 2px dashed black;\n}\n\n.trailcontext {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 48vh;\n  font-size: 8vh;\n  text-align: center;\n}\n\n.trailcontrols {\n  border: 1px solid black;\n  padding: 2pt 8pt;\n  font-size: 4vh;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3N0b3J5dGVsbGVyL3NjZW5lcy9wYXNzYWdlLXRocm91Z2gvcGFzc2FnZS10aHJvdWdoLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zdG9yeXRlbGxlci9zY2VuZXMvcGFzc2FnZS10aHJvdWdoL3Bhc3NhZ2UtdGhyb3VnaC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVDLGVBQUE7RUFDQSxTQUFBO0VBQ0EsVUFBQTtFQUNBLFFBQUE7RUFDQSxZQUFBO0VBQ0Esd0JBQUE7QUNBRDs7QURHQTtFQUVDLGVBQUE7RUFDQSxPQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUVBLGtCQUFBO0FDRkQ7O0FETUE7RUFFQyx1QkFBQTtFQUNBLGdCQUFBO0VBRUEsY0FBQTtBQ0xEIiwiZmlsZSI6InNyYy9hcHAvc3Rvcnl0ZWxsZXIvc2NlbmVzL3Bhc3NhZ2UtdGhyb3VnaC9wYXNzYWdlLXRocm91Z2guY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudHJhaWx2aWV3XG57XG5cdHBvc2l0aW9uOlx0XHRmaXhlZDtcblx0bGVmdDpcdFx0XHQxdnc7XG5cdHJpZ2h0Olx0XHRcdDF2dztcblx0dG9wOlx0XHRcdDF2dztcblx0aGVpZ2h0Olx0XHRcdDQ4dmg7XG5cdGJvcmRlcjpcdFx0XHQycHggZGFzaGVkIGJsYWNrO1xufVxuXG4udHJhaWxjb250ZXh0XG57XG5cdHBvc2l0aW9uOlx0XHRmaXhlZDtcblx0bGVmdDpcdFx0XHQwO1xuXHRyaWdodDpcdFx0XHQwO1xuXHRib3R0b206XHRcdFx0MDtcblx0aGVpZ2h0Olx0XHRcdDQ4dmg7XG5cdGZvbnQtc2l6ZTpcdFx0OHZoO1xuXG5cdHRleHQtYWxpZ246XHRcdGNlbnRlcjtcbn1cblxuXG4udHJhaWxjb250cm9sc1xue1xuXHRib3JkZXI6XHRcdFx0MXB4IHNvbGlkIGJsYWNrO1xuXHRwYWRkaW5nOlx0XHQycHQgOHB0O1xuXG5cdGZvbnQtc2l6ZTpcdFx0NHZoO1xufVxuIiwiLnRyYWlsdmlldyB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgbGVmdDogMXZ3O1xuICByaWdodDogMXZ3O1xuICB0b3A6IDF2dztcbiAgaGVpZ2h0OiA0OHZoO1xuICBib3JkZXI6IDJweCBkYXNoZWQgYmxhY2s7XG59XG5cbi50cmFpbGNvbnRleHQge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICBib3R0b206IDA7XG4gIGhlaWdodDogNDh2aDtcbiAgZm9udC1zaXplOiA4dmg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLnRyYWlsY29udHJvbHMge1xuICBib3JkZXI6IDFweCBzb2xpZCBibGFjaztcbiAgcGFkZGluZzogMnB0IDhwdDtcbiAgZm9udC1zaXplOiA0dmg7XG59Il19 */");
+            /***/ 
+        }),
+        /***/ "./src/app/storyteller/scenes/passage-through/passage-through.component.ts": 
+        /*!*********************************************************************************!*\
+          !*** ./src/app/storyteller/scenes/passage-through/passage-through.component.ts ***!
+          \*********************************************************************************/
+        /*! exports provided: PassageThroughComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PassageThroughComponent", function () { return PassageThroughComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _scene_renderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../scene-renderer */ "./src/app/storyteller/scenes/scene-renderer.ts");
+            /* harmony import */ var _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../scene-ui/scene-ref */ "./src/app/scene-ui/scene-ref.ts");
+            var PassageThroughComponent = /** @class */ (function (_super) {
+                __extends(PassageThroughComponent, _super);
+                function PassageThroughComponent(sceneref) {
+                    var _this = _super.call(this, sceneref) || this;
+                    _this.sceneref = sceneref;
+                    _this.trail = _this.sceneref.scene;
+                    return _this;
+                }
+                PassageThroughComponent.prototype.isTrailing = function () {
+                    return this.trail.progress > -1 && this.trail.progress < this.trail.passage.length();
+                };
+                PassageThroughComponent.prototype.journeyOnwards = function () {
+                    this.trail.step();
+                };
+                PassageThroughComponent.prototype.leaveTrail = function () {
+                    this.trail.leaving = true;
+                    this.sceneref.triggerSceneCheck();
+                };
+                PassageThroughComponent.prototype.ngOnInit = function () {
+                };
+                PassageThroughComponent.prototype.ngAfterViewInit = function () {
+                };
+                return PassageThroughComponent;
+            }(_scene_renderer__WEBPACK_IMPORTED_MODULE_2__["SceneRenderer"]));
+            PassageThroughComponent.ctorParameters = function () { return [
+                { type: _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_3__["SceneRef"] }
+            ]; };
+            PassageThroughComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-passage-through',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./passage-through.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/passage-through/passage-through.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./passage-through.component.scss */ "./src/app/storyteller/scenes/passage-through/passage-through.component.scss")).default]
+                })
+            ], PassageThroughComponent);
+            /***/ 
+        }),
         /***/ "./src/app/storyteller/scenes/roaming-step/roaming-step.component.scss": 
         /*!*****************************************************************************!*\
           !*** ./src/app/storyteller/scenes/roaming-step/roaming-step.component.scss ***!
@@ -2411,7 +2613,7 @@ var __extends = (this && this.__extends) || (function () {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("#mapholder {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3N0b3J5dGVsbGVyL3NjZW5lcy93b3JsZC1tYXAtdmlldy93b3JsZC1tYXAtdmlldy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvc3Rvcnl0ZWxsZXIvc2NlbmVzL3dvcmxkLW1hcC12aWV3L3dvcmxkLW1hcC12aWV3LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUMsa0JBQUE7RUFDQSxNQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0FDQUQiLCJmaWxlIjoic3JjL2FwcC9zdG9yeXRlbGxlci9zY2VuZXMvd29ybGQtbWFwLXZpZXcvd29ybGQtbWFwLXZpZXcuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjbWFwaG9sZGVyXG57XG5cdHBvc2l0aW9uOlx0YWJzb2x1dGU7XG5cdHRvcDpcdFx0MDtcblx0bGVmdDpcdFx0MDtcblx0cmlnaHQ6XHRcdDA7XG5cdGJvdHRvbTpcdFx0MDtcblx0Ly9iYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuL2Fzc2V0cy91aS90ZW1wb3JhcnlwYXJjaG1lbnQuanBnXCIpO1xufVxuXG4iLCIjbWFwaG9sZGVyIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICBib3R0b206IDA7XG59Il19 */");
+            /* harmony default export */ __webpack_exports__["default"] = ("#mapholder {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3N0b3J5dGVsbGVyL3NjZW5lcy93b3JsZC1tYXAtdmlldy93b3JsZC1tYXAtdmlldy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvc3Rvcnl0ZWxsZXIvc2NlbmVzL3dvcmxkLW1hcC12aWV3L3dvcmxkLW1hcC12aWV3LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUMsa0JBQUE7RUFDQSxNQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0FDQUQiLCJmaWxlIjoic3JjL2FwcC9zdG9yeXRlbGxlci9zY2VuZXMvd29ybGQtbWFwLXZpZXcvd29ybGQtbWFwLXZpZXcuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjbWFwaG9sZGVyXG57XG5cdHBvc2l0aW9uOlx0YWJzb2x1dGU7XG5cdHRvcDpcdFx0MDtcblx0bGVmdDpcdFx0MDtcblx0cmlnaHQ6XHRcdDA7XG5cdGJvdHRvbTpcdFx0MDtcbn1cblxuIiwiI21hcGhvbGRlciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgYm90dG9tOiAwO1xufSJdfQ== */");
             /***/ 
         }),
         /***/ "./src/app/storyteller/scenes/world-map-view/world-map-view.component.ts": 
@@ -2618,7 +2820,7 @@ var __extends = (this && this.__extends) || (function () {
                     }
                     // create hero marker
                     var game = this.sceneref.game;
-                    var playerpos = game.hero.coordinates.getCoords();
+                    var playerpos = game.hero.pos.getCoords();
                     var imageref = this.markerimages.get("hero");
                     // let imagepath = this.markerfiles.get("hero");
                     var marker = new konva__WEBPACK_IMPORTED_MODULE_3___default.a.Image({
@@ -2627,6 +2829,14 @@ var __extends = (this && this.__extends) || (function () {
                         y: playerpos[1] * this.TILESIZE,
                         width: this.TILESIZE,
                         height: this.TILESIZE,
+                    });
+                    marker.on("click", function (ev) {
+                        // console.log("marker click ", ev, "on", this, "for loc", loc);
+                        var loc = game.worldmap.getLocationAt(playerpos);
+                        if (!!loc) {
+                            widget.chooseDestination(loc);
+                            ev.cancelBubble = true;
+                        }
                     });
                     tilelayer.add(marker);
                     tilelayer.batchDraw();
@@ -2719,6 +2929,9 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony import */ var _scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./scenes/town-ui/town-ui.component */ "./src/app/storyteller/scenes/town-ui/town-ui.component.ts");
             /* harmony import */ var _rpg_engine_scenes_roaming__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../rpg-engine/scenes/roaming */ "./src/app/rpg-engine/scenes/roaming.ts");
             /* harmony import */ var _scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./scenes/roaming-step/roaming-step.component */ "./src/app/storyteller/scenes/roaming-step/roaming-step.component.ts");
+            /* harmony import */ var _rpg_engine_scenes_passage_trail__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../rpg-engine/scenes/passage-trail */ "./src/app/rpg-engine/scenes/passage-trail.ts");
+            /* harmony import */ var _scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./scenes/passage-through/passage-through.component */ "./src/app/storyteller/scenes/passage-through/passage-through.component.ts");
+            /* harmony import */ var _rpg_engine_world_locs_TerrainPass__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../rpg-engine/world/locs/TerrainPass */ "./src/app/rpg-engine/world/locs/TerrainPass.ts");
             var StorytellerComponent = /** @class */ (function () {
                 function StorytellerComponent(sceneui, http) {
                     this.sceneui = sceneui;
@@ -2740,12 +2953,15 @@ var __extends = (this && this.__extends) || (function () {
                     this.checkUpdateSceneRender();
                 };
                 StorytellerComponent.prototype.getLocationSensitiveScene = function () {
-                    var ppos = this.game.hero.coordinates;
+                    var ppos = this.game.hero.pos;
                     var place = this.game.worldmap.getLocationAt(ppos.getCoords());
                     console.log("place is town? ", place instanceof _rpg_engine_world_locs_Town__WEBPACK_IMPORTED_MODULE_9__["Town"]);
                     var scene = null;
                     if (place instanceof _rpg_engine_world_locs_Town__WEBPACK_IMPORTED_MODULE_9__["Town"]) {
                         scene = new _rpg_engine_scenes_town_nav__WEBPACK_IMPORTED_MODULE_10__["TownNav"](this.game, place);
+                    }
+                    else if (place instanceof _rpg_engine_world_locs_TerrainPass__WEBPACK_IMPORTED_MODULE_16__["TerrainPass"]) {
+                        scene = new _rpg_engine_scenes_passage_trail__WEBPACK_IMPORTED_MODULE_14__["PassageTrail"](this.game, place);
                     }
                     else {
                         // if all fails, go to map
@@ -2788,6 +3004,9 @@ var __extends = (this && this.__extends) || (function () {
                     }
                     else if (scene instanceof _rpg_engine_scenes_roaming__WEBPACK_IMPORTED_MODULE_12__["Roaming"]) {
                         renderer = _scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_13__["RoamingStepComponent"];
+                    }
+                    else if (scene instanceof _rpg_engine_scenes_passage_trail__WEBPACK_IMPORTED_MODULE_14__["PassageTrail"]) {
+                        renderer = _scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_15__["PassageThroughComponent"];
                     }
                     return renderer;
                 };
