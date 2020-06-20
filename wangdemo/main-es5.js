@@ -77,17 +77,6 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"overlay\">\n\t<div class=\"dialog\">\n\t\t<div class=\"scenescreen\">test-green-screen works!</div>\n\t\t<button (click)=\"onClose()\">BYE!</button>\n\t</div>\n</div>\n");
             /***/ 
         }),
-        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/story-tester/scenes/test-screen-generic/test-screen-generic.component.html": 
-        /*!**********************************************************************************************************************************!*\
-          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/story-tester/scenes/test-screen-generic/test-screen-generic.component.html ***!
-          \**********************************************************************************************************************************/
-        /*! exports provided: default */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<p>test-screen-generic works!</p>\n");
-            /***/ 
-        }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/story-tester/story-tester.component.html": 
         /*!************************************************************************************************!*\
           !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/story-tester/story-tester.component.html ***!
@@ -2996,7 +2985,11 @@ var __extends = (this && this.__extends) || (function () {
             __webpack_require__.r(__webpack_exports__);
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TestScreenGenericComponent", function () { return TestScreenGenericComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            // @Component({
+            // 	selector: 'app-test-screen-generic',
+            // 	templateUrl: './test-screen-generic.component.html',
+            // 	styleUrls: ['./test-screen-generic.component.scss']
+            // })
             var TestScreenGenericComponent = /** @class */ (function () {
                 function TestScreenGenericComponent() {
                     this.stint = null;
@@ -3005,13 +2998,6 @@ var __extends = (this && this.__extends) || (function () {
                 };
                 return TestScreenGenericComponent;
             }());
-            TestScreenGenericComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-                    selector: 'app-test-screen-generic',
-                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./test-screen-generic.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/story-tester/scenes/test-screen-generic/test-screen-generic.component.html")).default,
-                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./test-screen-generic.component.scss */ "./src/app/story-tester/scenes/test-screen-generic/test-screen-generic.component.scss")).default]
-                })
-            ], TestScreenGenericComponent);
             /***/ 
         }),
         /***/ "./src/app/story-tester/story-tester.component.scss": 
