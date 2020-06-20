@@ -1,0 +1,142 @@
+{
+	"questid": "TRIGGERQUEST",
+	"title": "TriggerQuest",
+	"description": "A DEMO QUEST to check triggered tasks that do not require the player to re-enter a quest point.",
+	"journal": "Go to the city of BETA and receive your instructions for the trigger quest.",
+	"completers": ["step03_laststuff"],
+	"tasks":
+	{
+		"step01_getassignment" :
+		{
+			"taskid": "step01_getassignment",
+			"conditions":
+			[
+				{
+					"test": "location",
+					"target": {
+						"locid": "BETA",
+						"roomid": "MAINST"
+					}
+				}
+			],
+			"prompt": "Get the trigger quest instructions.",
+			"scene":
+			{
+				"type": "narrative",
+				"data":
+				{
+					"text" :
+					[
+						"Welcome to the trigger test quest.",
+						"Now you can proceed to a second task that will show the trigger mechanism in action"
+					]
+				}
+			},
+			"journal_after": "Read more stuff."
+		},
+		"step02_action":
+		{
+			"taskid": "step02_action",
+			"prompt": "Continue the trigger quest demo.",
+			"conditions":
+			[
+				{
+					"test": "location",
+					"target": {
+						"locid": "BETA",
+						"roomid": "MAINST"
+					}
+				},
+				{
+					"test": "completed",
+					"target": "step01_getassignment"
+				}
+			],
+			"scene":
+			{
+				"type": "multi",
+				"data":
+				{
+					"scenes":
+					[
+						{
+							"id": "first",
+							"type": "narrative",
+							"data":
+							{
+								"text" :
+								[
+									"And here's trigger subscene 1.",
+									"Following this step you should enter another subscene."
+								]
+							}
+						},
+						{
+							"id": "second",
+							"type": "narrative",
+							"data":
+							{
+								"text" :
+								[
+									"And here's trigger subscene TWO!",
+									"Following this step you should enter THE LAST subscene."
+								]
+							}
+						},
+						{
+							"id": "third",
+							"type": "narrative",
+							"data":
+							{
+								"text" :
+								[
+									"And here's the end of the questtask with subscene THREE!",
+									"This is the last of these."
+								]
+							}
+						}
+					],
+					"triggers":
+					{
+						"first": "second",
+						"second": "third"
+					},
+					"starter": "first"
+				}
+			},
+			"journal_after": "Keep reading, son."
+		},
+		"step03_laststuff":
+		{
+			"prompt": "Be happy with your results.",
+			"taskid": "step03_laststuff",
+			"conditions":
+			[
+				{
+					"test": "location",
+					"target": {
+						"locid": "BETA",
+						"roomid": "MAINST"
+					}
+				},
+				{
+					"test": "completed",
+					"target": "step02_action"
+				}
+			],
+			"scene": {
+				"type": "narrative",
+				"data":
+				{
+					"text" :
+					[
+						"Seems you passed everything.",
+						"This means the multiscene works properly.\nThere  is nothing more to do, good job."
+					]
+				}
+			}
+
+		}
+
+	}
+}

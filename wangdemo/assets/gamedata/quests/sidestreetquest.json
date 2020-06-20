@@ -1,0 +1,152 @@
+{
+	"questid": "STREETQUEST",
+	"title": "ministreetequest",
+	"description": "A DEMO QUEST to test the StoryBranch class.",
+	"journal": "CHeck what's happening in the streets of DELTA.",
+	"completers": ["listentotheman", "dropyoureaves", "grabthegirl"],
+	"tasks":
+	{
+		"step01_start":
+		{
+			"taskid": "step01_start",
+			"prompt": "Check the trickle of blood just round the corner.",
+			"conditions":
+			[
+				{
+					"test": "location",
+					"target": {
+						"locid": "BETA",
+						"roomid": "LEAVE"
+					}
+				}
+			],
+			"scene":
+			{
+				"type": "branching",
+				"data":
+				{
+					"scenes":
+					[
+						{
+							"id": "murderbranch",
+							"type": "choice",
+							"data":
+							{
+								"prompt": "You follow the blood and get to a secluded spot where a man is bleeding to death. He tries to tell you something, but in that moment you see someone leave a hiding spot and break into a run. You have to make a choice",
+								"options":
+								[
+									{
+										"description": "Chase the stranger.",
+										"value": 1
+									},
+									{
+										"description": "Listen to the victim's words.",
+										"value": 2
+									}
+								]
+							}
+						},
+						{
+							"id": "listentotheman",
+							"type": "narrative",
+							"data":
+							{
+								"text":
+								[
+									"Before expiring, the man whispers to you the name of a criminal family in Delta.\nIt's not enough to go on now, but you may want to investigate further on them, in the future."
+								]
+							}
+						},
+						{
+							"id": "followthestranger",
+							"type": "skill",
+							"data":
+							{
+								"description": "The stranger is trying to avoid getting too much attention on her. A few approaches spring to mind.",
+								"options":
+								[
+									{
+										"action": "marathon",
+										"target": 5,
+										"repeat": 0,
+										"prompt": "Do a full chase and grab her",
+										"returncode": 2
+									},
+									{
+										"action": "stealth",
+										"target": 4,
+										"repeat": 0,
+										"prompt": "Tail her from the shadows",
+										"returncode": 3
+									}
+								]
+							}
+						},
+						{
+							"id": "grabthegirl",
+							"type": "narrative",
+							"data":
+							{
+								"text":
+								[
+									"You manage to grab the woman, and hold her a knifepoint.\n«Who sent you?» you ask, but she gets you off balance and you struggle until she breaks in a run through the crowd and you lose her.", "Not all is lost, though. Something fell from her pockets with the symbol of a notorius family from Delta. Not much for now, but you decide to keep it in mind for the future."
+								]
+							}
+						},
+						{
+							"id": "dropyoureaves",
+							"type": "narrative",
+							"data":
+							{
+								"text":
+								[
+									"The woman stops in an alley and talks briefly with a hooded person. You cannot hear the details, but at a certain point the name of a family from Delta is spoken.", "It's not clear what the deal is here, but you may want to investigate in the future"
+								]
+							}
+						}
+					],
+					"triggers":
+					{
+						"listentotheman": {
+							"c_for": [
+								{
+									"sceneid": "murderbranch",
+									"endstate": 2
+								}
+							],
+							"c_against": []
+						},
+						"followthestranger": {
+							"c_for": [
+								{
+									"sceneid": "murderbranch",
+									"endstate": 1
+								}
+							],
+							"c_against": []
+						},
+						"grabthegirl": {
+							"c_for": [
+								{
+									"sceneid": "followthestranger",
+									"endstate": 2
+								}
+							],
+							"c_against": []
+						},
+						"dropyoureaves": {
+							"c_for": [
+								{
+									"sceneid": "followthestranger",
+									"endstate": 3
+								}
+							],
+							"c_against": []
+						}
+					},
+					"starter": "murderbranch"
+				}
+			}
+		}
+	}
+}

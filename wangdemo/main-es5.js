@@ -52,7 +52,7 @@ var __extends = (this && this.__extends) || (function () {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"uiwrapper\" (click)=\"onOverlayClicked($event)\">\n\t<ng-template appInsertion> </ng-template>\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"uiwrapper\" (click)=\"onOverlayClicked($event)\">\n\t<ng-template appInsertion> </ng-template>\n</div>\n\n<div id=gamecontrols>\n    \n    <a (click)=\"doLoadGame()\" >LOAD</a>\n        &nbsp;\n\t<a (click)=\"doSaveGame()\" >SAVE</a>\n\n\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/story-tester/scenes/test-blue-screen/test-blue-screen.component.html": 
@@ -107,7 +107,18 @@ var __extends = (this && this.__extends) || (function () {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"journeyrender\" #renderholder>\n\t<div id=\"viewrender\" #renderview></div>\n</div>\n\n<div id=\"journeyinfo\" #sceneinfo>\n\tTravelling {{getDirectionDescription()}} to {{journeyscene.dest.name}}, day {{journeyscene.stepid}}/{{journeyscene.course.length}};\n\n\t\t<br>\n\n\t<div class=\"journeycontrols\">\n\t<button class=\"journeychoice\" (click)=\"setCamp()\">SET CAMP</button> <button class=\"journeychoice\" (click)=\"continueJourney()\">JOURNEY ONWARDS</button> <button class=\"journeychoice\" (click)=\"showMap()\">SHOW MAP</button>\n\n\t</div>\n\n\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"journeyrender\" #renderholder>\n\t<div id=\"viewrender\" #renderview></div>\n</div>\n\n<div id=\"journeyinfo\" #sceneinfo>\n\tTravelling {{getDirectionDescription()}} to {{journeyscene.dest.name}}, day {{journeyscene.stepid}}/{{journeyscene.course.length}};\n\n\t\t<br>\n\n\t<div class=\"journeycontrols\">\n\t\t<button class=\"journeychoice\" (click)=\"setCamp()\">SET CAMP</button> <button class=\"journeychoice\" (click)=\"continueJourney()\">JOURNEY ONWARDS</button> <button class=\"journeychoice\" (click)=\"showMap()\">SHOW MAP</button>\n\n\t</div>\n\n\n</div>\n");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/narration-pages/narration-pages.component.html": 
+        /*!*************************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/narration-pages/narration-pages.component.html ***!
+          \*************************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"narration_scene\" >\n\t<div id=\"narration_render\">\n\t\t    {{tale.paragraphs[tale.progress]}}\n\t</div>\n</div>\n\n\n\n<div id=\"narration_info\" #sceneinfo>\n\n\n\t<div class=\"narration_controls\">\n\n\t\t<button class=\"pageturn\" *ngIf=\"tale.progress > 0 || !tale.allowReadBack\" (click)=\"readBackwards()\">BACK</button>\n\t\t<button class=\"pageturn\" *ngIf=\"tale.progress < tale.paragraphs.length - 1\" (click)=\"readForward()\">FORWARD</button>\n\t\t<button class=\"pageturn\" *ngIf=\"tale.progress === tale.paragraphs.length - 1\" (click)=\"readOut()\">END</button>\n\t</div>\n\n\n</div>\n\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/passage-through/passage-through.component.html": 
@@ -129,7 +140,29 @@ var __extends = (this && this.__extends) || (function () {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"journeyrender\" #renderholder>\n\t<div id=\"viewrender\" #renderview></div>\n</div>\n\n<div id=\"journeyinfo\" #sceneinfo>\n\tTravelling {{getDirectionDescription()}}, day {{getDayOfTravel()}}<span *ngIf=\"roamingscene.startloc !== null\"> from {{roamingscene.startloc.name}}</span>.\n\n\t\t<br>\n\n\t<div class=\"journeycontrols\">\n\t\t<button class=\"journeychoice\" (click)=\"moveTurnLeft()\">LEFT 45</button>\n\t\t<button class=\"journeychoice\" (click)=\"moveForward()\">JOURNEY ONWARDS</button>\n\t\t<button class=\"journeychoice\" (click)=\"moveTurnRight()\">RIGHT 45</button>\n\t\t<br>\n\n\n\t\t<button class=\"journeychoice\" (click)=\"actionSetCamp()\">SET CAMP</button>  <button class=\"journeychoice\" (click)=\"showMap()\">SHOW MAP</button>\n\n\t</div>\n\n\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"journeyrender\" #renderholder>\n\t<div id=\"viewrender\" #renderview></div>\n</div>\n\n<div id=\"journeyinfo\" #sceneinfo>\n\tTravelling {{getDirectionDescription()}}, day {{getDayOfTravel()}}<span *ngIf=\"roamingscene.startloc !== null\"> from {{roamingscene.startloc.name}}</span>.\n\n\t\t<br>\n\n\t<div class=\"journeycontrols\">\n\t\t<button class=\"journeychoice\" (click)=\"moveTurnLeft()\">TURN LEFT</button>\n\t\t<button class=\"journeychoice\" (click)=\"moveForward()\">JOURNEY ONWARDS</button>\n\t\t<button class=\"journeychoice\" (click)=\"moveTurnRight()\">TURN RIGHT</button>\n\t\t<br>\n\n\n\t\t<button class=\"journeychoice\" (click)=\"actionSetCamp()\">SET CAMP</button>  <button class=\"journeychoice\" (click)=\"showMap()\">SHOW MAP</button>\n\n\t</div>\n\n\n</div>\n");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/skill-action/skill-action.component.html": 
+        /*!*******************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/skill-action/skill-action.component.html ***!
+          \*******************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"choicescenery\" >\n\t<div id=\"sceneryview\" #scenerender></div>\n</div>\n\n\n\n<div id=\"choiceinfo\" #sceneinfo>\n\n\n\t<div class=\"choicecontrols\" *ngIf=\"narr_done == null\">\n\n\t\t<span>{{this.skilltest.situation}}</span>\n\t\t<br>\n\t\t<span *ngIf=\"narr_fail != null\">\n\t\t\t{{narr_fail}}\n\t\t</span>\n\n\t\t<table>\n\t\t\t<tr *ngFor=\"let option of this.skilltest.options\">\n\t\t\t\t<td style=\"text-align: left\">{{option.description}}</td>\n\t\t\t\t<td>({{option.tried}}/{{option.max_tries}}></td>\n\t\t\t\t<td>\n\t\t\t\t\t<button class=\"skillchoice\" (click)=\"this.tryOption(option, true)\">DO</button>\n\t\t\t\t\t<button class=\"skillchoice\"(click)=\"this.tryOption(option, false)\">FAIL</button>\n<!--\t\t\t\t\t<span (click)=\"this.tryOption(option, true)\">[DO]</span>-->\n<!--\t\t\t\t\t<span (click)=\"this.tryOption(option, false)\">[FAIL]</span>-->\n\t\t\t\t</td>\n\n\t\t\t</tr>\n\t\t</table>\n\n\t\t<!--\n\t\t<ul class=\"choices-prompt\">\n\n\t\t\t<li *ngFor=\"let option of this.skilltest.options\">{{option.description}} ({{option.tried}}/{{option.max_tries}})\n\t\t\t\t<span (click)=\"this.tryOption(option, true)\">[DO]</span>\n\t\t\t\t<span (click)=\"this.tryOption(option, false)\">[FAIL]</span>\n\t\t\t</li>\n\t\t</ul>\n\t\t-->\n\n\t</div>\n\n\t<div class=\"choicecontrols\" *ngIf=\"narr_done != null\">\n\t\t<span>{{this.narr_done}}</span>\n\t\t<ul class=\"choices-prompt\">\n\t\t\t<li><span (click)=\"this.leaveScene()\">[OK]</span></li>\n\t\t</ul>\n\n\t</div>\n\n\n</div>\n");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/story-choice/story-choice.component.html": 
+        /*!*******************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/story-choice/story-choice.component.html ***!
+          \*******************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"choicescenery\" >\n\t<div id=\"sceneryview\" #scenerender></div>\n</div>\n\n\n\n<div id=\"choiceinfo\" #sceneinfo>\n\n\n\t<div class=\"choicecontrols\">\n\n\t\t<span>{{this.choice.prompt}}</span>\n\n\t\t<ul class=\"choices-prompt\">\n\n\t\t\t<li *ngFor=\"let option of this.choice.options\" (click)=\"selectOption(option)\">{{option.description}}</li>\n\t\t</ul>\n\n\n\t</div>\n\n\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/town-ui/town-ui.component.html": 
@@ -140,7 +173,7 @@ var __extends = (this && this.__extends) || (function () {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"towninfo\" #sceneinfo>\nStanding before {{townscene.town.name}}.\n\n\t\t<br>\n\n\t<div class=\"movecontrols\">\n\t\t<button class=\"movecontrols\" (click)=\"leaveTown()\">LEAVE</button>\n\n\t</div>\n\n\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"townscene\" >\n\t<div id=\"locrender\" #locrender></div>\n</div>\n\n\n\n<div id=\"towninfo\" #sceneinfo>\n\n\n\t<div class=\"movecontrols\">\n\n\t\t<span>{{this.localizeTextAsset(this.townscene.currentloc.description)}}</span>\n\n\t\t<ul class=\"townnav-prompt\">\n\t\t\t<li (click)=\"moveToLoc(direction.target)\" *ngFor=\"let direction of this.townscene.currentloc.moves\">{{this.localizeTextAsset(direction.prompt)}}</li>\n\t\t\t<li (click)=\"activatePrompt(task)\" *ngFor=\"let task of this.taskprompts\">{{task.prompt}}</li>\n\t\t</ul>\n\n\n\t</div>\n\n\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/world-map-view/world-map-view.component.html": 
@@ -162,7 +195,7 @@ var __extends = (this && this.__extends) || (function () {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"st-page\">\n\n\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"st-page\">\n\n\n</div>\n\n\n");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -560,6 +593,9 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony import */ var _storyteller_scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./storyteller/scenes/town-ui/town-ui.component */ "./src/app/storyteller/scenes/town-ui/town-ui.component.ts");
             /* harmony import */ var _storyteller_scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./storyteller/scenes/roaming-step/roaming-step.component */ "./src/app/storyteller/scenes/roaming-step/roaming-step.component.ts");
             /* harmony import */ var _storyteller_scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./storyteller/scenes/passage-through/passage-through.component */ "./src/app/storyteller/scenes/passage-through/passage-through.component.ts");
+            /* harmony import */ var _storyteller_scenes_narration_pages_narration_pages_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./storyteller/scenes/narration-pages/narration-pages.component */ "./src/app/storyteller/scenes/narration-pages/narration-pages.component.ts");
+            /* harmony import */ var _storyteller_scenes_story_choice_story_choice_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./storyteller/scenes/story-choice/story-choice.component */ "./src/app/storyteller/scenes/story-choice/story-choice.component.ts");
+            /* harmony import */ var _storyteller_scenes_skill_action_skill_action_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./storyteller/scenes/skill-action/skill-action.component */ "./src/app/storyteller/scenes/skill-action/skill-action.component.ts");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -578,6 +614,9 @@ var __extends = (this && this.__extends) || (function () {
                         _storyteller_scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_14__["TownUIComponent"],
                         _storyteller_scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_15__["RoamingStepComponent"],
                         _storyteller_scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_16__["PassageThroughComponent"],
+                        _storyteller_scenes_narration_pages_narration_pages_component__WEBPACK_IMPORTED_MODULE_17__["NarrationPagesComponent"],
+                        _storyteller_scenes_story_choice_story_choice_component__WEBPACK_IMPORTED_MODULE_18__["StoryChoiceComponent"],
+                        _storyteller_scenes_skill_action_skill_action_component__WEBPACK_IMPORTED_MODULE_19__["SkillActionComponent"],
                     ],
                     imports: [
                         _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"],
@@ -595,10 +634,404 @@ var __extends = (this && this.__extends) || (function () {
                         _storyteller_scenes_journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_13__["JourneyStepComponent"],
                         _storyteller_scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_15__["RoamingStepComponent"],
                         _storyteller_scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_14__["TownUIComponent"],
-                        _storyteller_scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_16__["PassageThroughComponent"]
+                        _storyteller_scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_16__["PassageThroughComponent"],
+                        _storyteller_scenes_narration_pages_narration_pages_component__WEBPACK_IMPORTED_MODULE_17__["NarrationPagesComponent"],
+                        _storyteller_scenes_story_choice_story_choice_component__WEBPACK_IMPORTED_MODULE_18__["StoryChoiceComponent"],
+                        _storyteller_scenes_skill_action_skill_action_component__WEBPACK_IMPORTED_MODULE_19__["SkillActionComponent"]
                     ]
                 })
             ], AppModule);
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/quests/quest-ref.ts": 
+        /*!************************************************!*\
+          !*** ./src/app/rpg-engine/quests/quest-ref.ts ***!
+          \************************************************/
+        /*! exports provided: QuestRef */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuestRef", function () { return QuestRef; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _quest_task_condition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./quest-task-condition */ "./src/app/rpg-engine/quests/quest-task-condition.ts");
+            /* harmony import */ var _wander_scene__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../wander-scene */ "./src/app/rpg-engine/wander-scene.ts");
+            /**
+             * QuestRef representes a pointer to all quest resources with a specific ID.
+             * It contains a number of QuestTaskState object describing the internal "live" state of the quest and can be used by QuestLoader to know which data must be loaded to provide a certain Scene inside it
+             */
+            var QuestRef = /** @class */ (function () {
+                function QuestRef(questid, fileref) {
+                    this.questid = questid;
+                    this.fileref = fileref;
+                    this.conditions = new Map();
+                    this.completers = [];
+                    this.states = new Map();
+                }
+                QuestRef.fromJSON = function (src, fileref) {
+                    var generated = new QuestRef(src["questid"], fileref);
+                    for (var taskid in src["tasks"]) {
+                        var taskraw = src["tasks"][taskid];
+                        var taskconditions = [];
+                        if (!!taskraw["conditions"]) {
+                            for (var _i = 0, _a = taskraw["conditions"]; _i < _a.length; _i++) {
+                                var conditionraw = _a[_i];
+                                taskconditions.push(_quest_task_condition__WEBPACK_IMPORTED_MODULE_1__["QuestTaskCondition"].fromJSON(conditionraw));
+                            }
+                        }
+                        // an unconditional task would appear ALWAYS
+                        if (taskconditions.length > 0) {
+                            generated.conditions.set(taskid, taskconditions);
+                            generated.states.set(taskid, -1);
+                        }
+                    }
+                    return generated;
+                };
+                QuestRef.prototype.isTaskCompleted = function (taskid) {
+                    return this.states.get(taskid) !== _wander_scene__WEBPACK_IMPORTED_MODULE_2__["WanderScene"].LEAVESTATE_UNFINISHED;
+                };
+                QuestRef.prototype.setCompletedTask = function (task) {
+                    var taskid = task.taskid;
+                    // let ctask = this.loadTask(taskid);
+                    // TODO: re-add journal entry
+                    // this.journal_entry = task.journal_after;
+                    var returnstates = task.getReturnStates();
+                    // Map<String, Integer> returnstates = ctask.getReturnStates();
+                    for (var _i = 0, _a = returnstates.keys(); _i < _a.length; _i++) {
+                        var tasksceneid = _a[_i];
+                        this.states.set(tasksceneid, returnstates.get(tasksceneid));
+                    }
+                    if (this.completers.indexOf(taskid) !== -1) {
+                        this.completed = true;
+                    }
+                };
+                QuestRef.prototype.getAvailableTasks = function (game) {
+                    var available = [];
+                    for (var _i = 0, _a = this.conditions.keys(); _i < _a.length; _i++) {
+                        var taskid = _a[_i];
+                        // let task = this.tasks.get(taskid);
+                        console.log("checking quest task ", taskid, " w conditions", this.conditions, "for ", this.conditions);
+                        if ((!this.isTaskCompleted(taskid)) && this.conditions.has(taskid)) {
+                            var satisfied = true;
+                            for (var _b = 0, _c = this.conditions.get(taskid); _b < _c.length; _b++) {
+                                var current = _c[_b];
+                                if (!current.verifyCondition(game, this)) {
+                                    satisfied = false;
+                                    break;
+                                }
+                            }
+                            if (satisfied) {
+                                available.push(taskid);
+                            }
+                        }
+                    }
+                    return available;
+                };
+                return QuestRef;
+            }());
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/quests/quest-task-condition.ts": 
+        /*!***********************************************************!*\
+          !*** ./src/app/rpg-engine/quests/quest-task-condition.ts ***!
+          \***********************************************************/
+        /*! exports provided: QuestTaskCondition, QuestTaskConditionType */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuestTaskCondition", function () { return QuestTaskCondition; });
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuestTaskConditionType", function () { return QuestTaskConditionType; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            var QuestTaskCondition = /** @class */ (function () {
+                function QuestTaskCondition(type, target_value) {
+                    this.type = type;
+                    this.target = target_value;
+                }
+                QuestTaskCondition.prototype.verifyCondition = function (game, quest) {
+                    console.log("checking condition ", this, " type ", this.type, " target ", this.target);
+                    if (this.type === QuestTaskConditionType.LOCATION) {
+                        return this.verifyConditionLocation(game, quest);
+                    }
+                    else if (this.type === QuestTaskConditionType.COMPLETION) {
+                        return this.verifyConditionCompletion(game, quest);
+                    }
+                    else if (this.type === QuestTaskConditionType.TRIGGER) {
+                        return this.verifyConditionTrigger(game, quest);
+                    }
+                    // no extra case since the enum cannot run over?
+                };
+                QuestTaskCondition.fromJSON = function (src) {
+                    return new QuestTaskCondition(src["test"], src["target"]);
+                };
+                // NOTE: we might want to subclass conditions if the handling becomes more complex
+                QuestTaskCondition.prototype.verifyConditionLocation = function (game, quest) {
+                    try {
+                        console.log("matching pos ", game.hero.pos, game.hero.locpos, "w", this.target);
+                        var loc = game.worldmap.getLocationById(this.target["locid"]);
+                        var hasloc = game.hero.pos != null && game.hero.pos.matches(loc.pos);
+                        if (hasloc && this.target["roomid"]) {
+                            hasloc = game.hero.locpos["roomid"] === this.target["roomid"];
+                        }
+                        return hasloc;
+                    }
+                    catch (err) {
+                        console.warn("illegal loc target for location condition: ", this.target);
+                        return false;
+                    }
+                };
+                QuestTaskCondition.prototype.verifyConditionCompletion = function (game, quest) {
+                    return quest.isTaskCompleted(this.target);
+                };
+                QuestTaskCondition.prototype.verifyConditionTrigger = function (game, quest) {
+                    // technically the TRIGGER condition is implicit so this should not be needed but we keep it just in case
+                    return quest.isTaskCompleted(this.target);
+                };
+                return QuestTaskCondition;
+            }());
+            var QuestTaskConditionType;
+            (function (QuestTaskConditionType) {
+                QuestTaskConditionType["LOCATION"] = "location";
+                QuestTaskConditionType["TRIGGER"] = "trigger";
+                QuestTaskConditionType["COMPLETION"] = "completed";
+            })(QuestTaskConditionType || (QuestTaskConditionType = {}));
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/quests/quest-task.ts": 
+        /*!*************************************************!*\
+          !*** ./src/app/rpg-engine/quests/quest-task.ts ***!
+          \*************************************************/
+        /*! exports provided: QuestTask */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuestTask", function () { return QuestTask; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _scene_factory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scene-factory */ "./src/app/rpg-engine/scene-factory.ts");
+            var QuestTask = /** @class */ (function () {
+                function QuestTask(taskid, scene, prompt, journal_after) {
+                    this.taskid = taskid;
+                    this.scene = scene;
+                    this.journal_after = journal_after;
+                    this.prompt = prompt;
+                    this.completed = false;
+                    this.caller = null;
+                    this.triggered = null;
+                }
+                QuestTask.prototype.getReturnStates = function () {
+                    var states = new Map();
+                    // TODO: handle multiscene per Java example
+                    /*
+                    if (this.scene instanceof MultiScene)
+                    {
+                        // this should flatten the hierarchy under it
+                        Map<String, Integer> scenestates = ((MultiScene)this.scene).returnStates();
+                        for (String sceneid: scenestates.keySet())
+                        {
+                            String sceneidcombo = this.taskid+"."+sceneid;
+                            states.put(sceneidcombo, scenestates.get(sceneid));
+                        }
+                    }
+                    else
+                    {
+                        states.put(this.taskid, this.scene.returnState());
+                    }
+                    */
+                    states.set(this.taskid, this.scene.returnState());
+                    return states;
+                };
+                QuestTask.prototype.setCaller = function (questref) {
+                    this.caller = questref;
+                };
+                QuestTask.prototype.isCompleted = function () {
+                    return this.completed;
+                };
+                QuestTask.prototype.setCompleted = function () {
+                    this.completed = true;
+                    if (this.caller != null) {
+                        this.caller.setCompletedTask(this);
+                    }
+                };
+                QuestTask.prototype.setTriggered = function (taskid) {
+                    this.triggered = taskid;
+                };
+                QuestTask.fromJSON = function (src) {
+                    // NOTE: we may want to generate the scene ON THE FLY later
+                    var taskid = src["taskid"];
+                    var scene = _scene_factory__WEBPACK_IMPORTED_MODULE_1__["SceneFactory"].fromJSON(src["scene"]);
+                    var prompt = src["prompt"];
+                    var journal_after = !src["journal_after"] ? src["journal_after"] : null;
+                    var task = new QuestTask(taskid, scene, prompt, journal_after);
+                    return task;
+                };
+                return QuestTask;
+            }());
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/scene-factory.ts": 
+        /*!*********************************************!*\
+          !*** ./src/app/rpg-engine/scene-factory.ts ***!
+          \*********************************************/
+        /*! exports provided: SceneFactory */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SceneFactory", function () { return SceneFactory; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _scenes_narration__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scenes/narration */ "./src/app/rpg-engine/scenes/narration.ts");
+            /* harmony import */ var _scenes_branching_meta_scene__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scenes/branching-meta-scene */ "./src/app/rpg-engine/scenes/branching-meta-scene.ts");
+            /* harmony import */ var _scenes_story_branch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scenes/story-branch */ "./src/app/rpg-engine/scenes/story-branch.ts");
+            /* harmony import */ var _scenes_skill_test__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scenes/skill-test */ "./src/app/rpg-engine/scenes/skill-test.ts");
+            /* harmony import */ var _scenes_struct_wander_scene_trigger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./scenes/struct/wander-scene-trigger */ "./src/app/rpg-engine/scenes/struct/wander-scene-trigger.ts");
+            /* harmony import */ var _scenes_meta_scene__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./scenes/meta-scene */ "./src/app/rpg-engine/scenes/meta-scene.ts");
+            var SceneFactory = /** @class */ (function () {
+                function SceneFactory() {
+                }
+                SceneFactory.fromJSON = function (src) {
+                    var GENERATORS_BYTYPE = {
+                        "narrative": SceneFactory.createSceneNarration,
+                        "branching": SceneFactory.createSceneBranchingMeta,
+                        "choice": SceneFactory.createSceneStoryBranch,
+                        "skill": SceneFactory.createSceneSkillTest
+                    };
+                    console.log("generating scen from json: ", src["type"], src["data"]);
+                    try {
+                        return GENERATORS_BYTYPE[src["type"]](src["data"]);
+                    }
+                    catch (err) {
+                        console.error(err);
+                        console.warn("cannot yet create scene of type ", src["type"]);
+                        return null;
+                    }
+                };
+                // NOTE: we CANNOT put the individual factory methods in the respective classes
+                // because some of them will need to use others (e.g. metascenes) and create a circular import
+                SceneFactory.createSceneNarration = function (src) {
+                    var paragraphs = src["text"];
+                    if (!paragraphs) {
+                        throw "Narrative type scene needs at least one text paragraph";
+                    }
+                    // TODO: TBA
+                    var title = null;
+                    var images = null;
+                    return new _scenes_narration__WEBPACK_IMPORTED_MODULE_1__["Narration"](null, null, paragraphs, images);
+                };
+                SceneFactory.createSceneStoryBranch = function (src) {
+                    console.warn("generating STORYBRANCH scene from ", src);
+                    var generated = new _scenes_story_branch__WEBPACK_IMPORTED_MODULE_3__["StoryBranch"](null);
+                    generated.prompt = src["prompt"];
+                    for (var _i = 0, _a = src["options"]; _i < _a.length; _i++) {
+                        var optdesc = _a[_i];
+                        var endstate = optdesc.hasOwnProperty("value") ? optdesc["value"] : 0;
+                        var note = optdesc.hasOwnProperty("note") ? optdesc["note"] : null;
+                        generated.addOption(optdesc["description"], endstate, note);
+                    }
+                    generated.setImage(src["image"]);
+                    return generated;
+                };
+                SceneFactory.createSceneSkillTest = function (src) {
+                    var scene = new _scenes_skill_test__WEBPACK_IMPORTED_MODULE_4__["SkillTest"](null);
+                    if (!!src["description"]) {
+                        scene.setDesc(src["description"]);
+                    }
+                    for (var _i = 0, _a = src["options"]; _i < _a.length; _i++) {
+                        var optdesc = _a[_i];
+                        scene.addAction(_scenes_skill_test__WEBPACK_IMPORTED_MODULE_4__["SkillTestOption"].fromJSON(optdesc));
+                    }
+                    if (!!src["image"]) {
+                        scene.setImage(src["image"]);
+                    }
+                    return scene;
+                };
+                SceneFactory.createSceneMeta = function (src) {
+                    var generated = new _scenes_meta_scene__WEBPACK_IMPORTED_MODULE_6__["MetaScene"](null);
+                    for (var _i = 0, _a = src["scenes"]; _i < _a.length; _i++) {
+                        var json_scene = _a[_i];
+                        var sceneid = json_scene["id"];
+                        var scene = SceneFactory.fromJSON(json_scene);
+                        console.log("Generated sceneobject ", scene, " w id " + sceneid);
+                        scene.setNarrative(generated);
+                        if (scene != null) {
+                            generated.addScene(scene, sceneid);
+                        }
+                    }
+                    for (var key in src["triggers"]) {
+                        generated.setTrigger(key, src["triggers"][key]);
+                    }
+                    generated.setStarter(src["starter"]);
+                    return generated;
+                };
+                SceneFactory.createSceneBranchingMeta = function (src) {
+                    var generated = new _scenes_branching_meta_scene__WEBPACK_IMPORTED_MODULE_2__["BranchingMetaScene"](null);
+                    console.log("Creating BMS from ", src);
+                    for (var _i = 0, _a = src["scenes"]; _i < _a.length; _i++) {
+                        var json_scene = _a[_i];
+                        var sceneid = json_scene["id"];
+                        var scene = SceneFactory.fromJSON(json_scene);
+                        console.log("QUEST", "Generated sceneobject ", scene, " w id " + sceneid);
+                        if (scene != null) {
+                            scene.setNarrative(generated);
+                            generated.addScene(scene, sceneid);
+                        }
+                    }
+                    for (var sceneid in src["triggers"]) {
+                        var trigger = _scenes_struct_wander_scene_trigger__WEBPACK_IMPORTED_MODULE_5__["WanderSceneTrigger"].fromJSON(src["triggers"][sceneid]);
+                        generated.setTriggered(sceneid, trigger);
+                    }
+                    generated.setStarter(src["starter"]);
+                    return generated;
+                };
+                return SceneFactory;
+            }());
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/scenes/branching-meta-scene.ts": 
+        /*!***********************************************************!*\
+          !*** ./src/app/rpg-engine/scenes/branching-meta-scene.ts ***!
+          \***********************************************************/
+        /*! exports provided: BranchingMetaScene */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BranchingMetaScene", function () { return BranchingMetaScene; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _wander_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../wander-scene */ "./src/app/rpg-engine/wander-scene.ts");
+            /* harmony import */ var _meta_scene__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./meta-scene */ "./src/app/rpg-engine/scenes/meta-scene.ts");
+            var BranchingMetaScene = /** @class */ (function (_super) {
+                __extends(BranchingMetaScene, _super);
+                function BranchingMetaScene(game) {
+                    var _this = _super.call(this, game) || this;
+                    _this.initStructure();
+                    return _this;
+                }
+                BranchingMetaScene.prototype.initStructure = function () {
+                    this.subs = new Map();
+                    this.triggers_byscene = new Map();
+                    this.returncodes = new Map();
+                    this.starter = null;
+                    this.activesub = null;
+                };
+                BranchingMetaScene.prototype.setTriggered = function (sceneid, trigger) {
+                    this.triggers_byscene.set(sceneid, trigger);
+                };
+                BranchingMetaScene.prototype.moveOn = function () {
+                    // NOTE: this method ASSUMES we have a sceneFinished call returning true right before
+                    console.log("Quest/BranchingScene: MetaScene " + this + " MoveOn from " + this.activesub);
+                    this.returncodes.set(this.activesub, this.getCurrent().returnState());
+                    // switches to the next scene in the flow
+                    // NOTE: it takes the FIRST active trigger, conflicts are not handled
+                    this.activesub = null;
+                    for (var _i = 0, _a = this.triggers_byscene.keys(); _i < _a.length; _i++) {
+                        var candidate = _a[_i];
+                        var trigger = this.triggers_byscene.get(candidate);
+                        var candidatestate = this.returncodes.get(candidate);
+                        if (trigger.isActive(this.returncodes) && candidatestate === _wander_scene__WEBPACK_IMPORTED_MODULE_1__["WanderScene"].LEAVESTATE_UNFINISHED) {
+                            // we have triggered a new scene
+                            this.activesub = candidate;
+                        }
+                    }
+                    console.log("Quest/MetaScene", "MetaScene " + this + " MoveOn to " + this.activesub);
+                };
+                return BranchingMetaScene;
+            }(_meta_scene__WEBPACK_IMPORTED_MODULE_2__["MetaScene"]));
             /***/ 
         }),
         /***/ "./src/app/rpg-engine/scenes/journey-departure.ts": 
@@ -685,6 +1118,171 @@ var __extends = (this && this.__extends) || (function () {
                     return [nextpos.x - cpos.x, nextpos.y - cpos.y];
                 };
                 return Journey;
+            }(_wander_scene__WEBPACK_IMPORTED_MODULE_1__["WanderScene"]));
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/scenes/meta-scene.ts": 
+        /*!*************************************************!*\
+          !*** ./src/app/rpg-engine/scenes/meta-scene.ts ***!
+          \*************************************************/
+        /*! exports provided: MetaScene */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MetaScene", function () { return MetaScene; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _struct_multi_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./struct/multi-scene */ "./src/app/rpg-engine/scenes/struct/multi-scene.ts");
+            /* harmony import */ var _wander_scene__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../wander-scene */ "./src/app/rpg-engine/wander-scene.ts");
+            /**
+             *  MetaScene is a Scene that contains several different scenes and has a logic to connect them all
+             *  as such it seems to transparently work like a normal scene, but its getFollowing checks on the internal scene graph before giving back the narrative.
+             *  Technically each sub-scene is the current active scene except all calls are mediated by the MetaScene above them
+             *  NOTE: due to how this works the MetaScene cannot be leaved, the same as with a normal scene.
+             *  While it incorporates several scenes, for the purpose of the game all of these act as a single multi-interface scene
+             */
+            var MetaScene = /** @class */ (function (_super) {
+                __extends(MetaScene, _super);
+                // NOTE: the following may not be needed for now since we check getFollowing
+                // only after checking that the current scene is finished. Keep in mind this can be easily
+                // broken if the storyteller flow gets messed up. WATCH THIS FOR DEBUG then
+                // completion status IF COMPLETED ONLY is set in this map for quicker checking
+                // when the trigger sequence is rechecked so we can quickly see if the whole chain is complete
+                // NOTE: we use a map because in the future conditions may be more complex and we may have
+                // chains completed without all possible scenes completed
+                // (or we could template the thing so we create a complex set of scene but only enable
+                // chaining on a subset of them)
+                // private Map<String, Boolean> completion;
+                function MetaScene(game) {
+                    var _this = _super.call(this, game) || this;
+                    _this.initStructure();
+                    return _this;
+                }
+                MetaScene.prototype.initStructure = function () {
+                    this.subs = new Map();
+                    this.triggers = new Map();
+                    this.returncodes = new Map();
+                    this.starter = null;
+                    this.activesub = null;
+                };
+                MetaScene.prototype.getFollowing = function () {
+                    this.moveOn();
+                    if (this.subs.has(this.activesub)) {
+                        return this;
+                    }
+                    else {
+                        return this.getNarrative();
+                    }
+                };
+                MetaScene.prototype.getCurrent = function () {
+                    var current = this.getSceneById(this.activesub);
+                    if (current instanceof _struct_multi_scene__WEBPACK_IMPORTED_MODULE_1__["MultiScene"]) {
+                        var ms = current;
+                        return ms.getCurrent();
+                    }
+                    else {
+                        return current;
+                    }
+                };
+                MetaScene.prototype.returnStates = function () {
+                    return this.returncodes;
+                };
+                MetaScene.prototype.sceneFinished = function () {
+                    return this.activesub == null || this.getSceneById(this.activesub).sceneFinished();
+                };
+                // addScene, setTrigger, setStarter are separated
+                // so it's easier to use factory methods or static fromjson creators
+                MetaScene.prototype.addScene = function (candidate, sceneid) {
+                    this.subs.set(sceneid, candidate);
+                    this.returncodes.set(sceneid, _wander_scene__WEBPACK_IMPORTED_MODULE_2__["WanderScene"].LEAVESTATE_UNFINISHED);
+                };
+                MetaScene.prototype.setTrigger = function (triggerer, triggered) {
+                    this.triggers.set(triggerer, triggered);
+                };
+                MetaScene.prototype.setStarter = function (sceneid) {
+                    console.log("Quest/MetaScene", "Setting starter for metascene to " + sceneid);
+                    this.starter = sceneid;
+                    if (this.activesub == null) {
+                        this.activesub = this.starter;
+                    }
+                };
+                MetaScene.prototype.getSceneById = function (sceneid) {
+                    console.log("Loading META SUB scene " + sceneid + " from ", this.subs);
+                    try {
+                        return this.subs.get(sceneid);
+                    }
+                    catch (err) {
+                        console.warn("error retrieving sub " + sceneid + ": ", err);
+                        return null;
+                    }
+                };
+                MetaScene.prototype.moveOn = function () {
+                    // NOTE: this method ASSUMES we have a sceneFinished call returning true right before
+                    console.warn("Quest/MetaScene", "MetaScene " + this + " MoveOn from " + this.activesub);
+                    // retrieving and adding return codes for subscenes if current active is a MultiScene
+                    var active = this.subs.get(this.activesub);
+                    if (active instanceof _struct_multi_scene__WEBPACK_IMPORTED_MODULE_1__["MultiScene"]) {
+                        var ms = active;
+                        var states = ms.returnStates();
+                        for (var _i = 0, _a = states.keys(); _i < _a.length; _i++) {
+                            var sceneid = _a[_i];
+                            var sceneidcombo = this.activesub + "." + sceneid;
+                            this.returncodes.set(sceneidcombo, states.get(sceneid));
+                        }
+                    }
+                    this.returncodes.set(this.activesub, active.returnState());
+                    // switches to the next scene in the flow
+                    // so we can remove flow control from getFollowing
+                    if (this.triggers.has(this.activesub)) {
+                        // we have triggered a new scene
+                        this.activesub = this.triggers.get(this.activesub);
+                    }
+                    else {
+                        // there was already no active subscene OR we are at the end of our trigger chain
+                        this.activesub = null;
+                    }
+                    console.log("Quest/MetaScene", "MetaScene " + this + " MoveOn to " + this.activesub);
+                };
+                return MetaScene;
+            }(_struct_multi_scene__WEBPACK_IMPORTED_MODULE_1__["MultiScene"]));
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/scenes/narration.ts": 
+        /*!************************************************!*\
+          !*** ./src/app/rpg-engine/scenes/narration.ts ***!
+          \************************************************/
+        /*! exports provided: Narration */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Narration", function () { return Narration; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _wander_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../wander-scene */ "./src/app/rpg-engine/wander-scene.ts");
+            var Narration = /** @class */ (function (_super) {
+                __extends(Narration, _super);
+                function Narration(game, title, paragraphs, images) {
+                    if (images === void 0) { images = []; }
+                    var _this = _super.call(this, game) || this;
+                    _this.progress = 0;
+                    _this.allowReadBack = true;
+                    _this.keepTitleOn = true;
+                    _this.paragraphs = paragraphs;
+                    _this.images = images;
+                    _this.title = title;
+                    return _this;
+                }
+                Narration.prototype.sceneFinished = function () {
+                    return this.progress >= this.paragraphs.length - 1;
+                };
+                Narration.prototype.advanceNarration = function () {
+                    this.progress = Math.min(this.progress + 1, this.paragraphs.length - 1);
+                };
+                Narration.prototype.backtrackNarration = function () {
+                    this.progress = Math.max(this.progress - 1, 0);
+                };
+                Narration.prototype.getCurrent = function () {
+                    return this.paragraphs[this.progress];
+                };
+                return Narration;
             }(_wander_scene__WEBPACK_IMPORTED_MODULE_1__["WanderScene"]));
             /***/ 
         }),
@@ -807,225 +1405,293 @@ var __extends = (this && this.__extends) || (function () {
             ];
             /***/ 
         }),
-        /***/ "./src/app/rpg-engine/scenes/town-nav.ts": 
-        /*!***********************************************!*\
-          !*** ./src/app/rpg-engine/scenes/town-nav.ts ***!
-          \***********************************************/
-        /*! exports provided: TownNav */
+        /***/ "./src/app/rpg-engine/scenes/skill-test.ts": 
+        /*!*************************************************!*\
+          !*** ./src/app/rpg-engine/scenes/skill-test.ts ***!
+          \*************************************************/
+        /*! exports provided: SkillTest, SkillTestOption */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TownNav", function () { return TownNav; });
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SkillTest", function () { return SkillTest; });
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SkillTestOption", function () { return SkillTestOption; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _wander_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../wander-scene */ "./src/app/rpg-engine/wander-scene.ts");
-            /* harmony import */ var _journey_departure__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./journey-departure */ "./src/app/rpg-engine/scenes/journey-departure.ts");
-            var TownNav = /** @class */ (function (_super) {
-                __extends(TownNav, _super);
-                function TownNav(game, place) {
+            var SkillTest = /** @class */ (function (_super) {
+                __extends(SkillTest, _super);
+                function SkillTest(game) {
                     var _this = _super.call(this, game) || this;
-                    _this.town = place;
+                    // a skill test is a scene in which the player is given a set of possible skill throws, each with its own return code
+                    _this.options = [];
+                    _this.canleave = true;
+                    _this.success = 0;
+                    _this.played = false;
+                    _this.image = null;
                     return _this;
                 }
-                TownNav.prototype.getFollowingScene = function () {
-                    return new _journey_departure__WEBPACK_IMPORTED_MODULE_2__["JourneyDeparture"](this.game);
+                SkillTest.prototype.sceneFinished = function () {
+                    console.log("checking scene finished for SkillTest", this.played);
+                    return this.played;
                 };
-                TownNav.prototype.sceneFinished = function () {
-                    return this.locpoint === -1;
+                SkillTest.prototype.setImage = function (filename) {
+                    this.image = filename;
                 };
-                return TownNav;
-            }(_wander_scene__WEBPACK_IMPORTED_MODULE_1__["WanderScene"]));
-            TownNav.LOC_LEAVE = -1;
-            TownNav.LOC_OUTSKIRTS = 0;
-            TownNav.LOC_GATES = 1;
-            TownNav.LOC_MAINSTREET = 2;
-            TownNav.LOC_MARKET = 3;
-            /***/ 
-        }),
-        /***/ "./src/app/rpg-engine/wander-game.ts": 
-        /*!*******************************************!*\
-          !*** ./src/app/rpg-engine/wander-game.ts ***!
-          \*******************************************/
-        /*! exports provided: WanderGame */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderGame", function () { return WanderGame; });
-            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            /* harmony import */ var _world_world_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./world/world-map */ "./src/app/rpg-engine/world/world-map.ts");
-            /* harmony import */ var _wander_hero__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./wander-hero */ "./src/app/rpg-engine/wander-hero.ts");
-            var WanderGame = /** @class */ (function () {
-                function WanderGame() {
-                }
-                WanderGame.loadGame = function (http, callback) {
-                    var loader = new GameFactory(http);
-                    loader.loadDemoGame(function (game, factory) {
-                        console.log("loaded game ", game);
-                        console.log("built from factory ", factory);
-                        callback(game);
-                    });
+                SkillTest.prototype.returnState = function () {
+                    // 0 is not finished/played yet
+                    // all alternatives are X for success, -X for failure
+                    // TODO: add other standard return codes (plus handling for custom results)
+                    // also see the addAction todo note
+                    // NOTE: Leaving the skilltest without trying (when allowed by the scene design)
+                    // implies getting a status of 0 and a sceneFinished = True
+                    // TODO: find a way to set this
+                    return this.success;
                 };
-                // DEBUG FUNCTIONS FOR QUICK TESTING
-                WanderGame.prototype.setHero = function (hero) {
-                    this.hero = hero;
+                SkillTest.prototype.setDesc = function (situation) {
+                    this.situation = situation;
                 };
-                WanderGame.prototype.setWorldMap = function (worldmap) {
-                    this.worldmap = worldmap;
+                SkillTest.prototype.setCanLeave = function (allow) {
+                    this.canleave = allow;
                 };
-                WanderGame.prototype.setActiveScene = function (scene) {
-                    console.log("setting activescene to ", scene);
-                    this.activescene = scene;
+                SkillTest.prototype.addAction = function (option) {
+                    this.options.push(option);
                 };
-                WanderGame.prototype.getActiveScene = function () {
-                    return this.activescene;
-                };
-                return WanderGame;
-            }());
-            var GameFactory = /** @class */ (function () {
-                function GameFactory(http) {
-                    this.http = http;
-                    this.dataset = {
-                        "locs": null,
-                        "terrain": null,
-                        "player": null
-                    };
-                }
-                GameFactory.prototype.loadDataFile = function (filepath, callback) {
-                    var locdata = this.http.get(filepath);
-                    locdata.subscribe(function (response) {
-                        console.log("LOAD RESULT", response);
-                        callback(response);
-                    });
-                };
-                GameFactory.prototype.loadDemoGame = function (callback) {
-                    var sources = {
-                        "locs": "./assets/gamedata/testlocations.json",
-                        "terrain": "./assets/gamedata/testmapgame.json",
-                        "player": "./assets/gamedata/playerdata.json"
-                    };
-                    var loader = this;
-                    function getCheckerFunction(key) {
-                        return function (data) {
-                            loader.setData(key, data, callback);
-                        };
+                SkillTest.prototype.playActionDebug = function (option, succeed) {
+                    // ONLY for debug, dev can force success or fail while we develop and balance the skill system
+                    if (succeed) {
+                        this.success = option.returncode;
+                        this.played = true;
+                        return true;
                     }
-                    for (var _i = 0, _a = Object.keys(sources); _i < _a.length; _i++) {
-                        var key = _a[_i];
-                        var path = sources[key];
-                        var checker = getCheckerFunction(key);
-                        this.loadDataFile(path, checker);
-                    }
-                };
-                GameFactory.prototype.setData = function (key, data, completer) {
-                    this.dataset[key] = data;
-                    var has_all = true;
-                    for (var _i = 0, _a = Object.keys(this.dataset); _i < _a.length; _i++) {
-                        var datakey = _a[_i];
-                        if (this.dataset[datakey] == null) {
-                            has_all = false;
+                    else {
+                        // 0 is infinitely repeatable
+                        if (!option.isInfinitelyRepeatable()) {
+                            option.addTry();
+                            if (!option.isStillRepeatable()) {
+                                this.success = -option.returncode;
+                                this.played = true;
+                            }
                         }
-                    }
-                    if (has_all) {
-                        // completer(this);
-                        this.createGameInstance(completer);
+                        return false;
                     }
                 };
-                GameFactory.prototype.createGameInstance = function (completer) {
-                    var game = new WanderGame();
-                    console.log("loaded terrain", this.dataset["terrain"]);
-                    console.log("loaded locs", this.dataset["locs"]);
-                    console.log("loaded player", this.dataset["player"]);
-                    var worldmap = _world_world_map__WEBPACK_IMPORTED_MODULE_1__["WorldMap"].fromJSON(this.dataset["terrain"], this.dataset["locs"]);
-                    var hero = _wander_hero__WEBPACK_IMPORTED_MODULE_2__["WanderHero"].fromJSON(this.dataset["player"]);
-                    game.setWorldMap(worldmap);
-                    game.setHero(hero);
-                    completer(game, this);
+                SkillTest.prototype.playAction = function (option, rules, user) {
+                    // TODO: get SkillSystem and AgentEntity from game
+                    var actionid = option.skillactionid;
+                    var target = option.target;
+                    var performance = rules.applySkill(actionid, user);
+                    if (performance >= target) {
+                        this.success = option.returncode;
+                        this.played = true;
+                        return true;
+                    }
+                    else {
+                        // 0 is infinitely repeatable
+                        if (!option.isInfinitelyRepeatable()) {
+                            option.addTry();
+                            if (!option.isStillRepeatable()) {
+                                this.success = -option.returncode;
+                                this.played = true;
+                            }
+                        }
+                        return false;
+                    }
                 };
-                return GameFactory;
+                SkillTest.prototype.leaveAction = function () {
+                    this.played = true;
+                    // redundant, for clarity
+                    this.success = 0;
+                };
+                return SkillTest;
+            }(_wander_scene__WEBPACK_IMPORTED_MODULE_1__["WanderScene"]));
+            var SkillTestOption = /** @class */ (function () {
+                function SkillTestOption(skillactionid, target) {
+                    this.skillactionid = skillactionid;
+                    this.target = target;
+                    // default is infinite retries
+                    this.max_tries = 0;
+                    this.tried = 0;
+                }
+                SkillTestOption.prototype.addTry = function () {
+                    this.tried++;
+                };
+                SkillTestOption.prototype.isStillRepeatable = function () {
+                    return this.max_tries != 0 || this.tried < this.max_tries;
+                };
+                SkillTestOption.prototype.isRepeatable = function () {
+                    return this.max_tries != 1;
+                };
+                SkillTestOption.prototype.isInfinitelyRepeatable = function () {
+                    return this.max_tries == 0;
+                };
+                SkillTestOption.prototype.setRepeatable = function (max_tries) {
+                    this.max_tries = max_tries;
+                };
+                SkillTestOption.prototype.setText = function (description, success, failure) {
+                    this.description = description;
+                    this.story_success = success;
+                    this.story_failure = failure;
+                };
+                SkillTestOption.prototype.getFeedbackSuccess = function () {
+                    if (this.story_success != null) {
+                        return this.story_success;
+                    }
+                    else {
+                        return "You succeed";
+                    }
+                };
+                SkillTestOption.prototype.getFeedbackFailure = function () {
+                    if (this.story_failure != null) {
+                        return this.story_failure;
+                    }
+                    else {
+                        return "You failed";
+                    }
+                };
+                SkillTestOption.prototype.getDescription = function () {
+                    if (this.description != null) {
+                        return this.description;
+                    }
+                    else {
+                        return "Try your " + this.skillactionid + " ability";
+                    }
+                };
+                SkillTestOption.fromJSON = function (src) {
+                    var actionid = src["action"];
+                    var target = src["target"];
+                    var created = new SkillTestOption(actionid, target);
+                    if (src.hasOwnProperty("repeatable")) {
+                        created.setRepeatable(src["repeat"]);
+                    }
+                    var description = !!src["prompt"] ? src["prompt"] : "Use your ability at " + actionid;
+                    var success = !!src["success"] ? src["successs"] : "Succeded in " + actionid;
+                    var failure = !!src["failure"] ? src["failure"] : "Failed at " + actionid;
+                    created.setText(description, success, failure);
+                    // note that the match does not get LEAVESTATE_FINISHED as a value, but falls back to it anyway
+                    created.returncode = !!src["returncode"] ? src["returncode"] : _wander_scene__WEBPACK_IMPORTED_MODULE_1__["WanderScene"].LEAVESTATE_FINISHED;
+                    return created;
+                };
+                return SkillTestOption;
             }());
             /***/ 
         }),
-        /***/ "./src/app/rpg-engine/wander-hero.ts": 
-        /*!*******************************************!*\
-          !*** ./src/app/rpg-engine/wander-hero.ts ***!
-          \*******************************************/
-        /*! exports provided: WanderHero */
+        /***/ "./src/app/rpg-engine/scenes/story-branch.ts": 
+        /*!***************************************************!*\
+          !*** ./src/app/rpg-engine/scenes/story-branch.ts ***!
+          \***************************************************/
+        /*! exports provided: StoryBranch */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderHero", function () { return WanderHero; });
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoryBranch", function () { return StoryBranch; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            /* harmony import */ var _world_world_position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./world/world-position */ "./src/app/rpg-engine/world/world-position.ts");
-            var WanderHero = /** @class */ (function () {
-                function WanderHero() {
-                    this.pos = null;
+            /* harmony import */ var _wander_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../wander-scene */ "./src/app/rpg-engine/wander-scene.ts");
+            var StoryBranch = /** @class */ (function (_super) {
+                __extends(StoryBranch, _super);
+                function StoryBranch(game) {
+                    var _this = 
+                    // a skill test is a scene in which the player is given a set of possible skill throws, each with its own return code
+                    _super.call(this, game) || this;
+                    _this.prompt = null;
+                    _this.options = [];
+                    // this.options = new Map<number, number>();
+                    // this.descriptions = new Map<number, string>();
+                    // this.notes = new Map<number, string>();
+                    _this.selected = null;
+                    _this.image = null;
+                    return _this;
                 }
-                WanderHero.fromJSON = function (src) {
-                    var hero = new WanderHero();
-                    // TODO: add potentials etc
-                    // hero.setCoordinates(rawdata["coords"][0], rawdata["coords"][1]);
-                    hero.setCoordinates(_world_world_position__WEBPACK_IMPORTED_MODULE_1__["WorldPosition"].fromCoordsArray(src["position"]["coords"]));
-                    return hero;
+                StoryBranch.prototype.sceneFinished = function () {
+                    return this.returnState() !== _wander_scene__WEBPACK_IMPORTED_MODULE_1__["WanderScene"].LEAVESTATE_UNFINISHED;
                 };
-                WanderHero.prototype.setCoordinates = function (pos) {
-                    // console.log("replacing coords", this.pos, "w pos ", pos);
-                    this.pos = pos;
+                StoryBranch.prototype.setImage = function (filename) {
+                    this.image = filename;
                 };
-                return WanderHero;
-            }());
+                StoryBranch.prototype.addOption = function (desc, endstate, note) {
+                    if (endstate === void 0) { endstate = 0; }
+                    if (note === void 0) { note = null; }
+                    var nextcode = this.options.length + 1;
+                    this.options.push({
+                        optionid: nextcode,
+                        leavestate: endstate,
+                        description: desc,
+                        notes: note
+                    });
+                };
+                StoryBranch.prototype.setSelected = function (opt) {
+                    this.selected = opt;
+                };
+                StoryBranch.prototype.returnState = function () {
+                    return !!this.selected ? this.selected.leavestate : -1;
+                };
+                return StoryBranch;
+            }(_wander_scene__WEBPACK_IMPORTED_MODULE_1__["WanderScene"]));
             /***/ 
         }),
-        /***/ "./src/app/rpg-engine/wander-scene.ts": 
-        /*!********************************************!*\
-          !*** ./src/app/rpg-engine/wander-scene.ts ***!
-          \********************************************/
-        /*! exports provided: WanderScene, WanderSceneTrigger, WanderSceneTriggerCondition */
+        /***/ "./src/app/rpg-engine/scenes/struct/multi-scene.ts": 
+        /*!*********************************************************!*\
+          !*** ./src/app/rpg-engine/scenes/struct/multi-scene.ts ***!
+          \*********************************************************/
+        /*! exports provided: MultiScene */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderScene", function () { return WanderScene; });
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderSceneTrigger", function () { return WanderSceneTrigger; });
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderSceneTriggerCondition", function () { return WanderSceneTriggerCondition; });
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MultiScene", function () { return MultiScene; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            var WanderScene = /** @class */ (function () {
-                function WanderScene(game) {
-                    this.game = game;
-                    // narrative should be set outside the constructor
-                    this.narrative = null;
-                    // TODO: TBA (note: should get value AFTER constructor anyway?)
-                    this.leaf = null;
-                    this.driver = null;
-                }
-                WanderScene.prototype.setNarrative = function (narrative) {
-                    this.narrative = narrative;
-                };
-                /**
-                 * Acts as default, subclasses can override if they have specific return codes > 0 (for success and < -1 for failure?)
-                 * If the scene is unfinished, subclasses should still respect the UNFINISHED constant
-                 */
-                WanderScene.prototype.returnState = function () {
-                    // Scenes that do not have a set of return values always return 0 on end OR -1 if not finished
-                    return this.sceneFinished() ? WanderScene.LEAVESTATE_FINISHED : WanderScene.LEAVESTATE_UNFINISHED;
-                };
-                /**
-                 * Acts as default, subclasses can override if they chain to a scene they create
-                 */
-                WanderScene.prototype.getFollowingScene = function () {
-                    return this.narrative;
-                };
-                return WanderScene;
-            }());
-            WanderScene.LEAVESTATE_UNFINISHED = -1;
-            WanderScene.LEAVESTATE_FINISHED = 0;
-            /**
-             * Wrapper for Map type for syntactical cleanup
-             */
-            var LeaveStatesMap = /** @class */ (function (_super) {
-                __extends(LeaveStatesMap, _super);
-                function LeaveStatesMap() {
+            /* harmony import */ var _wander_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../wander-scene */ "./src/app/rpg-engine/wander-scene.ts");
+            var MultiScene = /** @class */ (function (_super) {
+                __extends(MultiScene, _super);
+                function MultiScene() {
                     return _super !== null && _super.apply(this, arguments) || this;
                 }
-                return LeaveStatesMap;
-            }(Map));
+                return MultiScene;
+            }(_wander_scene__WEBPACK_IMPORTED_MODULE_1__["WanderScene"]));
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/scenes/struct/wander-scene-trigger-condition.ts": 
+        /*!****************************************************************************!*\
+          !*** ./src/app/rpg-engine/scenes/struct/wander-scene-trigger-condition.ts ***!
+          \****************************************************************************/
+        /*! exports provided: WanderSceneTriggerCondition */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderSceneTriggerCondition", function () { return WanderSceneTriggerCondition; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _wander_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../wander-scene */ "./src/app/rpg-engine/wander-scene.ts");
+            var WanderSceneTriggerCondition = /** @class */ (function () {
+                function WanderSceneTriggerCondition(sceneid, valuestate, mustmeet) {
+                    this.sceneid = sceneid;
+                    this.statevalue = valuestate;
+                    this.mustmeet = mustmeet;
+                }
+                WanderSceneTriggerCondition.prototype.checkCondition = function (leavestates) {
+                    var leavestate = leavestates.has(this.sceneid) ? leavestates.get(this.sceneid) : _wander_scene__WEBPACK_IMPORTED_MODULE_1__["WanderScene"].LEAVESTATE_UNFINISHED;
+                    return this.mustmeet ? leavestate === this.statevalue : leavestate !== this.statevalue;
+                };
+                WanderSceneTriggerCondition.fromJSON = function (src) {
+                    var sceneid = src["sceneid"];
+                    var statevalue = src["endstate"];
+                    var mustmeet = true;
+                    if (src.hasOwnProperty("mustnot")) {
+                        mustmeet = !src["mustnot"];
+                    }
+                    return new WanderSceneTriggerCondition(sceneid, statevalue, mustmeet);
+                };
+                return WanderSceneTriggerCondition;
+            }());
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/scenes/struct/wander-scene-trigger.ts": 
+        /*!******************************************************************!*\
+          !*** ./src/app/rpg-engine/scenes/struct/wander-scene-trigger.ts ***!
+          \******************************************************************/
+        /*! exports provided: WanderSceneTrigger */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderSceneTrigger", function () { return WanderSceneTrigger; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _wander_scene_trigger_condition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./wander-scene-trigger-condition */ "./src/app/rpg-engine/scenes/struct/wander-scene-trigger-condition.ts");
             var WanderSceneTrigger = /** @class */ (function () {
                 function WanderSceneTrigger() {
                     this.needed = [];
@@ -1055,45 +1721,506 @@ var __extends = (this && this.__extends) || (function () {
                     }
                     return true;
                 };
-                WanderSceneTrigger.createFromJSON = function (src) {
+                WanderSceneTrigger.fromJSON = function (src) {
                     var trigger = new WanderSceneTrigger();
                     if (src.hasOwnProperty("c_for")) {
                         for (var _i = 0, _a = src["c_for"]; _i < _a.length; _i++) {
                             var conditiondef = _a[_i];
-                            trigger.addCondition(WanderSceneTriggerCondition.createFromJSON(conditiondef), false);
+                            trigger.addCondition(_wander_scene_trigger_condition__WEBPACK_IMPORTED_MODULE_1__["WanderSceneTriggerCondition"].fromJSON(conditiondef), false);
                         }
                     }
                     if (src.hasOwnProperty("c_against")) {
                         for (var _b = 0, _c = src["c_against"]; _b < _c.length; _b++) {
                             var conditiondef = _c[_b];
-                            trigger.addCondition(WanderSceneTriggerCondition.createFromJSON(conditiondef), true);
+                            trigger.addCondition(_wander_scene_trigger_condition__WEBPACK_IMPORTED_MODULE_1__["WanderSceneTriggerCondition"].fromJSON(conditiondef), true);
                         }
                     }
                     return trigger;
                 };
                 return WanderSceneTrigger;
             }());
-            var WanderSceneTriggerCondition = /** @class */ (function () {
-                function WanderSceneTriggerCondition(sceneid, valuestate, mustmeet) {
-                    this.sceneid = sceneid;
-                    this.statevalue = valuestate;
-                    this.mustmeet = mustmeet;
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/scenes/town-nav.ts": 
+        /*!***********************************************!*\
+          !*** ./src/app/rpg-engine/scenes/town-nav.ts ***!
+          \***********************************************/
+        /*! exports provided: TownNav */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TownNav", function () { return TownNav; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _wander_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../wander-scene */ "./src/app/rpg-engine/wander-scene.ts");
+            /* harmony import */ var _journey_departure__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./journey-departure */ "./src/app/rpg-engine/scenes/journey-departure.ts");
+            var TownNav = /** @class */ (function (_super) {
+                __extends(TownNav, _super);
+                function TownNav(game, place) {
+                    var _this = _super.call(this, game) || this;
+                    _this.town = place;
+                    console.log(game.worldmeta);
+                    _this.townstruct = game.worldmeta["townstructure"]["major"];
+                    _this.locpoint = TownNav.LOC_OUTSKIRTS;
+                    _this.updateLocation();
+                    return _this;
                 }
-                WanderSceneTriggerCondition.prototype.checkCondition = function (leavestates) {
-                    var leavestate = leavestates.has(this.sceneid) ? leavestates.get(this.sceneid) : WanderScene.LEAVESTATE_UNFINISHED;
-                    return this.mustmeet ? leavestate === this.statevalue : leavestate !== this.statevalue;
-                };
-                WanderSceneTriggerCondition.createFromJSON = function (src) {
-                    var sceneid = src["sceneid"];
-                    var statevalue = src["endstate"];
-                    var mustmeet = true;
-                    if (src.hasOwnProperty("mustnot")) {
-                        mustmeet = !src["mustnot"];
+                TownNav.prototype.updateLocation = function () {
+                    this.currentloc = this.getLocStructure();
+                    if (this.locpoint !== TownNav.LOC_LEAVE) {
+                        this.game.hero.locpos = {
+                            "locid": this.town.locid,
+                            "roomid": this.locpoint
+                        };
                     }
-                    return new WanderSceneTriggerCondition(sceneid, statevalue, mustmeet);
+                    else {
+                        this.game.hero.locpos = null;
+                    }
                 };
-                return WanderSceneTriggerCondition;
+                TownNav.prototype.getFollowingScene = function () {
+                    return new _journey_departure__WEBPACK_IMPORTED_MODULE_2__["JourneyDeparture"](this.game);
+                };
+                TownNav.prototype.sceneFinished = function () {
+                    return this.locpoint === TownNav.LOC_LEAVE;
+                };
+                TownNav.prototype.getLocStructure = function () {
+                    return this.townstruct["locs"][this.locpoint];
+                };
+                TownNav.prototype.moveToLoc = function (locid) {
+                    this.locpoint = locid;
+                    this.updateLocation();
+                };
+                return TownNav;
+            }(_wander_scene__WEBPACK_IMPORTED_MODULE_1__["WanderScene"]));
+            TownNav.LOC_LEAVE = "OUT";
+            TownNav.LOC_OUTSKIRTS = "LEAVE";
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/skill-system/simple-skill-set.ts": 
+        /*!*************************************************************!*\
+          !*** ./src/app/rpg-engine/skill-system/simple-skill-set.ts ***!
+          \*************************************************************/
+        /*! exports provided: SimpleSkillSet */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SimpleSkillSet", function () { return SimpleSkillSet; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            var SimpleSkillSet = /** @class */ (function () {
+                function SimpleSkillSet() {
+                    this.potentials = new Map();
+                    this.developments = new Map();
+                }
+                SimpleSkillSet.prototype.registerPotential = function (id, basevalue) {
+                    this.potentials.set(id, basevalue);
+                };
+                SimpleSkillSet.prototype.registerDevelopment = function (id, basevalue) {
+                    this.developments.set(id, basevalue);
+                };
+                SimpleSkillSet.prototype.getPotential = function (id) {
+                    return this.potentials.has(id) ? this.potentials.get(id) : 0;
+                };
+                SimpleSkillSet.prototype.getDevelopment = function (id) {
+                    return this.developments.has(id) ? this.developments.get(id) : 0;
+                };
+                return SimpleSkillSet;
             }());
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/skill-system/simple-skill-system.ts": 
+        /*!****************************************************************!*\
+          !*** ./src/app/rpg-engine/skill-system/simple-skill-system.ts ***!
+          \****************************************************************/
+        /*! exports provided: SimpleSkillSystem */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SimpleSkillSystem", function () { return SimpleSkillSystem; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _simple_skill_throw__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./simple-skill-throw */ "./src/app/rpg-engine/skill-system/simple-skill-throw.ts");
+            var SimpleSkillSystem = /** @class */ (function () {
+                function SimpleSkillSystem() {
+                    this.potentials = [];
+                    this.actions = new Map();
+                }
+                SimpleSkillSystem.fromJSON = function (src) {
+                    var created = new SimpleSkillSystem();
+                    created.potentials = src["potentials"];
+                    for (var actionid in src["actions"]) {
+                        created.actions.set(actionid, _simple_skill_throw__WEBPACK_IMPORTED_MODULE_1__["SimpleSkillThrow"].fromJson(src["actions"][actionid]));
+                    }
+                    return created;
+                };
+                SimpleSkillSystem.getLowestBalanced = function (series) {
+                    var lowest = series[0];
+                    for (var _i = 0, series_1 = series; _i < series_1.length; _i++) {
+                        var current = series_1[_i];
+                        lowest = Math.min(lowest, current);
+                    }
+                    var numlowest = 0;
+                    for (var _a = 0, series_2 = series; _a < series_2.length; _a++) {
+                        var current = series_2[_a];
+                        if (current === lowest) {
+                            numlowest++;
+                        }
+                    }
+                    if (numlowest < 2) {
+                        return numlowest + 1;
+                    }
+                    else {
+                        return numlowest;
+                    }
+                };
+                SimpleSkillSystem.getHighest = function (series) {
+                    var highest = series[0];
+                    for (var _i = 0, series_3 = series; _i < series_3.length; _i++) {
+                        var current = series_3[_i];
+                        highest = Math.max(highest, current);
+                    }
+                    return highest;
+                };
+                SimpleSkillSystem.prototype.applySkill = function (actionid, agent) {
+                    var agentskills = agent.getSkills();
+                    var action = this.actions.get(actionid);
+                    var pot_vals = [];
+                    for (var _i = 0, _a = action.potentials; _i < _a.length; _i++) {
+                        var potential = _a[_i];
+                        pot_vals.push(agentskills.getPotential(potential));
+                    }
+                    var dev_vals = [];
+                    for (var _b = 0, _c = action.developments; _b < _c.length; _b++) {
+                        var development = _c[_b];
+                        dev_vals.push(agentskills.getDevelopment(development));
+                    }
+                    var potval = pot_vals.length > 1 ? SimpleSkillSystem.getLowestBalanced(pot_vals) : pot_vals[0];
+                    var devval = dev_vals.length > 1 ? SimpleSkillSystem.getHighest(dev_vals) : dev_vals[0];
+                    var dicethrow = 0;
+                    for (var i = 0; i < devval; i++) {
+                        dicethrow += Math.floor(Math.random() * potval) + 1;
+                    }
+                    return dicethrow;
+                };
+                return SimpleSkillSystem;
+            }());
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/skill-system/simple-skill-throw.ts": 
+        /*!***************************************************************!*\
+          !*** ./src/app/rpg-engine/skill-system/simple-skill-throw.ts ***!
+          \***************************************************************/
+        /*! exports provided: SimpleSkillThrow */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SimpleSkillThrow", function () { return SimpleSkillThrow; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            var SimpleSkillThrow = /** @class */ (function () {
+                function SimpleSkillThrow(req_pots, req_devs) {
+                    this.potentials = req_pots;
+                    this.developments = req_devs;
+                }
+                SimpleSkillThrow.fromJson = function (src) {
+                    return new SimpleSkillThrow(src["pot"], src["dev"]);
+                };
+                return SimpleSkillThrow;
+            }());
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/wander-game-state.ts": 
+        /*!*************************************************!*\
+          !*** ./src/app/rpg-engine/wander-game-state.ts ***!
+          \*************************************************/
+        /*! exports provided: WanderGameState */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderGameState", function () { return WanderGameState; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /**
+             * Saves game state to a SINGLE save space
+             */
+            var WanderGameState = /** @class */ (function () {
+                function WanderGameState() {
+                }
+                WanderGameState.applyGameState = function (state, game) {
+                    // modifies game in place with vars from GameState saved data
+                };
+                WanderGameState.loadFromBrowser = function () {
+                    console.log("loading game state from browser WebStorage");
+                    var loaded = localStorage.getItem(WanderGameState.KEY_SAVESTATE_DATA);
+                    console.log("loaded", loaded);
+                    if (loaded !== null) {
+                        loaded = JSON.parse(loaded);
+                    }
+                    // TODO: create proper structure (actual WanderGameState object)
+                    return loaded;
+                };
+                WanderGameState.saveToBrowser = function (game) {
+                    console.log("saving game state to browser for Game");
+                    console.log("saving hero state, position", game.hero.pos);
+                    var savegame = {
+                        hero: {
+                            position: [game.hero.pos.x, game.hero.pos.y]
+                        }
+                    };
+                    localStorage.setItem(WanderGameState.KEY_SAVESTATE_DATA, JSON.stringify(savegame));
+                };
+                return WanderGameState;
+            }());
+            WanderGameState.KEY_SAVESTATE_DATA = "WanderSaveGame";
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/wander-game.ts": 
+        /*!*******************************************!*\
+          !*** ./src/app/rpg-engine/wander-game.ts ***!
+          \*******************************************/
+        /*! exports provided: WanderGame */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderGame", function () { return WanderGame; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _world_world_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./world/world-map */ "./src/app/rpg-engine/world/world-map.ts");
+            /* harmony import */ var _wander_hero__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./wander-hero */ "./src/app/rpg-engine/wander-hero.ts");
+            /* harmony import */ var _quests_quest_ref__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./quests/quest-ref */ "./src/app/rpg-engine/quests/quest-ref.ts");
+            /* harmony import */ var _support_res_loader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../support/res-loader */ "./src/app/support/res-loader.ts");
+            /* harmony import */ var _skill_system_simple_skill_system__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./skill-system/simple-skill-system */ "./src/app/rpg-engine/skill-system/simple-skill-system.ts");
+            /* harmony import */ var _scenes_meta_scene__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./scenes/meta-scene */ "./src/app/rpg-engine/scenes/meta-scene.ts");
+            var WanderGame = /** @class */ (function () {
+                function WanderGame(loader) {
+                    this.loader = loader;
+                    this.quests = new Map();
+                }
+                WanderGame.loadGame = function (http, callback) {
+                    var loader = new GameFactory(http);
+                    loader.loadDemoGame(function (game, factory) {
+                        console.log("loaded game ", game);
+                        console.log("built from factory ", factory);
+                        callback(game);
+                    });
+                };
+                // DEBUG FUNCTIONS FOR QUICK TESTING
+                WanderGame.prototype.setHero = function (hero) {
+                    this.hero = hero;
+                };
+                WanderGame.prototype.setWorldMap = function (worldmap) {
+                    this.worldmap = worldmap;
+                };
+                WanderGame.prototype.setWorldMeta = function (src) {
+                    // TODO: placeholder
+                    this.worldmeta = src;
+                };
+                WanderGame.prototype.setSkillSystem = function (skillsys) {
+                    this.skillsystem = skillsys;
+                };
+                WanderGame.prototype.setActiveScene = function (scene) {
+                    console.log("setting activescene to ", scene);
+                    if (scene instanceof _scenes_meta_scene__WEBPACK_IMPORTED_MODULE_6__["MetaScene"]) {
+                        console.log("should switch to internal scene for metascene");
+                        this.activescene = scene.getCurrent();
+                    }
+                    else {
+                        this.activescene = scene;
+                    }
+                    console.log("ACTIVESCENE:", this.activescene);
+                };
+                WanderGame.prototype.getActiveScene = function () {
+                    return this.activescene;
+                };
+                WanderGame.prototype.addQuest = function (qref) {
+                    this.quests.set(qref.questid, qref);
+                };
+                return WanderGame;
+            }());
+            var GameFactory = /** @class */ (function () {
+                function GameFactory(http) {
+                    this.http = http;
+                    this.dataset = {
+                        "locs": null,
+                        "terrain": null,
+                        "player": null,
+                        "quests": null,
+                        "worldmeta": null,
+                        "skillsys": null
+                    };
+                    this.loader = new _support_res_loader__WEBPACK_IMPORTED_MODULE_4__["ResLoader"](this.http);
+                }
+                GameFactory.prototype.loadDemoGame = function (callback) {
+                    var sources = {
+                        "locs": "./assets/gamedata/testlocations.json",
+                        "terrain": "./assets/gamedata/testmapgame.json",
+                        "player": "./assets/gamedata/playerdata.json",
+                        "worldmeta": "./assets/gamedata/worlddesign.json",
+                        "skillsys": "./assets/gamedata/simpleskillactions.json"
+                    };
+                    var loader = this;
+                    function getCheckerFunction(key) {
+                        return function (data) {
+                            loader.setData(key, data, callback);
+                        };
+                    }
+                    for (var _i = 0, _a = Object.keys(sources); _i < _a.length; _i++) {
+                        var key = _a[_i];
+                        var path = sources[key];
+                        var checker = getCheckerFunction(key);
+                        this.loader.loadDataFile(path, checker);
+                    }
+                    var QPATH = "./assets/gamedata/quests/";
+                    var QUESTS = [
+                        QPATH + "drunkquest.json",
+                        QPATH + "sidestreetquest.json",
+                        // QPATH + "simpleskillactions.json",
+                        QPATH + "testquest.json",
+                        QPATH + "triggerquest.json"
+                    ];
+                    this.loader.loadDataFiles(QUESTS, function (quests) {
+                        loader.setData("quests", quests, callback);
+                    });
+                };
+                GameFactory.prototype.setData = function (key, data, completer) {
+                    this.dataset[key] = data;
+                    var has_all = true;
+                    for (var _i = 0, _a = Object.keys(this.dataset); _i < _a.length; _i++) {
+                        var datakey = _a[_i];
+                        if (this.dataset[datakey] == null) {
+                            has_all = false;
+                        }
+                    }
+                    if (has_all) {
+                        // completer(this);
+                        this.createGameInstance(completer);
+                    }
+                };
+                GameFactory.prototype.createGameInstance = function (completer) {
+                    var game = new WanderGame(new _support_res_loader__WEBPACK_IMPORTED_MODULE_4__["ResLoader"](this.http));
+                    console.log("loaded terrain", this.dataset["terrain"]);
+                    console.log("loaded locs", this.dataset["locs"]);
+                    console.log("loaded player", this.dataset["player"]);
+                    console.log("loaded quests: ", this.dataset["quests"]);
+                    var worldmap = _world_world_map__WEBPACK_IMPORTED_MODULE_1__["WorldMap"].fromJSON(this.dataset["terrain"], this.dataset["locs"]);
+                    var hero = _wander_hero__WEBPACK_IMPORTED_MODULE_2__["WanderHero"].fromJSON(this.dataset["player"]);
+                    var skillsys = _skill_system_simple_skill_system__WEBPACK_IMPORTED_MODULE_5__["SimpleSkillSystem"].fromJSON(this.dataset["skillsys"]);
+                    game.setWorldMap(worldmap);
+                    game.setHero(hero);
+                    game.setWorldMeta(this.dataset["worldmeta"]);
+                    game.setSkillSystem(skillsys);
+                    for (var questfile in this.dataset["quests"]) {
+                        var qref = _quests_quest_ref__WEBPACK_IMPORTED_MODULE_3__["QuestRef"].fromJSON(this.dataset["quests"][questfile], questfile);
+                        console.log("created from ", questfile, "questref ", qref);
+                        // let quest = Quest.fromJSON(this.dataset["quests"][questfile]);
+                        // console.log("created from ", questfile, " quest object ", quest);
+                        game.addQuest(qref);
+                    }
+                    completer(game, this);
+                };
+                return GameFactory;
+            }());
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/wander-hero.ts": 
+        /*!*******************************************!*\
+          !*** ./src/app/rpg-engine/wander-hero.ts ***!
+          \*******************************************/
+        /*! exports provided: WanderHero */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderHero", function () { return WanderHero; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _world_world_position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./world/world-position */ "./src/app/rpg-engine/world/world-position.ts");
+            /* harmony import */ var _skill_system_simple_skill_set__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./skill-system/simple-skill-set */ "./src/app/rpg-engine/skill-system/simple-skill-set.ts");
+            var WanderHero = /** @class */ (function () {
+                function WanderHero() {
+                    this.pos = null;
+                    this.locpos = null;
+                    this.skills = new _skill_system_simple_skill_set__WEBPACK_IMPORTED_MODULE_2__["SimpleSkillSet"]();
+                }
+                WanderHero.fromJSON = function (src) {
+                    var hero = new WanderHero();
+                    hero.setCoordinates(_world_world_position__WEBPACK_IMPORTED_MODULE_1__["WorldPosition"].fromCoordsArray(src["position"]["coords"]));
+                    for (var potential in src["record"]["potentials"]) {
+                        var range_1 = src["record"]["potentials"][potential];
+                        var value = Math.round(Math.random() * range_1[1] - range_1[0]) + (range_1[1] - range_1[0]);
+                        hero.skills.registerPotential(potential, value);
+                    }
+                    for (var development in src["record"]["developments"]) {
+                        var range_2 = src["record"]["developments"][development];
+                        var value = Math.round(Math.random() * range_2[1] - range_2[0]) + (range_2[1] - range_2[0]);
+                        hero.skills.registerDevelopment(development, value);
+                    }
+                    var range = src["record"]["health"];
+                    hero.maxhealth = Math.round(Math.random() * range[1] - range[0]) + (range[1] - range[0]);
+                    hero.health = hero.maxhealth;
+                    return hero;
+                };
+                WanderHero.prototype.setCoordinates = function (pos) {
+                    // console.log("replacing coords", this.pos, "w pos ", pos);
+                    this.pos = pos;
+                };
+                WanderHero.prototype.getSkills = function () {
+                    return this.skills;
+                };
+                return WanderHero;
+            }());
+            /***/ 
+        }),
+        /***/ "./src/app/rpg-engine/wander-scene.ts": 
+        /*!********************************************!*\
+          !*** ./src/app/rpg-engine/wander-scene.ts ***!
+          \********************************************/
+        /*! exports provided: WanderScene, LeaveStatesMap */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WanderScene", function () { return WanderScene; });
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LeaveStatesMap", function () { return LeaveStatesMap; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            var WanderScene = /** @class */ (function () {
+                function WanderScene(game) {
+                    this.game = game;
+                    // narrative should be set outside the constructor
+                    this.narrative = null;
+                    // TODO: TBA (note: should get value AFTER constructor anyway?)
+                    this.leaf = null;
+                    this.driver = null;
+                }
+                WanderScene.prototype.setNarrative = function (narrative) {
+                    this.narrative = narrative;
+                };
+                WanderScene.prototype.getNarrative = function () {
+                    return this.narrative;
+                };
+                /**
+                 * Acts as default, subclasses can override if they have specific return codes > 0 (for success and < -1 for failure?)
+                 * If the scene is unfinished, subclasses should still respect the UNFINISHED constant
+                 */
+                WanderScene.prototype.returnState = function () {
+                    // Scenes that do not have a set of return values always return 0 on end OR -1 if not finished
+                    return this.sceneFinished() ? WanderScene.LEAVESTATE_FINISHED : WanderScene.LEAVESTATE_UNFINISHED;
+                };
+                /**
+                 * Acts as default, subclasses can override if they chain to a scene they create
+                 */
+                WanderScene.prototype.getFollowingScene = function () {
+                    return this.narrative;
+                };
+                WanderScene.fromJSON = function (src) {
+                    // TODO: placeholder, implement for all the scenes that can be JSON-generated
+                    return null;
+                };
+                return WanderScene;
+            }());
+            WanderScene.LEAVESTATE_UNFINISHED = -1;
+            WanderScene.LEAVESTATE_FINISHED = 0;
+            /**
+             * Wrapper for Map type for syntactical cleanup
+             */
+            var LeaveStatesMap = /** @class */ (function (_super) {
+                __extends(LeaveStatesMap, _super);
+                function LeaveStatesMap() {
+                    return _super !== null && _super.apply(this, arguments) || this;
+                }
+                return LeaveStatesMap;
+            }(Map));
             /***/ 
         }),
         /***/ "./src/app/rpg-engine/world/locs/Place.ts": 
@@ -1288,6 +2415,15 @@ var __extends = (this && this.__extends) || (function () {
                         worldmap.places_bytypebyid.set(placetype, listed);
                     }
                     return worldmap;
+                };
+                WorldMap.prototype.getLocationById = function (locid) {
+                    for (var _i = 0, _a = this.places_bytypebyid.values(); _i < _a.length; _i++) {
+                        var places_byid = _a[_i];
+                        if (places_byid.has(locid)) {
+                            return places_byid.get(locid);
+                        }
+                    }
+                    return null;
                 };
                 WorldMap.prototype.getAllLocations = function () {
                     var listing = [];
@@ -1491,6 +2627,8 @@ var __extends = (this && this.__extends) || (function () {
                     this.afterClosed = this._afterClosed.asObservable();
                     this._sceneCheck = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
                     this.sceneCheck = this._sceneCheck.asObservable();
+                    this._subSwitch = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+                    this.subSwitch = this._subSwitch.asObservable();
                 }
                 SceneRef.prototype.setContext = function (scene) {
                     this.scene = scene;
@@ -1502,6 +2640,9 @@ var __extends = (this && this.__extends) || (function () {
                 SceneRef.prototype.triggerSceneCheck = function () {
                     console.log("sending check event for scene ", this.scene, this.scene.sceneFinished());
                     this._sceneCheck.next();
+                };
+                SceneRef.prototype.triggerSubScene = function (scene) {
+                    this._subSwitch.next(scene);
                 };
                 return SceneRef;
             }());
@@ -1515,7 +2656,7 @@ var __extends = (this && this.__extends) || (function () {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".uiwrapper {\n  display: flex;\n  flex-direction: column;\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background: transparent;\n  align-items: center;\n  justify-content: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3NjZW5lLXVpL3NjZW5lLXVpLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zY2VuZS11aS9zY2VuZS11aS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQUE7RUFDQSxzQkFBQTtFQUNBLGVBQUE7RUFDQSxNQUFBO0VBQ0EsU0FBQTtFQUNBLE9BQUE7RUFDQSxRQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9zY2VuZS11aS9zY2VuZS11aS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi51aXdyYXBwZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHRvcDogMDtcbiAgYm90dG9tOiAwO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuIiwiLnVpd3JhcHBlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiAwO1xuICBib3R0b206IDA7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59Il19 */");
+            /* harmony default export */ __webpack_exports__["default"] = (".uiwrapper {\n  display: flex;\n  flex-direction: column;\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background: transparent;\n  align-items: center;\n  justify-content: center;\n}\n\n#gamecontrols {\n  position: fixed;\n  top: 0;\n  right: 0;\n  text-align: right;\n  border-bottom: 1px solid black;\n  border-left: 1px solid black;\n  border-bottom-left-radius: 8px;\n  padding: 4px 8px 4px 16px;\n  background-image: url(\"/assets/ui/temporaryparchment.jpg\");\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3NjZW5lLXVpL3NjZW5lLXVpLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zY2VuZS11aS9zY2VuZS11aS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQUE7RUFDQSxzQkFBQTtFQUNBLGVBQUE7RUFDQSxNQUFBO0VBQ0EsU0FBQTtFQUNBLE9BQUE7RUFDQSxRQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0FDQ0Y7O0FER0E7RUFFRSxlQUFBO0VBQ0EsTUFBQTtFQUNBLFFBQUE7RUFDQSxpQkFBQTtFQUNBLDhCQUFBO0VBQ0EsNEJBQUE7RUFDQSw4QkFBQTtFQUNBLHlCQUFBO0VBQ0QsMERBQUE7QUNERCIsImZpbGUiOiJzcmMvYXBwL3NjZW5lLXVpL3NjZW5lLXVpLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnVpd3JhcHBlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiAwO1xuICBib3R0b206IDA7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cblxuI2dhbWVjb250cm9sc1xue1xuICBwb3NpdGlvbjogICBmaXhlZDtcbiAgdG9wOiAgICAgICAgMDtcbiAgcmlnaHQ6ICAgICAgMDtcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XG4gIGJvcmRlci1ib3R0b206ICAgICAxcHggc29saWQgYmxhY2s7XG4gIGJvcmRlci1sZWZ0OiAgICAgMXB4IHNvbGlkIGJsYWNrO1xuICBib3JkZXItYm90dG9tLWxlZnQtcmFkaXVzOiA4cHg7XG4gIHBhZGRpbmc6ICAgICAgNHB4IDhweCA0cHggMTZweDtcblx0YmFja2dyb3VuZC1pbWFnZTogdXJsKFwiL2Fzc2V0cy91aS90ZW1wb3JhcnlwYXJjaG1lbnQuanBnXCIpO1xuXG4gIC8vIHotaW5kZXg6XHRcdDk5OTk5OTk7XG59XG4iLCIudWl3cmFwcGVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDA7XG4gIGJvdHRvbTogMDtcbiAgbGVmdDogMDtcbiAgcmlnaHQ6IDA7XG4gIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cblxuI2dhbWVjb250cm9scyB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiAwO1xuICByaWdodDogMDtcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbiAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBibGFjaztcbiAgYm9yZGVyLWJvdHRvbS1sZWZ0LXJhZGl1czogOHB4O1xuICBwYWRkaW5nOiA0cHggOHB4IDRweCAxNnB4O1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIvYXNzZXRzL3VpL3RlbXBvcmFyeXBhcmNobWVudC5qcGdcIik7XG59Il19 */");
             /***/ 
         }),
         /***/ "./src/app/scene-ui/scene-ui.component.ts": 
@@ -1531,6 +2672,10 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
             /* harmony import */ var _insertion_directive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./insertion.directive */ "./src/app/scene-ui/insertion.directive.ts");
+            /**
+             * Holder component for {@link SceneRenderer} objects.
+             * Is instantiated by {@link SceneUIService} for {@link StorytellerComponent} and injected with the chosen renderer.
+             */
             var SceneUIComponent = /** @class */ (function () {
                 function SceneUIComponent(componentFactoryResolver, cd) {
                     this.componentFactoryResolver = componentFactoryResolver;
@@ -1568,6 +2713,15 @@ var __extends = (this && this.__extends) || (function () {
                 };
                 SceneUIComponent.prototype.onDialogClicked = function (evt) {
                     evt.stopPropagation();
+                };
+                SceneUIComponent.prototype.doSaveGame = function () {
+                    console.log("Saving game state... to outer Storyteller", this.controller);
+                    // WanderGameState.saveToBrowser(this.game);
+                    this.controller.doSaveGame();
+                };
+                SceneUIComponent.prototype.doLoadGame = function () {
+                    console.log("Loading game state... to outer Storyteller", this.controller);
+                    this.controller.doLoadGame();
                 };
                 return SceneUIComponent;
             }());
@@ -1629,14 +2783,15 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony import */ var _scene_ui_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scene-ui.component */ "./src/app/scene-ui/scene-ui.component.ts");
             /* harmony import */ var _scene_ref__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scene-ref */ "./src/app/scene-ui/scene-ref.ts");
             /* harmony import */ var _scene_injector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scene-injector */ "./src/app/scene-ui/scene-injector.ts");
+            /* harmony import */ var _storyteller_storyteller_interface__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../storyteller/storyteller-interface */ "./src/app/storyteller/storyteller-interface.ts");
             var SceneUIService = /** @class */ (function () {
                 function SceneUIService(componentFactoryResolver, appRef, injector) {
                     this.componentFactoryResolver = componentFactoryResolver;
                     this.appRef = appRef;
                     this.injector = injector;
                 }
-                SceneUIService.prototype.bindStoryTellerUI = function (storyteller) {
-                    this.storyteller = storyteller;
+                SceneUIService.prototype.bindStoryTellerUI = function (stref) {
+                    this.stref = stref;
                 };
                 SceneUIService.prototype.open = function (componentType, scene) {
                     var sceneref = this.appendSceneUI(scene);
@@ -1651,6 +2806,7 @@ var __extends = (this && this.__extends) || (function () {
                     var sceneRef = new _scene_ref__WEBPACK_IMPORTED_MODULE_3__["SceneRef"]();
                     sceneRef.setContext(scene);
                     map.set(_scene_ref__WEBPACK_IMPORTED_MODULE_3__["SceneRef"], sceneRef);
+                    map.set(_storyteller_storyteller_interface__WEBPACK_IMPORTED_MODULE_5__["StorytellerInterface"], this.stref);
                     // we want to know when somebody called the close mehtod
                     var sub = sceneRef.afterClosed.subscribe(function () {
                         // close the dialog
@@ -1658,7 +2814,7 @@ var __extends = (this && this.__extends) || (function () {
                         _this.removeSceneUI();
                         sub.unsubscribe();
                         console.log("getting follower scene ", scene.getFollowingScene());
-                        _this.storyteller.checkUpdateSceneRender();
+                        _this.stref.checkUpdateSceneRender();
                     });
                     var checksub = sceneRef.sceneCheck.subscribe(function () {
                         console.log("running SCENECHECK on scene ", scene);
@@ -1673,14 +2829,18 @@ var __extends = (this && this.__extends) || (function () {
                         }
                     });
                     var componentFactory = this.componentFactoryResolver.resolveComponentFactory(_scene_ui_component__WEBPACK_IMPORTED_MODULE_2__["SceneUIComponent"]);
-                    var componentRef = componentFactory.create(new _scene_injector__WEBPACK_IMPORTED_MODULE_4__["SceneInjector"](this.injector, map));
+                    console.warn("istancing sceneUI: component factory", componentFactory, "params map", map);
+                    var sceneInject = new _scene_injector__WEBPACK_IMPORTED_MODULE_4__["SceneInjector"](this.injector, map);
+                    var componentRef = componentFactory.create(sceneInject);
+                    console.warn("used injector ", sceneInject, " to add component", componentRef, "w hostview", componentRef.hostView);
                     this.appRef.attachView(componentRef.hostView);
                     var domElem = componentRef.hostView.rootNodes[0];
                     document.body.appendChild(domElem);
                     this.sceneRef = componentRef;
-                    // console.log("SceneUI.sceneRef: ", this.sceneRef);
-                    // console.log("SceneUI.sceneRef.instance: ", this.sceneRef.instance);
-                    // console.log("SceneUI.sceneRef.childCompo: ", this.sceneRef.instance.componentRef);
+                    console.log("SceneUI.sceneRef: ", this.sceneRef);
+                    console.log("SceneUI.sceneRef.instance: ", this.sceneRef.instance);
+                    this.sceneRef.instance.controller = this.stref.getStoryteller();
+                    console.log("SceneUI.sceneRef.childCompo: ", this.sceneRef.instance.componentRef);
                     this.sceneRef.instance.onClose.subscribe(function () {
                         console.log("running ONCLOSE");
                         _this.removeSceneUI();
@@ -1733,9 +2893,11 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../scene-ui/scene-ref */ "./src/app/scene-ui/scene-ref.ts");
             /* harmony import */ var _test_screen_generic_test_screen_generic_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../test-screen-generic/test-screen-generic.component */ "./src/app/story-tester/scenes/test-screen-generic/test-screen-generic.component.ts");
+            /* harmony import */ var _storyteller_storyteller_interface__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../storyteller/storyteller-interface */ "./src/app/storyteller/storyteller-interface.ts");
             var TestBlueScreenComponent = /** @class */ (function (_super) {
                 __extends(TestBlueScreenComponent, _super);
-                function TestBlueScreenComponent(sceneref) {
+                function TestBlueScreenComponent(sceneref, sti) {
+                    if (sti === void 0) { sti = null; }
                     var _this = _super.call(this) || this;
                     _this.sceneref = sceneref;
                     return _this;
@@ -1748,7 +2910,8 @@ var __extends = (this && this.__extends) || (function () {
                 return TestBlueScreenComponent;
             }(_test_screen_generic_test_screen_generic_component__WEBPACK_IMPORTED_MODULE_3__["TestScreenGenericComponent"]));
             TestBlueScreenComponent.ctorParameters = function () { return [
-                { type: _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_2__["SceneRef"] }
+                { type: _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_2__["SceneRef"] },
+                { type: _storyteller_storyteller_interface__WEBPACK_IMPORTED_MODULE_4__["StorytellerInterface"] }
             ]; };
             TestBlueScreenComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1783,9 +2946,11 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../scene-ui/scene-ref */ "./src/app/scene-ui/scene-ref.ts");
             /* harmony import */ var _test_screen_generic_test_screen_generic_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../test-screen-generic/test-screen-generic.component */ "./src/app/story-tester/scenes/test-screen-generic/test-screen-generic.component.ts");
+            /* harmony import */ var _storyteller_storyteller_interface__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../storyteller/storyteller-interface */ "./src/app/storyteller/storyteller-interface.ts");
             var TestGreenScreenComponent = /** @class */ (function (_super) {
                 __extends(TestGreenScreenComponent, _super);
-                function TestGreenScreenComponent(sceneref) {
+                function TestGreenScreenComponent(sceneref, sti) {
+                    if (sti === void 0) { sti = null; }
                     var _this = _super.call(this) || this;
                     _this.sceneref = sceneref;
                     return _this;
@@ -1798,7 +2963,8 @@ var __extends = (this && this.__extends) || (function () {
                 return TestGreenScreenComponent;
             }(_test_screen_generic_test_screen_generic_component__WEBPACK_IMPORTED_MODULE_3__["TestScreenGenericComponent"]));
             TestGreenScreenComponent.ctorParameters = function () { return [
-                { type: _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_2__["SceneRef"] }
+                { type: _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_2__["SceneRef"] },
+                { type: _storyteller_storyteller_interface__WEBPACK_IMPORTED_MODULE_4__["StorytellerInterface"] }
             ]; };
             TestGreenScreenComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1833,6 +2999,7 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             var TestScreenGenericComponent = /** @class */ (function () {
                 function TestScreenGenericComponent() {
+                    this.stint = null;
                 }
                 TestScreenGenericComponent.prototype.ngOnInit = function () {
                 };
@@ -1873,8 +3040,10 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony import */ var _scenes_test_blue_screen_test_blue_screen_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scenes/test-blue-screen/test-blue-screen.component */ "./src/app/story-tester/scenes/test-blue-screen/test-blue-screen.component.ts");
             /* harmony import */ var _scenes_test_green_screen_test_green_screen_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scenes/test-green-screen/test-green-screen.component */ "./src/app/story-tester/scenes/test-green-screen/test-green-screen.component.ts");
             /* harmony import */ var _tester_scene__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tester-scene */ "./src/app/story-tester/tester-scene.ts");
+            /* harmony import */ var _storyteller_storyteller_interface__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../storyteller/storyteller-interface */ "./src/app/storyteller/storyteller-interface.ts");
             var StoryTesterComponent = /** @class */ (function () {
-                function StoryTesterComponent(sceneui) {
+                function StoryTesterComponent(sceneui, sti) {
+                    if (sti === void 0) { sti = null; }
                     this.sceneui = sceneui;
                 }
                 StoryTesterComponent.prototype.ngOnInit = function () {
@@ -1896,7 +3065,8 @@ var __extends = (this && this.__extends) || (function () {
                 return StoryTesterComponent;
             }());
             StoryTesterComponent.ctorParameters = function () { return [
-                { type: _scene_ui_scene_ui_service__WEBPACK_IMPORTED_MODULE_2__["SceneUIService"] }
+                { type: _scene_ui_scene_ui_service__WEBPACK_IMPORTED_MODULE_2__["SceneUIService"] },
+                { type: _storyteller_storyteller_interface__WEBPACK_IMPORTED_MODULE_6__["StorytellerInterface"] }
             ]; };
             StoryTesterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2032,6 +3202,90 @@ var __extends = (this && this.__extends) || (function () {
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./journey-step.component.scss */ "./src/app/storyteller/scenes/journey-step/journey-step.component.scss")).default]
                 })
             ], JourneyStepComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/storyteller/scenes/lib/art-renderer.ts": 
+        /*!********************************************************!*\
+          !*** ./src/app/storyteller/scenes/lib/art-renderer.ts ***!
+          \********************************************************/
+        /*! exports provided: ArtRenderer */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ArtRenderer", function () { return ArtRenderer; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var konva__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! konva */ "./node_modules/konva/lib/index.js");
+            /* harmony import */ var konva__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/ __webpack_require__.n(konva__WEBPACK_IMPORTED_MODULE_1__);
+            var ArtRenderer = /** @class */ (function () {
+                function ArtRenderer(target) {
+                    console.log("creating art renderer on element ", target);
+                    this.renderview = target;
+                }
+                ArtRenderer.prototype.loadRenderImage = function (urlpath) {
+                    console.log("trying render on ", this.renderview, "for", urlpath);
+                    var ui = this;
+                    var imageObj = new Image();
+                    imageObj.onload = function () {
+                        ui.renderLoadedImage(imageObj);
+                    };
+                    imageObj.src = urlpath;
+                };
+                ArtRenderer.prototype.renderLoadedImage = function (image) {
+                    var VPW = this.renderview.nativeElement.clientWidth;
+                    var VPH = this.renderview.nativeElement.clientHeight;
+                    var stage = new konva__WEBPACK_IMPORTED_MODULE_1___default.a.Stage({
+                        container: this.renderview.nativeElement.id,
+                        width: VPW,
+                        height: VPH,
+                    });
+                    var composer = new konva__WEBPACK_IMPORTED_MODULE_1___default.a.Layer({});
+                    stage.add(composer);
+                    var widthratio = image.width / VPW;
+                    var heightratio = image.height / VPH;
+                    var ratio = Math.max(widthratio, heightratio);
+                    var renderwidth = image.width / ratio;
+                    var renderheight = image.height / ratio;
+                    var msg = "rendering " + image.width + "*" + image.height + " backdrop on " + VPW + "*" + VPH + " stage as " + renderwidth + "*" + renderheight + " px";
+                    console.log(msg);
+                    var backdrop = new konva__WEBPACK_IMPORTED_MODULE_1___default.a.Image({
+                        image: image,
+                        x: (VPW - renderwidth) / 2,
+                        y: (VPH - renderheight) / 2,
+                        width: renderwidth,
+                        height: renderheight
+                    });
+                    console.log("adding", backdrop, "to", composer);
+                    composer.add(backdrop);
+                    composer.batchDraw();
+                    function parchifyWhite(imageData) {
+                        // let ctx = canvas.getContext('2d');
+                        // let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                        var nPixels = imageData.data.length;
+                        for (var i = 0; i < nPixels; i += 4) {
+                            var r = imageData.data[i];
+                            var g = imageData.data[i + 1];
+                            var b = imageData.data[i + 2];
+                            var a = imageData.data[i + 3];
+                            if (a > 200) {
+                                // using brightness (0.21 × R) + (0.72 × G) + (0.07 × B)
+                                var brightness = (0.21 * r) + (0.72 * g) + (0.07 * b);
+                                var greyavrg = brightness / 3;
+                                greyavrg = Math.round(greyavrg / 32) * 32;
+                                imageData.data[i] = greyavrg;
+                                imageData.data[i + 1] = greyavrg;
+                                imageData.data[i + 2] = greyavrg;
+                                imageData.data[i + 3] = 255 - brightness;
+                            }
+                        }
+                    }
+                    composer.cache();
+                    composer.filters([konva__WEBPACK_IMPORTED_MODULE_1___default.a.Filters.Brighten]);
+                    composer.brightness(0.8);
+                    composer.filters([parchifyWhite]);
+                    composer.batchDraw();
+                };
+                return ArtRenderer;
+            }());
             /***/ 
         }),
         /***/ "./src/app/storyteller/scenes/lib/walk-renderer.ts": 
@@ -2361,6 +3615,69 @@ var __extends = (this && this.__extends) || (function () {
             }());
             /***/ 
         }),
+        /***/ "./src/app/storyteller/scenes/narration-pages/narration-pages.component.scss": 
+        /*!***********************************************************************************!*\
+          !*** ./src/app/storyteller/scenes/narration-pages/narration-pages.component.scss ***!
+          \***********************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("#narration_render {\n  position: fixed;\n  left: 16px;\n  top: 24px;\n  right: 24px;\n  height: 42vh;\n  font-size: 8vh;\n  text-align: center;\n}\n\n#narration_info {\n  text-align: center;\n  position: fixed;\n  bottom: 16px;\n  left: 16px;\n  right: 16px;\n}\n\nbutton.pageturn {\n  border: 1px solid black;\n  padding: 2pt 8pt;\n  font-size: 4vh;\n  background-color: transparent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3N0b3J5dGVsbGVyL3NjZW5lcy9uYXJyYXRpb24tcGFnZXMvbmFycmF0aW9uLXBhZ2VzLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zdG9yeXRlbGxlci9zY2VuZXMvbmFycmF0aW9uLXBhZ2VzL25hcnJhdGlvbi1wYWdlcy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUdDLGVBQUE7RUFDQSxVQUFBO0VBQ0EsU0FBQTtFQUNBLFdBQUE7RUFFQSxZQUFBO0VBQ0EsY0FBQTtFQUVBLGtCQUFBO0FDSEQ7O0FET0E7RUFFQyxrQkFBQTtFQUVBLGVBQUE7RUFDQSxZQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7QUNORDs7QURTQTtFQUtDLHVCQUFBO0VBQ0EsZ0JBQUE7RUFFQSxjQUFBO0VBRUEsNkJBQUE7QUNaRCIsImZpbGUiOiJzcmMvYXBwL3N0b3J5dGVsbGVyL3NjZW5lcy9uYXJyYXRpb24tcGFnZXMvbmFycmF0aW9uLXBhZ2VzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI25hcnJhdGlvbl9yZW5kZXJcbntcblxuXHRwb3NpdGlvbjpcdFx0Zml4ZWQ7XG5cdGxlZnQ6XHRcdFx0MTZweDtcblx0dG9wOlx0XHRcdDI0cHg7XG5cdHJpZ2h0Olx0XHRcdDI0cHg7XG5cblx0aGVpZ2h0Olx0XHRcdDQydmg7XG5cdGZvbnQtc2l6ZTpcdFx0OHZoO1xuXG5cdHRleHQtYWxpZ246XHRcdGNlbnRlcjtcbn1cblxuXG4jbmFycmF0aW9uX2luZm9cbntcblx0dGV4dC1hbGlnbjogY2VudGVyO1xuXG5cdHBvc2l0aW9uOlx0XHRmaXhlZDtcblx0Ym90dG9tOlx0XHRcdDE2cHg7XG5cdGxlZnQ6XHRcdFx0MTZweDtcblx0cmlnaHQ6XHRcdFx0MTZweDtcbn1cblxuYnV0dG9uLnBhZ2V0dXJuXG57XG5cblxuXG5cdGJvcmRlcjpcdFx0XHQxcHggc29saWQgYmxhY2s7XG5cdHBhZGRpbmc6XHRcdDJwdCA4cHQ7XG5cblx0Zm9udC1zaXplOlx0XHQ0dmg7XG5cblx0YmFja2dyb3VuZC1jb2xvcjpcdHRyYW5zcGFyZW50O1xufVxuIiwiI25hcnJhdGlvbl9yZW5kZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGxlZnQ6IDE2cHg7XG4gIHRvcDogMjRweDtcbiAgcmlnaHQ6IDI0cHg7XG4gIGhlaWdodDogNDJ2aDtcbiAgZm9udC1zaXplOiA4dmg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuI25hcnJhdGlvbl9pbmZvIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGJvdHRvbTogMTZweDtcbiAgbGVmdDogMTZweDtcbiAgcmlnaHQ6IDE2cHg7XG59XG5cbmJ1dHRvbi5wYWdldHVybiB7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGJsYWNrO1xuICBwYWRkaW5nOiAycHQgOHB0O1xuICBmb250LXNpemU6IDR2aDtcbiAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG59Il19 */");
+            /***/ 
+        }),
+        /***/ "./src/app/storyteller/scenes/narration-pages/narration-pages.component.ts": 
+        /*!*********************************************************************************!*\
+          !*** ./src/app/storyteller/scenes/narration-pages/narration-pages.component.ts ***!
+          \*********************************************************************************/
+        /*! exports provided: NarrationPagesComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NarrationPagesComponent", function () { return NarrationPagesComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../scene-ui/scene-ref */ "./src/app/scene-ui/scene-ref.ts");
+            /* harmony import */ var _scene_renderer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../scene-renderer */ "./src/app/storyteller/scenes/scene-renderer.ts");
+            var NarrationPagesComponent = /** @class */ (function (_super) {
+                __extends(NarrationPagesComponent, _super);
+                function NarrationPagesComponent(sceneref) {
+                    var _this = _super.call(this, sceneref) || this;
+                    _this.sceneref = sceneref;
+                    _this.tale = _this.sceneref.scene;
+                    console.log("tale info", _this.tale);
+                    return _this;
+                }
+                NarrationPagesComponent.prototype.ngOnInit = function () {
+                };
+                NarrationPagesComponent.prototype.ngAfterViewInit = function () {
+                };
+                NarrationPagesComponent.prototype.readForward = function () {
+                    this.tale.advanceNarration();
+                    this.lastpage = this.tale.sceneFinished();
+                };
+                NarrationPagesComponent.prototype.readBackwards = function () {
+                    this.tale.backtrackNarration();
+                };
+                NarrationPagesComponent.prototype.readOut = function () {
+                    if (this.tale.sceneFinished()) {
+                        this.sceneref.triggerSceneCheck();
+                    }
+                };
+                return NarrationPagesComponent;
+            }(_scene_renderer__WEBPACK_IMPORTED_MODULE_3__["SceneRenderer"]));
+            NarrationPagesComponent.ctorParameters = function () { return [
+                { type: _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_2__["SceneRef"] }
+            ]; };
+            NarrationPagesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-narration-pages',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./narration-pages.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/narration-pages/narration-pages.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./narration-pages.component.scss */ "./src/app/storyteller/scenes/narration-pages/narration-pages.component.scss")).default]
+                })
+            ], NarrationPagesComponent);
+            /***/ 
+        }),
         /***/ "./src/app/storyteller/scenes/passage-through/passage-through.component.scss": 
         /*!***********************************************************************************!*\
           !*** ./src/app/storyteller/scenes/passage-through/passage-through.component.scss ***!
@@ -2531,6 +3848,67 @@ var __extends = (this && this.__extends) || (function () {
             ], RoamingStepComponent);
             /***/ 
         }),
+        /***/ "./src/app/storyteller/scenes/scene-renderer-loader.ts": 
+        /*!*************************************************************!*\
+          !*** ./src/app/storyteller/scenes/scene-renderer-loader.ts ***!
+          \*************************************************************/
+        /*! exports provided: SceneRendererLoader */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SceneRendererLoader", function () { return SceneRendererLoader; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _rpg_engine_scenes_journey_departure__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../rpg-engine/scenes/journey-departure */ "./src/app/rpg-engine/scenes/journey-departure.ts");
+            /* harmony import */ var _world_map_view_world_map_view_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./world-map-view/world-map-view.component */ "./src/app/storyteller/scenes/world-map-view/world-map-view.component.ts");
+            /* harmony import */ var _rpg_engine_scenes_journey__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../rpg-engine/scenes/journey */ "./src/app/rpg-engine/scenes/journey.ts");
+            /* harmony import */ var _journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./journey-step/journey-step.component */ "./src/app/storyteller/scenes/journey-step/journey-step.component.ts");
+            /* harmony import */ var _rpg_engine_scenes_town_nav__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../rpg-engine/scenes/town-nav */ "./src/app/rpg-engine/scenes/town-nav.ts");
+            /* harmony import */ var _town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./town-ui/town-ui.component */ "./src/app/storyteller/scenes/town-ui/town-ui.component.ts");
+            /* harmony import */ var _rpg_engine_scenes_roaming__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../rpg-engine/scenes/roaming */ "./src/app/rpg-engine/scenes/roaming.ts");
+            /* harmony import */ var _roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./roaming-step/roaming-step.component */ "./src/app/storyteller/scenes/roaming-step/roaming-step.component.ts");
+            /* harmony import */ var _rpg_engine_scenes_passage_trail__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../rpg-engine/scenes/passage-trail */ "./src/app/rpg-engine/scenes/passage-trail.ts");
+            /* harmony import */ var _passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./passage-through/passage-through.component */ "./src/app/storyteller/scenes/passage-through/passage-through.component.ts");
+            /* harmony import */ var _rpg_engine_scenes_narration__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../rpg-engine/scenes/narration */ "./src/app/rpg-engine/scenes/narration.ts");
+            /* harmony import */ var _narration_pages_narration_pages_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./narration-pages/narration-pages.component */ "./src/app/storyteller/scenes/narration-pages/narration-pages.component.ts");
+            /* harmony import */ var _rpg_engine_scenes_story_branch__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../rpg-engine/scenes/story-branch */ "./src/app/rpg-engine/scenes/story-branch.ts");
+            /* harmony import */ var _story_choice_story_choice_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./story-choice/story-choice.component */ "./src/app/storyteller/scenes/story-choice/story-choice.component.ts");
+            /* harmony import */ var _skill_action_skill_action_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./skill-action/skill-action.component */ "./src/app/storyteller/scenes/skill-action/skill-action.component.ts");
+            /* harmony import */ var _rpg_engine_scenes_skill_test__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../rpg-engine/scenes/skill-test */ "./src/app/rpg-engine/scenes/skill-test.ts");
+            var SceneRendererLoader = /** @class */ (function () {
+                function SceneRendererLoader() {
+                }
+                SceneRendererLoader.getSceneRendererClass = function (scene) {
+                    var renderer;
+                    if (scene instanceof _rpg_engine_scenes_journey_departure__WEBPACK_IMPORTED_MODULE_1__["JourneyDeparture"]) {
+                        renderer = _world_map_view_world_map_view_component__WEBPACK_IMPORTED_MODULE_2__["WorldMapViewComponent"];
+                    }
+                    else if (scene instanceof _rpg_engine_scenes_journey__WEBPACK_IMPORTED_MODULE_3__["Journey"]) {
+                        renderer = _journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_4__["JourneyStepComponent"];
+                    }
+                    else if (scene instanceof _rpg_engine_scenes_town_nav__WEBPACK_IMPORTED_MODULE_5__["TownNav"]) {
+                        renderer = _town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_6__["TownUIComponent"];
+                    }
+                    else if (scene instanceof _rpg_engine_scenes_roaming__WEBPACK_IMPORTED_MODULE_7__["Roaming"]) {
+                        renderer = _roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_8__["RoamingStepComponent"];
+                    }
+                    else if (scene instanceof _rpg_engine_scenes_passage_trail__WEBPACK_IMPORTED_MODULE_9__["PassageTrail"]) {
+                        renderer = _passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_10__["PassageThroughComponent"];
+                    }
+                    else if (scene instanceof _rpg_engine_scenes_narration__WEBPACK_IMPORTED_MODULE_11__["Narration"]) {
+                        renderer = _narration_pages_narration_pages_component__WEBPACK_IMPORTED_MODULE_12__["NarrationPagesComponent"];
+                    }
+                    else if (scene instanceof _rpg_engine_scenes_story_branch__WEBPACK_IMPORTED_MODULE_13__["StoryBranch"]) {
+                        renderer = _story_choice_story_choice_component__WEBPACK_IMPORTED_MODULE_14__["StoryChoiceComponent"];
+                    }
+                    else if (scene instanceof _rpg_engine_scenes_skill_test__WEBPACK_IMPORTED_MODULE_16__["SkillTest"]) {
+                        renderer = _skill_action_skill_action_component__WEBPACK_IMPORTED_MODULE_15__["SkillActionComponent"];
+                    }
+                    return renderer;
+                };
+                return SceneRendererLoader;
+            }());
+            /***/ 
+        }),
         /***/ "./src/app/storyteller/scenes/scene-renderer.ts": 
         /*!******************************************************!*\
           !*** ./src/app/storyteller/scenes/scene-renderer.ts ***!
@@ -2542,11 +3920,143 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SceneRenderer", function () { return SceneRenderer; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             var SceneRenderer = /** @class */ (function () {
-                function SceneRenderer(sceneref) {
+                function SceneRenderer(sceneref, storytellerinterface) {
+                    if (storytellerinterface === void 0) { storytellerinterface = null; }
                     this.sceneref = sceneref;
+                    this.stint = storytellerinterface;
                 }
                 return SceneRenderer;
             }());
+            /***/ 
+        }),
+        /***/ "./src/app/storyteller/scenes/skill-action/skill-action.component.scss": 
+        /*!*****************************************************************************!*\
+          !*** ./src/app/storyteller/scenes/skill-action/skill-action.component.scss ***!
+          \*****************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("#choiceinfo {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 42vh;\n  font-size: 8vh;\n  text-align: center;\n}\n\n#choicescenery {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  height: 54vh;\n  overflow: hidden;\n}\n\n/*\n\n.locimageholder\n{\n\tposition:\t\tabsolute;\n\n\tleft:\t\t\t16px;\n\tright:\t\t\t16px;\n\tbottom:\t\t\t8px;\n\ttop:\t\t\t8px;\n\n\ttext-align:\t\tcenter;\n\t//border:\t\t\t1px solid red;\n}\n\n.locimage\n{\n\tmax-width:\t\t\t100%;\n\tmax-height:\t\t\t100%;\n\tobject-fit: \t\tcover;\n\n}\n*/\n\n.choicecontrols {\n  border: 1px solid black;\n  padding: 2pt 8pt;\n  font-size: 4vh;\n}\n\n#sceneryview {\n  position: absolute;\n  left: 16px;\n  right: 16px;\n  bottom: 8px;\n  top: 8px;\n}\n\nul.choices-prompt * {\n  cursor: pointer;\n}\n\nbutton.skillchoice {\n  border: 1px solid black;\n  padding: 2pt 8pt;\n  font-size: 4vh;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3N0b3J5dGVsbGVyL3NjZW5lcy9za2lsbC1hY3Rpb24vc2tpbGwtYWN0aW9uLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zdG9yeXRlbGxlci9zY2VuZXMvc2tpbGwtYWN0aW9uL3NraWxsLWFjdGlvbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVDLGVBQUE7RUFDQSxPQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUVBLGtCQUFBO0FDREQ7O0FES0E7RUFFQyxlQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7RUFDQSxNQUFBO0VBRUEsWUFBQTtFQUdBLGdCQUFBO0FDTkQ7O0FEU0E7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Q0FBQTs7QUF3QkE7RUFFQyx1QkFBQTtFQUNBLGdCQUFBO0VBRUEsY0FBQTtBQ1REOztBRFlBO0VBRUMsa0JBQUE7RUFFQSxVQUFBO0VBQ0EsV0FBQTtFQUNBLFdBQUE7RUFDQSxRQUFBO0FDWEQ7O0FEY0E7RUFFQyxlQUFBO0FDWkQ7O0FEZUE7RUFFQyx1QkFBQTtFQUNBLGdCQUFBO0VBRUEsY0FBQTtBQ2REIiwiZmlsZSI6InNyYy9hcHAvc3Rvcnl0ZWxsZXIvc2NlbmVzL3NraWxsLWFjdGlvbi9za2lsbC1hY3Rpb24uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjY2hvaWNlaW5mb1xue1xuXHRwb3NpdGlvbjpcdFx0Zml4ZWQ7XG5cdGxlZnQ6XHRcdFx0MDtcblx0cmlnaHQ6XHRcdFx0MDtcblx0Ym90dG9tOlx0XHRcdDA7XG5cdGhlaWdodDpcdFx0XHQ0MnZoO1xuXHRmb250LXNpemU6XHRcdDh2aDtcblxuXHR0ZXh0LWFsaWduOlx0XHRjZW50ZXI7XG59XG5cblxuI2Nob2ljZXNjZW5lcnlcbntcblx0cG9zaXRpb246XHRcdGZpeGVkO1xuXHRsZWZ0Olx0XHRcdDA7XG5cdHJpZ2h0Olx0XHRcdDA7XG5cdHRvcDpcdFx0XHQwO1xuXG5cdGhlaWdodDpcdFx0XHQ1NHZoO1xuXG5cdC8vYm9yZGVyOlx0XHRcdDFweCBzb2xpZCBibGFjaztcblx0b3ZlcmZsb3c6IGhpZGRlbjtcblxufVxuLypcblxuLmxvY2ltYWdlaG9sZGVyXG57XG5cdHBvc2l0aW9uOlx0XHRhYnNvbHV0ZTtcblxuXHRsZWZ0Olx0XHRcdDE2cHg7XG5cdHJpZ2h0Olx0XHRcdDE2cHg7XG5cdGJvdHRvbTpcdFx0XHQ4cHg7XG5cdHRvcDpcdFx0XHQ4cHg7XG5cblx0dGV4dC1hbGlnbjpcdFx0Y2VudGVyO1xuXHQvL2JvcmRlcjpcdFx0XHQxcHggc29saWQgcmVkO1xufVxuXG4ubG9jaW1hZ2Vcbntcblx0bWF4LXdpZHRoOlx0XHRcdDEwMCU7XG5cdG1heC1oZWlnaHQ6XHRcdFx0MTAwJTtcblx0b2JqZWN0LWZpdDogXHRcdGNvdmVyO1xuXG59XG4qL1xuXG4uY2hvaWNlY29udHJvbHNcbntcblx0Ym9yZGVyOlx0XHRcdDFweCBzb2xpZCBibGFjaztcblx0cGFkZGluZzpcdFx0MnB0IDhwdDtcblxuXHRmb250LXNpemU6XHRcdDR2aDtcbn1cblxuI3NjZW5lcnl2aWV3XG57XG5cdHBvc2l0aW9uOlx0XHRhYnNvbHV0ZTtcblxuXHRsZWZ0Olx0XHRcdDE2cHg7XG5cdHJpZ2h0Olx0XHRcdDE2cHg7XG5cdGJvdHRvbTpcdFx0XHQ4cHg7XG5cdHRvcDpcdFx0XHQ4cHg7XG59XG5cbnVsLmNob2ljZXMtcHJvbXB0ICpcbntcblx0Y3Vyc29yOlx0cG9pbnRlcjtcbn1cblxuYnV0dG9uLnNraWxsY2hvaWNlXG57XG5cdGJvcmRlcjpcdFx0XHQxcHggc29saWQgYmxhY2s7XG5cdHBhZGRpbmc6XHRcdDJwdCA4cHQ7XG5cblx0Zm9udC1zaXplOlx0XHQ0dmg7XG59XG4iLCIjY2hvaWNlaW5mbyB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgbGVmdDogMDtcbiAgcmlnaHQ6IDA7XG4gIGJvdHRvbTogMDtcbiAgaGVpZ2h0OiA0MnZoO1xuICBmb250LXNpemU6IDh2aDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4jY2hvaWNlc2NlbmVyeSB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgbGVmdDogMDtcbiAgcmlnaHQ6IDA7XG4gIHRvcDogMDtcbiAgaGVpZ2h0OiA1NHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xufVxuXG4vKlxuXG4ubG9jaW1hZ2Vob2xkZXJcbntcblx0cG9zaXRpb246XHRcdGFic29sdXRlO1xuXG5cdGxlZnQ6XHRcdFx0MTZweDtcblx0cmlnaHQ6XHRcdFx0MTZweDtcblx0Ym90dG9tOlx0XHRcdDhweDtcblx0dG9wOlx0XHRcdDhweDtcblxuXHR0ZXh0LWFsaWduOlx0XHRjZW50ZXI7XG5cdC8vYm9yZGVyOlx0XHRcdDFweCBzb2xpZCByZWQ7XG59XG5cbi5sb2NpbWFnZVxue1xuXHRtYXgtd2lkdGg6XHRcdFx0MTAwJTtcblx0bWF4LWhlaWdodDpcdFx0XHQxMDAlO1xuXHRvYmplY3QtZml0OiBcdFx0Y292ZXI7XG5cbn1cbiovXG4uY2hvaWNlY29udHJvbHMge1xuICBib3JkZXI6IDFweCBzb2xpZCBibGFjaztcbiAgcGFkZGluZzogMnB0IDhwdDtcbiAgZm9udC1zaXplOiA0dmg7XG59XG5cbiNzY2VuZXJ5dmlldyB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgbGVmdDogMTZweDtcbiAgcmlnaHQ6IDE2cHg7XG4gIGJvdHRvbTogOHB4O1xuICB0b3A6IDhweDtcbn1cblxudWwuY2hvaWNlcy1wcm9tcHQgKiB7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuYnV0dG9uLnNraWxsY2hvaWNlIHtcbiAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XG4gIHBhZGRpbmc6IDJwdCA4cHQ7XG4gIGZvbnQtc2l6ZTogNHZoO1xufSJdfQ== */");
+            /***/ 
+        }),
+        /***/ "./src/app/storyteller/scenes/skill-action/skill-action.component.ts": 
+        /*!***************************************************************************!*\
+          !*** ./src/app/storyteller/scenes/skill-action/skill-action.component.ts ***!
+          \***************************************************************************/
+        /*! exports provided: SkillActionComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SkillActionComponent", function () { return SkillActionComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../scene-ui/scene-ref */ "./src/app/scene-ui/scene-ref.ts");
+            /* harmony import */ var _storyteller_interface__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../storyteller-interface */ "./src/app/storyteller/storyteller-interface.ts");
+            /* harmony import */ var _scene_renderer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../scene-renderer */ "./src/app/storyteller/scenes/scene-renderer.ts");
+            var SkillActionComponent = /** @class */ (function (_super) {
+                __extends(SkillActionComponent, _super);
+                function SkillActionComponent(sceneref, storytellerinterface) {
+                    if (storytellerinterface === void 0) { storytellerinterface = null; }
+                    var _this = _super.call(this, sceneref, storytellerinterface) || this;
+                    _this.sceneref = sceneref;
+                    console.log("StoryChoice injected w stinterface: ", storytellerinterface);
+                    _this.skilltest = _this.sceneref.scene;
+                    console.log("current choice set is ", _this.skilltest);
+                    _this.narr_fail = null;
+                    _this.narr_done = null;
+                    return _this;
+                }
+                SkillActionComponent.prototype.ngOnInit = function () {
+                };
+                SkillActionComponent.prototype.ngAfterViewInit = function () {
+                };
+                SkillActionComponent.prototype.tryOption = function (option, succeed) {
+                    console.log("picked option ", option, " for trying");
+                    var success = this.skilltest.playActionDebug(option, succeed);
+                    if (success) {
+                        this.narr_fail = null;
+                        this.narr_done = option.story_success;
+                    }
+                    else {
+                        this.narr_fail = option.story_failure;
+                    }
+                };
+                SkillActionComponent.prototype.leaveScene = function () {
+                    this.sceneref.triggerSceneCheck();
+                };
+                return SkillActionComponent;
+            }(_scene_renderer__WEBPACK_IMPORTED_MODULE_4__["SceneRenderer"]));
+            SkillActionComponent.ctorParameters = function () { return [
+                { type: _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_2__["SceneRef"] },
+                { type: _storyteller_interface__WEBPACK_IMPORTED_MODULE_3__["StorytellerInterface"] }
+            ]; };
+            SkillActionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-skill-action',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./skill-action.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/skill-action/skill-action.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./skill-action.component.scss */ "./src/app/storyteller/scenes/skill-action/skill-action.component.scss")).default]
+                })
+            ], SkillActionComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/storyteller/scenes/story-choice/story-choice.component.scss": 
+        /*!*****************************************************************************!*\
+          !*** ./src/app/storyteller/scenes/story-choice/story-choice.component.scss ***!
+          \*****************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("#choiceinfo {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 42vh;\n  font-size: 8vh;\n  text-align: center;\n}\n\n#choicescenery {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  height: 54vh;\n  overflow: hidden;\n}\n\n/*\n\n.locimageholder\n{\n\tposition:\t\tabsolute;\n\n\tleft:\t\t\t16px;\n\tright:\t\t\t16px;\n\tbottom:\t\t\t8px;\n\ttop:\t\t\t8px;\n\n\ttext-align:\t\tcenter;\n\t//border:\t\t\t1px solid red;\n}\n\n.locimage\n{\n\tmax-width:\t\t\t100%;\n\tmax-height:\t\t\t100%;\n\tobject-fit: \t\tcover;\n\n}\n*/\n\n.choicecontrols {\n  border: 1px solid black;\n  padding: 2pt 8pt;\n  font-size: 4vh;\n}\n\n#sceneryview {\n  position: absolute;\n  left: 16px;\n  right: 16px;\n  bottom: 8px;\n  top: 8px;\n}\n\nul.choices-prompt * {\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3N0b3J5dGVsbGVyL3NjZW5lcy9zdG9yeS1jaG9pY2Uvc3RvcnktY2hvaWNlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zdG9yeXRlbGxlci9zY2VuZXMvc3RvcnktY2hvaWNlL3N0b3J5LWNob2ljZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVDLGVBQUE7RUFDQSxPQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUVBLGtCQUFBO0FDREQ7O0FES0E7RUFFQyxlQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7RUFDQSxNQUFBO0VBRUEsWUFBQTtFQUdBLGdCQUFBO0FDTkQ7O0FEU0E7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Q0FBQTs7QUF3QkE7RUFFQyx1QkFBQTtFQUNBLGdCQUFBO0VBRUEsY0FBQTtBQ1REOztBRFlBO0VBRUMsa0JBQUE7RUFFQSxVQUFBO0VBQ0EsV0FBQTtFQUNBLFdBQUE7RUFDQSxRQUFBO0FDWEQ7O0FEY0E7RUFFQyxlQUFBO0FDWkQiLCJmaWxlIjoic3JjL2FwcC9zdG9yeXRlbGxlci9zY2VuZXMvc3RvcnktY2hvaWNlL3N0b3J5LWNob2ljZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjaG9pY2VpbmZvXG57XG5cdHBvc2l0aW9uOlx0XHRmaXhlZDtcblx0bGVmdDpcdFx0XHQwO1xuXHRyaWdodDpcdFx0XHQwO1xuXHRib3R0b206XHRcdFx0MDtcblx0aGVpZ2h0Olx0XHRcdDQydmg7XG5cdGZvbnQtc2l6ZTpcdFx0OHZoO1xuXG5cdHRleHQtYWxpZ246XHRcdGNlbnRlcjtcbn1cblxuXG4jY2hvaWNlc2NlbmVyeVxue1xuXHRwb3NpdGlvbjpcdFx0Zml4ZWQ7XG5cdGxlZnQ6XHRcdFx0MDtcblx0cmlnaHQ6XHRcdFx0MDtcblx0dG9wOlx0XHRcdDA7XG5cblx0aGVpZ2h0Olx0XHRcdDU0dmg7XG5cblx0Ly9ib3JkZXI6XHRcdFx0MXB4IHNvbGlkIGJsYWNrO1xuXHRvdmVyZmxvdzogaGlkZGVuO1xuXG59XG4vKlxuXG4ubG9jaW1hZ2Vob2xkZXJcbntcblx0cG9zaXRpb246XHRcdGFic29sdXRlO1xuXG5cdGxlZnQ6XHRcdFx0MTZweDtcblx0cmlnaHQ6XHRcdFx0MTZweDtcblx0Ym90dG9tOlx0XHRcdDhweDtcblx0dG9wOlx0XHRcdDhweDtcblxuXHR0ZXh0LWFsaWduOlx0XHRjZW50ZXI7XG5cdC8vYm9yZGVyOlx0XHRcdDFweCBzb2xpZCByZWQ7XG59XG5cbi5sb2NpbWFnZVxue1xuXHRtYXgtd2lkdGg6XHRcdFx0MTAwJTtcblx0bWF4LWhlaWdodDpcdFx0XHQxMDAlO1xuXHRvYmplY3QtZml0OiBcdFx0Y292ZXI7XG5cbn1cbiovXG5cbi5jaG9pY2Vjb250cm9sc1xue1xuXHRib3JkZXI6XHRcdFx0MXB4IHNvbGlkIGJsYWNrO1xuXHRwYWRkaW5nOlx0XHQycHQgOHB0O1xuXG5cdGZvbnQtc2l6ZTpcdFx0NHZoO1xufVxuXG4jc2NlbmVyeXZpZXdcbntcblx0cG9zaXRpb246XHRcdGFic29sdXRlO1xuXG5cdGxlZnQ6XHRcdFx0MTZweDtcblx0cmlnaHQ6XHRcdFx0MTZweDtcblx0Ym90dG9tOlx0XHRcdDhweDtcblx0dG9wOlx0XHRcdDhweDtcbn1cblxudWwuY2hvaWNlcy1wcm9tcHQgKlxue1xuXHRjdXJzb3I6XHRwb2ludGVyO1xufVxuIiwiI2Nob2ljZWluZm8ge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICBib3R0b206IDA7XG4gIGhlaWdodDogNDJ2aDtcbiAgZm9udC1zaXplOiA4dmg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuI2Nob2ljZXNjZW5lcnkge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICB0b3A6IDA7XG4gIGhlaWdodDogNTR2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cblxuLypcblxuLmxvY2ltYWdlaG9sZGVyXG57XG5cdHBvc2l0aW9uOlx0XHRhYnNvbHV0ZTtcblxuXHRsZWZ0Olx0XHRcdDE2cHg7XG5cdHJpZ2h0Olx0XHRcdDE2cHg7XG5cdGJvdHRvbTpcdFx0XHQ4cHg7XG5cdHRvcDpcdFx0XHQ4cHg7XG5cblx0dGV4dC1hbGlnbjpcdFx0Y2VudGVyO1xuXHQvL2JvcmRlcjpcdFx0XHQxcHggc29saWQgcmVkO1xufVxuXG4ubG9jaW1hZ2Vcbntcblx0bWF4LXdpZHRoOlx0XHRcdDEwMCU7XG5cdG1heC1oZWlnaHQ6XHRcdFx0MTAwJTtcblx0b2JqZWN0LWZpdDogXHRcdGNvdmVyO1xuXG59XG4qL1xuLmNob2ljZWNvbnRyb2xzIHtcbiAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XG4gIHBhZGRpbmc6IDJwdCA4cHQ7XG4gIGZvbnQtc2l6ZTogNHZoO1xufVxuXG4jc2NlbmVyeXZpZXcge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDE2cHg7XG4gIHJpZ2h0OiAxNnB4O1xuICBib3R0b206IDhweDtcbiAgdG9wOiA4cHg7XG59XG5cbnVsLmNob2ljZXMtcHJvbXB0ICoge1xuICBjdXJzb3I6IHBvaW50ZXI7XG59Il19 */");
+            /***/ 
+        }),
+        /***/ "./src/app/storyteller/scenes/story-choice/story-choice.component.ts": 
+        /*!***************************************************************************!*\
+          !*** ./src/app/storyteller/scenes/story-choice/story-choice.component.ts ***!
+          \***************************************************************************/
+        /*! exports provided: StoryChoiceComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoryChoiceComponent", function () { return StoryChoiceComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _scene_renderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../scene-renderer */ "./src/app/storyteller/scenes/scene-renderer.ts");
+            /* harmony import */ var _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../scene-ui/scene-ref */ "./src/app/scene-ui/scene-ref.ts");
+            /* harmony import */ var _storyteller_interface__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../storyteller-interface */ "./src/app/storyteller/storyteller-interface.ts");
+            var StoryChoiceComponent = /** @class */ (function (_super) {
+                __extends(StoryChoiceComponent, _super);
+                function StoryChoiceComponent(sceneref, storytellerinterface) {
+                    if (storytellerinterface === void 0) { storytellerinterface = null; }
+                    var _this = _super.call(this, sceneref, storytellerinterface) || this;
+                    _this.sceneref = sceneref;
+                    console.log("StoryChoice injected w stinterface: ", storytellerinterface);
+                    _this.choice = _this.sceneref.scene;
+                    console.log("current choice set is ", _this.choice);
+                    return _this;
+                }
+                StoryChoiceComponent.prototype.ngOnInit = function () {
+                };
+                StoryChoiceComponent.prototype.ngAfterViewInit = function () {
+                };
+                StoryChoiceComponent.prototype.selectOption = function (opt) {
+                    this.choice.setSelected(opt);
+                    this.sceneref.triggerSceneCheck();
+                };
+                return StoryChoiceComponent;
+            }(_scene_renderer__WEBPACK_IMPORTED_MODULE_2__["SceneRenderer"]));
+            StoryChoiceComponent.ctorParameters = function () { return [
+                { type: _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_3__["SceneRef"] },
+                { type: _storyteller_interface__WEBPACK_IMPORTED_MODULE_4__["StorytellerInterface"] }
+            ]; };
+            StoryChoiceComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-story-choice',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./story-choice.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/scenes/story-choice/story-choice.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./story-choice.component.scss */ "./src/app/storyteller/scenes/story-choice/story-choice.component.scss")).default]
+                })
+            ], StoryChoiceComponent);
             /***/ 
         }),
         /***/ "./src/app/storyteller/scenes/town-ui/town-ui.component.scss": 
@@ -2557,7 +4067,7 @@ var __extends = (this && this.__extends) || (function () {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("#towninfo {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 48vh;\n  font-size: 8vh;\n  text-align: center;\n}\n\n.movecontrols {\n  border: 1px solid black;\n  padding: 2pt 8pt;\n  font-size: 4vh;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3N0b3J5dGVsbGVyL3NjZW5lcy90b3duLXVpL3Rvd24tdWkuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3N0b3J5dGVsbGVyL3NjZW5lcy90b3duLXVpL3Rvd24tdWkuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFQyxlQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBQ0EsWUFBQTtFQUNBLGNBQUE7RUFFQSxrQkFBQTtBQ0REOztBREtBO0VBRUMsdUJBQUE7RUFDQSxnQkFBQTtFQUVBLGNBQUE7QUNKRCIsImZpbGUiOiJzcmMvYXBwL3N0b3J5dGVsbGVyL3NjZW5lcy90b3duLXVpL3Rvd24tdWkuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjdG93bmluZm9cbntcblx0cG9zaXRpb246XHRcdGZpeGVkO1xuXHRsZWZ0Olx0XHRcdDA7XG5cdHJpZ2h0Olx0XHRcdDA7XG5cdGJvdHRvbTpcdFx0XHQwO1xuXHRoZWlnaHQ6XHRcdFx0NDh2aDtcblx0Zm9udC1zaXplOlx0XHQ4dmg7XG5cblx0dGV4dC1hbGlnbjpcdFx0Y2VudGVyO1xufVxuXG5cbi5tb3ZlY29udHJvbHNcbntcblx0Ym9yZGVyOlx0XHRcdDFweCBzb2xpZCBibGFjaztcblx0cGFkZGluZzpcdFx0MnB0IDhwdDtcblxuXHRmb250LXNpemU6XHRcdDR2aDtcbn1cbiIsIiN0b3duaW5mbyB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgbGVmdDogMDtcbiAgcmlnaHQ6IDA7XG4gIGJvdHRvbTogMDtcbiAgaGVpZ2h0OiA0OHZoO1xuICBmb250LXNpemU6IDh2aDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4ubW92ZWNvbnRyb2xzIHtcbiAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XG4gIHBhZGRpbmc6IDJwdCA4cHQ7XG4gIGZvbnQtc2l6ZTogNHZoO1xufSJdfQ== */");
+            /* harmony default export */ __webpack_exports__["default"] = ("#towninfo {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 42vh;\n  font-size: 8vh;\n  text-align: center;\n}\n\n#townscene {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  height: 54vh;\n  overflow: hidden;\n}\n\n.locimageholder {\n  position: absolute;\n  left: 16px;\n  right: 16px;\n  bottom: 8px;\n  top: 8px;\n  text-align: center;\n}\n\n.locimage {\n  max-width: 100%;\n  max-height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n\n.movecontrols {\n  border: 1px solid black;\n  padding: 2pt 8pt;\n  font-size: 4vh;\n}\n\n#locrender {\n  position: absolute;\n  left: 16px;\n  right: 16px;\n  bottom: 8px;\n  top: 8px;\n}\n\nul.townnav-prompt * {\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3N0b3J5dGVsbGVyL3NjZW5lcy90b3duLXVpL3Rvd24tdWkuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3N0b3J5dGVsbGVyL3NjZW5lcy90b3duLXVpL3Rvd24tdWkuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFQyxlQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBQ0EsWUFBQTtFQUNBLGNBQUE7RUFFQSxrQkFBQTtBQ0REOztBREtBO0VBRUMsZUFBQTtFQUNBLE9BQUE7RUFDQSxRQUFBO0VBQ0EsTUFBQTtFQUVBLFlBQUE7RUFHQSxnQkFBQTtBQ05EOztBRFVBO0VBRUMsa0JBQUE7RUFFQSxVQUFBO0VBQ0EsV0FBQTtFQUNBLFdBQUE7RUFDQSxRQUFBO0VBRUEsa0JBQUE7QUNWRDs7QURjQTtFQUVDLGVBQUE7RUFDQSxnQkFBQTtFQUNBLG9CQUFBO0tBQUEsaUJBQUE7QUNaRDs7QURnQkE7RUFFQyx1QkFBQTtFQUNBLGdCQUFBO0VBRUEsY0FBQTtBQ2ZEOztBRGtCQTtFQUVDLGtCQUFBO0VBRUEsVUFBQTtFQUNBLFdBQUE7RUFDQSxXQUFBO0VBQ0EsUUFBQTtBQ2pCRDs7QURvQkE7RUFFQyxlQUFBO0FDbEJEIiwiZmlsZSI6InNyYy9hcHAvc3Rvcnl0ZWxsZXIvc2NlbmVzL3Rvd24tdWkvdG93bi11aS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiN0b3duaW5mb1xue1xuXHRwb3NpdGlvbjpcdFx0Zml4ZWQ7XG5cdGxlZnQ6XHRcdFx0MDtcblx0cmlnaHQ6XHRcdFx0MDtcblx0Ym90dG9tOlx0XHRcdDA7XG5cdGhlaWdodDpcdFx0XHQ0MnZoO1xuXHRmb250LXNpemU6XHRcdDh2aDtcblxuXHR0ZXh0LWFsaWduOlx0XHRjZW50ZXI7XG59XG5cblxuI3Rvd25zY2VuZVxue1xuXHRwb3NpdGlvbjpcdFx0Zml4ZWQ7XG5cdGxlZnQ6XHRcdFx0MDtcblx0cmlnaHQ6XHRcdFx0MDtcblx0dG9wOlx0XHRcdDA7XG5cblx0aGVpZ2h0Olx0XHRcdDU0dmg7XG5cblx0Ly9ib3JkZXI6XHRcdFx0MXB4IHNvbGlkIGJsYWNrO1xuXHRvdmVyZmxvdzogaGlkZGVuO1xuXG59XG5cbi5sb2NpbWFnZWhvbGRlclxue1xuXHRwb3NpdGlvbjpcdFx0YWJzb2x1dGU7XG5cblx0bGVmdDpcdFx0XHQxNnB4O1xuXHRyaWdodDpcdFx0XHQxNnB4O1xuXHRib3R0b206XHRcdFx0OHB4O1xuXHR0b3A6XHRcdFx0OHB4O1xuXG5cdHRleHQtYWxpZ246XHRcdGNlbnRlcjtcblx0Ly9ib3JkZXI6XHRcdFx0MXB4IHNvbGlkIHJlZDtcbn1cblxuLmxvY2ltYWdlXG57XG5cdG1heC13aWR0aDpcdFx0XHQxMDAlO1xuXHRtYXgtaGVpZ2h0Olx0XHRcdDEwMCU7XG5cdG9iamVjdC1maXQ6IFx0XHRjb3ZlcjtcblxufVxuXG4ubW92ZWNvbnRyb2xzXG57XG5cdGJvcmRlcjpcdFx0XHQxcHggc29saWQgYmxhY2s7XG5cdHBhZGRpbmc6XHRcdDJwdCA4cHQ7XG5cblx0Zm9udC1zaXplOlx0XHQ0dmg7XG59XG5cbiNsb2NyZW5kZXJcbntcblx0cG9zaXRpb246XHRcdGFic29sdXRlO1xuXG5cdGxlZnQ6XHRcdFx0MTZweDtcblx0cmlnaHQ6XHRcdFx0MTZweDtcblx0Ym90dG9tOlx0XHRcdDhweDtcblx0dG9wOlx0XHRcdDhweDtcbn1cblxudWwudG93bm5hdi1wcm9tcHQgKlxue1xuXHRjdXJzb3I6XHRwb2ludGVyO1xufSIsIiN0b3duaW5mbyB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgbGVmdDogMDtcbiAgcmlnaHQ6IDA7XG4gIGJvdHRvbTogMDtcbiAgaGVpZ2h0OiA0MnZoO1xuICBmb250LXNpemU6IDh2aDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4jdG93bnNjZW5lIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgdG9wOiAwO1xuICBoZWlnaHQ6IDU0dmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5cbi5sb2NpbWFnZWhvbGRlciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgbGVmdDogMTZweDtcbiAgcmlnaHQ6IDE2cHg7XG4gIGJvdHRvbTogOHB4O1xuICB0b3A6IDhweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4ubG9jaW1hZ2Uge1xuICBtYXgtd2lkdGg6IDEwMCU7XG4gIG1heC1oZWlnaHQ6IDEwMCU7XG4gIG9iamVjdC1maXQ6IGNvdmVyO1xufVxuXG4ubW92ZWNvbnRyb2xzIHtcbiAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XG4gIHBhZGRpbmc6IDJwdCA4cHQ7XG4gIGZvbnQtc2l6ZTogNHZoO1xufVxuXG4jbG9jcmVuZGVyIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBsZWZ0OiAxNnB4O1xuICByaWdodDogMTZweDtcbiAgYm90dG9tOiA4cHg7XG4gIHRvcDogOHB4O1xufVxuXG51bC50b3dubmF2LXByb21wdCAqIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xufSJdfQ== */");
             /***/ 
         }),
         /***/ "./src/app/storyteller/scenes/town-ui/town-ui.component.ts": 
@@ -2573,29 +4083,92 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../scene-ui/scene-ref */ "./src/app/scene-ui/scene-ref.ts");
             /* harmony import */ var _scene_renderer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../scene-renderer */ "./src/app/storyteller/scenes/scene-renderer.ts");
-            /* harmony import */ var _rpg_engine_scenes_town_nav__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../rpg-engine/scenes/town-nav */ "./src/app/rpg-engine/scenes/town-nav.ts");
+            /* harmony import */ var _lib_art_renderer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lib/art-renderer */ "./src/app/storyteller/scenes/lib/art-renderer.ts");
+            /* harmony import */ var _storyteller_interface__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../storyteller-interface */ "./src/app/storyteller/storyteller-interface.ts");
             var TownUIComponent = /** @class */ (function (_super) {
                 __extends(TownUIComponent, _super);
-                function TownUIComponent(sceneref) {
-                    var _this = _super.call(this, sceneref) || this;
+                function TownUIComponent(sceneref, storytellerinterface) {
+                    if (storytellerinterface === void 0) { storytellerinterface = null; }
+                    var _this = _super.call(this, sceneref, storytellerinterface) || this;
                     _this.sceneref = sceneref;
+                    console.log("TownNav injected w stinterface: ", storytellerinterface);
                     _this.townscene = _this.sceneref.scene;
                     console.log("town info: ", JSON.stringify(_this.townscene.town));
+                    _this.taskprompts = [];
                     return _this;
                 }
                 TownUIComponent.prototype.ngOnInit = function () {
                 };
                 TownUIComponent.prototype.ngAfterViewInit = function () {
+                    this.viewrenderer = new _lib_art_renderer__WEBPACK_IMPORTED_MODULE_4__["ArtRenderer"](this.locrender);
+                    this.moveToLoc(this.townscene.locpoint);
                 };
-                TownUIComponent.prototype.leaveTown = function () {
-                    this.townscene.locpoint = _rpg_engine_scenes_town_nav__WEBPACK_IMPORTED_MODULE_4__["TownNav"].LOC_LEAVE;
+                TownUIComponent.prototype.moveToLoc = function (target) {
+                    this.townscene.moveToLoc(target);
                     this.sceneref.triggerSceneCheck();
+                    this.renderView();
+                    this.updateTaskPrompts();
+                };
+                TownUIComponent.prototype.updateTaskPrompts = function () {
+                    var quests = this.sceneref.game.quests.values();
+                    var qtrefs = [];
+                    for (var _i = 0, quests_1 = quests; _i < quests_1.length; _i++) {
+                        var quest = quests_1[_i];
+                        console.log("checking quest", quest);
+                        var available = quest.getAvailableTasks(this.sceneref.game);
+                        console.log("found available tasks", available);
+                        var qtasks = [];
+                        for (var _a = 0, available_1 = available; _a < available_1.length; _a++) {
+                            var taskid = available_1[_a];
+                            console.log("TASK AVAILABLE: ", taskid, "for quest", quest);
+                            // this.st
+                            // prompts.push(quest.loadTask(taskid));
+                            qtrefs.push({
+                                quest: quest,
+                                taskid: taskid
+                            });
+                        }
+                    }
+                    this.taskprompts = [];
+                    var ui = this;
+                    this.stint.loadQuestTasks(qtrefs, function (tasks) {
+                        var prompts = [];
+                        for (var _i = 0, tasks_1 = tasks; _i < tasks_1.length; _i++) {
+                            var qtask = tasks_1[_i];
+                            prompts.push(qtask);
+                        }
+                        console.log("TownUI reaction to qtasks load", tasks, " to prompts ", prompts);
+                        ui.taskprompts = prompts;
+                    });
+                };
+                TownUIComponent.prototype.renderView = function () {
+                    var urlpath = this.townscene.currentloc.image;
+                    if (urlpath) {
+                        var fullpath = "./assets/graph/sceneviews/" + urlpath;
+                        this.viewrenderer.loadRenderImage(fullpath);
+                    }
+                };
+                TownUIComponent.prototype.localizeTextAsset = function (text) {
+                    while (text.includes("$TOWN$")) {
+                        text = text.replace("$TOWN$", this.townscene.town.name);
+                    }
+                    return text;
+                };
+                TownUIComponent.prototype.activatePrompt = function (task) {
+                    console.log("prompt activation for task", task, "in", task.caller);
+                    task.scene.driver = task;
+                    // narrative should be set by StoryTeller
+                    this.sceneref.triggerSubScene(task.scene);
                 };
                 return TownUIComponent;
             }(_scene_renderer__WEBPACK_IMPORTED_MODULE_3__["SceneRenderer"]));
             TownUIComponent.ctorParameters = function () { return [
-                { type: _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_2__["SceneRef"] }
+                { type: _scene_ui_scene_ref__WEBPACK_IMPORTED_MODULE_2__["SceneRef"] },
+                { type: _storyteller_interface__WEBPACK_IMPORTED_MODULE_5__["StorytellerInterface"] }
             ]; };
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])("locrender", { static: false })
+            ], TownUIComponent.prototype, "locrender", void 0);
             TownUIComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-town-ui',
@@ -2895,6 +4468,58 @@ var __extends = (this && this.__extends) || (function () {
             ], WorldMapViewComponent);
             /***/ 
         }),
+        /***/ "./src/app/storyteller/storyteller-interface.ts": 
+        /*!******************************************************!*\
+          !*** ./src/app/storyteller/storyteller-interface.ts ***!
+          \******************************************************/
+        /*! exports provided: StorytellerInterface */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorytellerInterface", function () { return StorytellerInterface; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _rpg_engine_quests_quest_task__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../rpg-engine/quests/quest-task */ "./src/app/rpg-engine/quests/quest-task.ts");
+            /**
+             * StorytellerInterface gives access to the {@link StorytellerComponent} functionalities without creating circular imports (similar to {@link SceneRendererLoader}).
+             * Its main use case is loading data during play, to avoid front-loading the whole world and quests.
+             * The idea is to add only one object for the {@link SceneUIComponent} objects to use to interact with and keep initialization through {@link SceneUIService} as simple as possible.
+             */
+            var StorytellerInterface = /** @class */ (function () {
+                function StorytellerInterface(stref) {
+                    this.stref = stref;
+                }
+                StorytellerInterface.prototype.checkUpdateSceneRender = function () {
+                    this.stref.checkUpdateSceneRender();
+                };
+                StorytellerInterface.prototype.getStoryteller = function () {
+                    return this.stref;
+                };
+                StorytellerInterface.prototype.loadQuestTasks = function (refs, callback) {
+                    var filerefs = [];
+                    var byQuest = new Map();
+                    for (var _i = 0, refs_1 = refs; _i < refs_1.length; _i++) {
+                        var ref = refs_1[_i];
+                        var inQuest = byQuest.has(ref.quest) ? byQuest.get(ref.quest) : [];
+                        inQuest.push(ref.taskid);
+                        byQuest.set(ref.quest, inQuest);
+                        filerefs.push(ref.quest.fileref);
+                    }
+                    this.stref.loader.loadDataFiles(filerefs, function (data) {
+                        var tasks = [];
+                        for (var _i = 0, refs_2 = refs; _i < refs_2.length; _i++) {
+                            var ref = refs_2[_i];
+                            var rawtask = data[ref.quest.fileref]["tasks"][ref.taskid];
+                            var qtask = _rpg_engine_quests_quest_task__WEBPACK_IMPORTED_MODULE_1__["QuestTask"].fromJSON(rawtask);
+                            qtask.setCaller(ref.quest);
+                            tasks.push(qtask);
+                        }
+                        callback(tasks);
+                    });
+                };
+                return StorytellerInterface;
+            }());
+            /***/ 
+        }),
         /***/ "./src/app/storyteller/storyteller.component.scss": 
         /*!********************************************************!*\
           !*** ./src/app/storyteller/storyteller.component.scss ***!
@@ -2903,7 +4528,7 @@ var __extends = (this && this.__extends) || (function () {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("#st-page {\n  background-image: url(\"/assets/ui/temporaryparchment.jpg\");\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3N0b3J5dGVsbGVyL3N0b3J5dGVsbGVyLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zdG9yeXRlbGxlci9zdG9yeXRlbGxlci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVDLDBEQUFBO0FDQUQiLCJmaWxlIjoic3JjL2FwcC9zdG9yeXRlbGxlci9zdG9yeXRlbGxlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNzdC1wYWdlXG57XG5cdGJhY2tncm91bmQtaW1hZ2U6IHVybChcIi9hc3NldHMvdWkvdGVtcG9yYXJ5cGFyY2htZW50LmpwZ1wiKTtcbn1cbiIsIiNzdC1wYWdlIHtcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiL2Fzc2V0cy91aS90ZW1wb3JhcnlwYXJjaG1lbnQuanBnXCIpO1xufSJdfQ== */");
+            /* harmony default export */ __webpack_exports__["default"] = ("#st-page {\n  background-image: url(\"/assets/ui/temporaryparchment.jpg\");\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3N0b3J5dGVsbGVyL3N0b3J5dGVsbGVyLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zdG9yeXRlbGxlci9zdG9yeXRlbGxlci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVDLDBEQUFBO0FDQUQiLCJmaWxlIjoic3JjL2FwcC9zdG9yeXRlbGxlci9zdG9yeXRlbGxlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNzdC1wYWdlXG57XG5cdGJhY2tncm91bmQtaW1hZ2U6IHVybChcIi9hc3NldHMvdWkvdGVtcG9yYXJ5cGFyY2htZW50LmpwZ1wiKTtcbn1cblxuIiwiI3N0LXBhZ2Uge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIvYXNzZXRzL3VpL3RlbXBvcmFyeXBhcmNobWVudC5qcGdcIik7XG59Il19 */");
             /***/ 
         }),
         /***/ "./src/app/storyteller/storyteller.component.ts": 
@@ -2920,25 +4545,27 @@ var __extends = (this && this.__extends) || (function () {
             /* harmony import */ var _scene_ui_scene_ui_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../scene-ui/scene-ui.service */ "./src/app/scene-ui/scene-ui.service.ts");
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
             /* harmony import */ var _rpg_engine_wander_game__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../rpg-engine/wander-game */ "./src/app/rpg-engine/wander-game.ts");
-            /* harmony import */ var _scenes_world_map_view_world_map_view_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./scenes/world-map-view/world-map-view.component */ "./src/app/storyteller/scenes/world-map-view/world-map-view.component.ts");
-            /* harmony import */ var _rpg_engine_scenes_journey_departure__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../rpg-engine/scenes/journey-departure */ "./src/app/rpg-engine/scenes/journey-departure.ts");
-            /* harmony import */ var _rpg_engine_scenes_journey__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../rpg-engine/scenes/journey */ "./src/app/rpg-engine/scenes/journey.ts");
-            /* harmony import */ var _scenes_journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./scenes/journey-step/journey-step.component */ "./src/app/storyteller/scenes/journey-step/journey-step.component.ts");
-            /* harmony import */ var _rpg_engine_world_locs_Town__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../rpg-engine/world/locs/Town */ "./src/app/rpg-engine/world/locs/Town.ts");
-            /* harmony import */ var _rpg_engine_scenes_town_nav__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../rpg-engine/scenes/town-nav */ "./src/app/rpg-engine/scenes/town-nav.ts");
-            /* harmony import */ var _scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./scenes/town-ui/town-ui.component */ "./src/app/storyteller/scenes/town-ui/town-ui.component.ts");
-            /* harmony import */ var _rpg_engine_scenes_roaming__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../rpg-engine/scenes/roaming */ "./src/app/rpg-engine/scenes/roaming.ts");
-            /* harmony import */ var _scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./scenes/roaming-step/roaming-step.component */ "./src/app/storyteller/scenes/roaming-step/roaming-step.component.ts");
-            /* harmony import */ var _rpg_engine_scenes_passage_trail__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../rpg-engine/scenes/passage-trail */ "./src/app/rpg-engine/scenes/passage-trail.ts");
-            /* harmony import */ var _scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./scenes/passage-through/passage-through.component */ "./src/app/storyteller/scenes/passage-through/passage-through.component.ts");
-            /* harmony import */ var _rpg_engine_world_locs_TerrainPass__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../rpg-engine/world/locs/TerrainPass */ "./src/app/rpg-engine/world/locs/TerrainPass.ts");
+            /* harmony import */ var _rpg_engine_scenes_journey_departure__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../rpg-engine/scenes/journey-departure */ "./src/app/rpg-engine/scenes/journey-departure.ts");
+            /* harmony import */ var _rpg_engine_world_locs_Town__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../rpg-engine/world/locs/Town */ "./src/app/rpg-engine/world/locs/Town.ts");
+            /* harmony import */ var _rpg_engine_scenes_town_nav__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../rpg-engine/scenes/town-nav */ "./src/app/rpg-engine/scenes/town-nav.ts");
+            /* harmony import */ var _rpg_engine_scenes_passage_trail__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../rpg-engine/scenes/passage-trail */ "./src/app/rpg-engine/scenes/passage-trail.ts");
+            /* harmony import */ var _rpg_engine_world_locs_TerrainPass__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../rpg-engine/world/locs/TerrainPass */ "./src/app/rpg-engine/world/locs/TerrainPass.ts");
+            /* harmony import */ var _rpg_engine_wander_game_state__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../rpg-engine/wander-game-state */ "./src/app/rpg-engine/wander-game-state.ts");
+            /* harmony import */ var _rpg_engine_world_world_position__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../rpg-engine/world/world-position */ "./src/app/rpg-engine/world/world-position.ts");
+            /* harmony import */ var util__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
+            /* harmony import */ var util__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/ __webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_12__);
+            /* harmony import */ var _storyteller_interface__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./storyteller-interface */ "./src/app/storyteller/storyteller-interface.ts");
+            /* harmony import */ var _scenes_scene_renderer_loader__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./scenes/scene-renderer-loader */ "./src/app/storyteller/scenes/scene-renderer-loader.ts");
+            /* harmony import */ var _support_res_loader__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../support/res-loader */ "./src/app/support/res-loader.ts");
+            /* harmony import */ var _rpg_engine_scenes_meta_scene__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../rpg-engine/scenes/meta-scene */ "./src/app/rpg-engine/scenes/meta-scene.ts");
             var StorytellerComponent = /** @class */ (function () {
                 function StorytellerComponent(sceneui, http) {
                     this.sceneui = sceneui;
                     this.http = http;
+                    this.loader = new _support_res_loader__WEBPACK_IMPORTED_MODULE_15__["ResLoader"](http);
                 }
                 StorytellerComponent.prototype.ngOnInit = function () {
-                    this.sceneui.bindStoryTellerUI(this);
+                    this.sceneui.bindStoryTellerUI(this.getInterface());
                     this.loadGameData();
                 };
                 StorytellerComponent.prototype.loadGameData = function () {
@@ -2955,17 +4582,17 @@ var __extends = (this && this.__extends) || (function () {
                 StorytellerComponent.prototype.getLocationSensitiveScene = function () {
                     var ppos = this.game.hero.pos;
                     var place = this.game.worldmap.getLocationAt(ppos.getCoords());
-                    console.log("place is town? ", place instanceof _rpg_engine_world_locs_Town__WEBPACK_IMPORTED_MODULE_9__["Town"]);
+                    console.log("place is town? ", place instanceof _rpg_engine_world_locs_Town__WEBPACK_IMPORTED_MODULE_6__["Town"]);
                     var scene = null;
-                    if (place instanceof _rpg_engine_world_locs_Town__WEBPACK_IMPORTED_MODULE_9__["Town"]) {
-                        scene = new _rpg_engine_scenes_town_nav__WEBPACK_IMPORTED_MODULE_10__["TownNav"](this.game, place);
+                    if (place instanceof _rpg_engine_world_locs_Town__WEBPACK_IMPORTED_MODULE_6__["Town"]) {
+                        scene = new _rpg_engine_scenes_town_nav__WEBPACK_IMPORTED_MODULE_7__["TownNav"](this.game, place);
                     }
-                    else if (place instanceof _rpg_engine_world_locs_TerrainPass__WEBPACK_IMPORTED_MODULE_16__["TerrainPass"]) {
-                        scene = new _rpg_engine_scenes_passage_trail__WEBPACK_IMPORTED_MODULE_14__["PassageTrail"](this.game, place);
+                    else if (place instanceof _rpg_engine_world_locs_TerrainPass__WEBPACK_IMPORTED_MODULE_9__["TerrainPass"]) {
+                        scene = new _rpg_engine_scenes_passage_trail__WEBPACK_IMPORTED_MODULE_8__["PassageTrail"](this.game, place);
                     }
                     else {
                         // if all fails, go to map
-                        scene = new _rpg_engine_scenes_journey_departure__WEBPACK_IMPORTED_MODULE_6__["JourneyDeparture"](this.game);
+                        scene = new _rpg_engine_scenes_journey_departure__WEBPACK_IMPORTED_MODULE_5__["JourneyDeparture"](this.game);
                     }
                     return scene;
                 };
@@ -2974,41 +4601,98 @@ var __extends = (this && this.__extends) || (function () {
                     var scene = this.game.getActiveScene();
                     console.log("checking update on scene ", scene);
                     if (!!scene && scene.sceneFinished()) {
-                        console.log("having scene finisher");
+                        // note : this was done INSIDE scene in Java/Android, but we want to be able to affect external quest references and use "pure" references instead of whole quest objects
+                        if (!!scene.driver) {
+                            scene.driver.setCompleted();
+                        }
+                        if (!!scene.narrative) {
+                            // console.log("FINISHING SUB SCENE, UPDATE STATES in UBER SCENE!!!!!");
+                            scene.narrative.moveOn();
+                            // console.log("updated narrative for sub scene", scene.narrative.returnStates());
+                        }
+                        // console.log("SCENE TYPECHECK: typeof scene", scene.constructor.name);
+                        // console.log("having scene finisher");
                         scene = scene.getFollowingScene();
-                        console.log("following scene is ", scene);
+                        // console.log("following scene is ", scene);
+                        // console.log("IS FOLLOWING SCENE A METASCENE?", scene instanceof MetaScene);
+                        // console.log("SCENE TYPECHECK: typeof following", scene.constructor.name);
+                    }
+                    if (scene instanceof _rpg_engine_scenes_meta_scene__WEBPACK_IMPORTED_MODULE_16__["MetaScene"]) {
+                        var ms = scene;
+                        if (ms.getCurrent() == null) {
+                            // console.log("SET METASCENE AS FINISHED!");
+                            if (!!ms.driver) {
+                                // console.log("SET METASCENE DRIVER AS COMPLETE!");
+                                ms.driver.setCompleted();
+                            }
+                            scene = null;
+                        }
                     }
                     if (!scene) {
                         scene = this.getLocationSensitiveScene();
                     }
+                    // console.log("SCENE TYPECHECK: typeof switchto", scene.constructor.name);
+                    this.switchSceneUI(scene);
+                };
+                StorytellerComponent.prototype.enterSubScene = function (scene) {
+                    // NOTE: subscenes ALWAYS come from MetaScenes
+                    // TODO: Refactor to enforce MetaScene type checking
+                    console.log("entering sub scene ", scene, "from narrative", this.game.activescene);
+                    scene.setNarrative(this.game.activescene);
+                    this.game.setActiveScene(scene);
+                    this.switchSceneUI(scene);
+                };
+                StorytellerComponent.prototype.switchSceneUI = function (scene) {
+                    try {
+                        // console.log("removing previous sceneUI for switch to ", scene);
+                        this.sceneui.removeSceneUI();
+                    }
+                    catch (err) {
+                        // console.warn("no scene to remove");
+                    }
+                    if (scene instanceof _rpg_engine_scenes_meta_scene__WEBPACK_IMPORTED_MODULE_16__["MetaScene"]) {
+                        // console.log("should switch to internal scene for metascene");
+                        var sub = scene.getCurrent();
+                        if (sub != null) {
+                            // switch to sub ONLY if there is still another scene
+                            scene = sub;
+                        }
+                    }
                     this.game.setActiveScene(scene);
                     console.log("using scene ", scene);
                     var renderer = this.getSceneRenderer(scene);
-                    console.log("opening renderer ", renderer, "for scene", scene);
+                    // console.log("opening renderer ", renderer, "for scene", scene);
                     var ref = this.sceneui.open(renderer, scene);
-                    console.log("opened as sceneref", ref);
+                    // console.log("opened as sceneref", ref);
                     ref.afterClosed.subscribe(function (result) {
-                        console.log('Closed scene', scene, renderer, "w result", result);
+                        // console.log('Closed scene', scene, renderer, "w result", result);
+                    });
+                    var st = this;
+                    ref.subSwitch.subscribe(function (subscene) {
+                        // console.log("received switch to sub scene ", subscene, "from current", this.game.activescene, "by", ref);
+                        st.enterSubScene(subscene);
                     });
                 };
                 StorytellerComponent.prototype.getSceneRenderer = function (scene) {
-                    var renderer;
-                    if (scene instanceof _rpg_engine_scenes_journey_departure__WEBPACK_IMPORTED_MODULE_6__["JourneyDeparture"]) {
-                        renderer = _scenes_world_map_view_world_map_view_component__WEBPACK_IMPORTED_MODULE_5__["WorldMapViewComponent"];
+                    return _scenes_scene_renderer_loader__WEBPACK_IMPORTED_MODULE_14__["SceneRendererLoader"].getSceneRendererClass(scene);
+                };
+                StorytellerComponent.prototype.doSaveGame = function () {
+                    console.log("Saving game state...");
+                    _rpg_engine_wander_game_state__WEBPACK_IMPORTED_MODULE_10__["WanderGameState"].saveToBrowser(this.game);
+                };
+                StorytellerComponent.prototype.doLoadGame = function () {
+                    console.log("Loading game state...");
+                    var loaded = _rpg_engine_wander_game_state__WEBPACK_IMPORTED_MODULE_10__["WanderGameState"].loadFromBrowser();
+                    console.log("loaded game state ", loaded);
+                    if (!Object(util__WEBPACK_IMPORTED_MODULE_12__["isUndefined"])(loaded) && loaded !== null) {
+                        var pos = loaded["hero"]["position"];
+                        this.game.hero.setCoordinates(new _rpg_engine_world_world_position__WEBPACK_IMPORTED_MODULE_11__["WorldPosition"](pos[0], pos[1]));
+                        this.game.setActiveScene(null);
+                        this.checkUpdateSceneRender();
                     }
-                    else if (scene instanceof _rpg_engine_scenes_journey__WEBPACK_IMPORTED_MODULE_7__["Journey"]) {
-                        renderer = _scenes_journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_8__["JourneyStepComponent"];
-                    }
-                    else if (scene instanceof _rpg_engine_scenes_town_nav__WEBPACK_IMPORTED_MODULE_10__["TownNav"]) {
-                        renderer = _scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_11__["TownUIComponent"];
-                    }
-                    else if (scene instanceof _rpg_engine_scenes_roaming__WEBPACK_IMPORTED_MODULE_12__["Roaming"]) {
-                        renderer = _scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_13__["RoamingStepComponent"];
-                    }
-                    else if (scene instanceof _rpg_engine_scenes_passage_trail__WEBPACK_IMPORTED_MODULE_14__["PassageTrail"]) {
-                        renderer = _scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_15__["PassageThroughComponent"];
-                    }
-                    return renderer;
+                };
+                StorytellerComponent.prototype.getInterface = function () {
+                    return new _storyteller_interface__WEBPACK_IMPORTED_MODULE_13__["StorytellerInterface"](this);
                 };
                 return StorytellerComponent;
             }());
@@ -3023,6 +4707,55 @@ var __extends = (this && this.__extends) || (function () {
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./storyteller.component.scss */ "./src/app/storyteller/storyteller.component.scss")).default]
                 })
             ], StorytellerComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/support/res-loader.ts": 
+        /*!***************************************!*\
+          !*** ./src/app/support/res-loader.ts ***!
+          \***************************************/
+        /*! exports provided: ResLoader */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResLoader", function () { return ResLoader; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            var ResLoader = /** @class */ (function () {
+                function ResLoader(http) {
+                    this.http = http;
+                }
+                ResLoader.prototype.loadDataFile = function (filepath, callback) {
+                    var locdata = this.http.get(filepath);
+                    locdata.subscribe(function (response) {
+                        console.log("LOAD RESULT", response);
+                        callback(response);
+                    });
+                };
+                ResLoader.prototype.loadDataFiles = function (filepaths, multicallback) {
+                    var loaded = {};
+                    function getCheckerFunction(key) {
+                        return function (data) {
+                            loaded[key] = data;
+                            if (Object.keys(loaded).length === filepaths.length) {
+                                multicallback(loaded);
+                            }
+                        };
+                    }
+                    var _loop_7 = function (filepath) {
+                        var checker = getCheckerFunction(filepath);
+                        this_7.loadDataFile(filepath, checker);
+                        this_7.http.get(filepath).subscribe(function (response) {
+                            loaded[filepath] = response;
+                        });
+                    };
+                    var this_7 = this;
+                    // ADD ERROR HANDLING
+                    for (var _i = 0, filepaths_1 = filepaths; _i < filepaths_1.length; _i++) {
+                        var filepath = filepaths_1[_i];
+                        _loop_7(filepath);
+                    }
+                };
+                return ResLoader;
+            }());
             /***/ 
         }),
         /***/ "./src/environments/environment.ts": 

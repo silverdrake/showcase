@@ -1,0 +1,104 @@
+{
+	"questid": "DEMOQUEST",
+	"title": "DemoQuest",
+	"description": "A DEMO QUEST to show the basics of questing around. Involves moving to several cities and reading narratives.",
+	"journal": "Go to the city of BETA and receive your instructions.",
+	"completers": ["step03_bringitback"],
+	"tasks":
+	{
+		"step01_getassignment" :
+		{
+			"taskid": "step01_getassignment",
+			"conditions":
+			[
+				{
+					"test": "location",
+					"target": {
+						"locid": "BETA",
+						"roomid": "MAINST"
+					}
+				}
+			],
+			"prompt": "Get the demo quest instructions.",
+			"scene":
+			{
+				"type": "narrative",
+				"data":
+				{
+                    "text" :
+					[
+						"Welcome to the test quest.",
+						"In this fetch quest you will have to gather some news from a place in another city.\nIt's really easy, don't sweat it.",
+						"You need to go to DELTA, by the way, and come back with some news."
+					]
+                }
+			},
+			"journal_after": "Go to DELTA and get some news."
+		},
+		"step02_getnews" :
+		{
+			"taskid": "step02_getnews",
+			"conditions":
+			[
+				{
+					"test": "location",
+					"target": {
+						"locid": "DELTA",
+						"roomid": "LEAVE"
+					}
+				},
+				{
+                    "test": "completed",
+                    "target": "step01_getassignment"
+                }
+			],
+			"prompt": "Receive news for delivery in the demo quest.",
+			"scene":
+			{
+				"type": "narrative",
+				"data":
+				{
+					"text" :
+					 [
+                        "Continuing the test quest.",
+                        "So here you are and I have something to say.\nActually not but we need test lines.",
+                        "Now go back to BETA and bring the good news back."
+                    ]
+				}
+			},
+			"journal_after": "Bring the news back to BETA."
+		},
+		"step03_bringitback" :
+		{
+			"taskid": "step03_bringitback",
+			"conditions":
+			[
+				{
+					"test": "location",
+					"target": {
+						"locid": "BETA",
+						"roomid": "MAINST"
+					}
+				},
+				{
+                    "test": "completed",
+                    "target": "step02_getnews"
+                }
+			],
+			"prompt": "Deliver the news and be done with the demo quest.",
+			"scene":
+            {
+                "type": "narrative",
+                "data":
+	            {
+	                "text" :
+	                [
+	                    "End of the test quest.",
+	                    "Thank you for delivering this precious bit of information we did not even bother creating.",
+	                    "Nothing else to do, the quest should disappear now."
+	                ]
+	            }
+            }
+		}
+	}
+}

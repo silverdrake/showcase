@@ -1,0 +1,49 @@
+{
+	"townstructure": {
+		"major": {
+			"locs": {
+				"OUT": {
+					"description": "N/A",
+					"moves": []
+				},
+				"GATE": {
+					"description": "Travellers in and out of $TOWN$ are carefully watched by armed guards.",
+					"moves": [
+						{
+							"target": "LEAVE",
+							"prompt": "Leave the city."
+						},
+						{
+							"target": "MAINST",
+							"prompt": "Join the bustle of the main street."
+						}
+					]
+				},
+				"LEAVE": {
+					"image": "w2ee-castle-gate.jpeg",
+					"description": "You are on the outskirts of $TOWN$.",
+					"moves": [
+						{
+							"target": "GATE",
+							"prompt": "Enter the town by the main gate."
+						},
+						{
+							"target": "OUT",
+							"prompt": "Venture into the wilds."
+						}
+					]
+				},
+				"MAINST": {
+					"image": "w2ee-town-flotsam.jpeg",
+					"description": "The main street of $TOWN$ is bustling with activity.",
+					"moves": [
+						{
+							"target": "GATE",
+							"prompt": "Leave the town through the main gate."
+						}
+					]
+				}
+			}
+		}
+	}
+}

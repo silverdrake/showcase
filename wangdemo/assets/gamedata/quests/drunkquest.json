@@ -1,0 +1,158 @@
+{
+	"questid": "DRUNKQUEST",
+	"title": "The Drunk Man's Quest",
+	"description": "A DEMO QUEST to show the use of the skills system. Go from one city to another to retrieve an old drunk's possession.",
+	"journal": "Seek your man in the city of ENOCH.",
+	"completers": ["step03_backtothedrunk"],
+	"tasks":
+	{
+		"step01_getassignment" :
+		{
+			"taskid": "step01_getassignment",
+			"conditions":
+			[
+				{
+					"test": "location",
+					"target": {
+						"locid": "ENOCH",
+						"roomid": "LEAVE"
+					}
+				}
+			],
+			"prompt": "Talk with a drunk beggar in the corner.",
+			"scene":
+			{
+				"type": "narrative",
+				"data":
+				{
+                    "text" :
+					[
+						"«You are kind to listen to the ramblings of an old drunk,» he says.",
+						"«My story is long and sad, and I will not bother you with it,» he continues as you thank the gods.\n«But there is one more thing that you could do for me?\n«I used to live in the town of DELTA, a long time ago. There I might have... \"misplaced\" something very important to me.»",
+						"«It's a rare MacGuffin bird doll my daughter used to play with. If I can retrieve that, I can prove my identity to my family and go back home.\nIt can be found in the backroom of the Silly Game tavern in DELTA.»",
+						"«Thank you, kind lady,» he salutes, wrapping himself back in his rags."
+					]
+                }
+			},
+			"journal_after": "Go to the Silly Game tavern in DELTA."
+		},
+		"step02_retrieval":
+		{
+			"taskid": "step02_retrieval",
+			"prompt": "Enter the Silly Game tavern.",
+			"conditions":
+			[
+				{
+					"test": "location",
+					"target": {
+						"locid": "DELTA",
+						"roomid": "MAINST"
+					}
+				},
+				{
+					"test": "completed",
+					"target": "step01_getassignment"
+				}
+			],
+			"scene":
+			{
+				"type": "multi",
+				"data":
+				{
+					"scenes":
+					[
+						{
+							"id": "first",
+							"type": "narrative",
+							"data":
+							{
+								"text" :
+								[
+								"You enter the Silly Game tavern, a place in badly need of a better description by someone who can write properly.",
+								"You try to ignore the lack of setting, the likely inconsistencies and resign yourself to follow the plot of the quest."
+								]
+							}
+						},
+						{
+							"id": "second",
+							"type": "skill",
+							"data":
+							{
+								"description": "You reach the cellar door, but it's locked. You still have a few weapons, though.",
+								"image": "lockpick",
+								"options":
+								[
+									{
+										"action": "lockpick",
+										"target": 6,
+										"repeat": 0,
+										"prompt": "Cleverly unlock the door"
+									},
+									{
+										"action": "quicktalk",
+										"target": 5,
+										"repeat": 0,
+										"prompt": "Sweet talk the door into submission"
+									}
+								]
+							}
+						},
+						{
+							"id": "third",
+							"type": "narrative",
+							"data":
+							{
+								"text":
+								[
+									"There it is, the very rare McGuffin bird, or more properly a doll of it.\nYou grab it and you silently get away from the room in the hope that nobody notices you."
+								]
+							}
+						}
+					],
+					"triggers":
+                    {
+                        "first": "second",
+                        "second": "third"
+                    },
+                    "starter": "first"
+				}
+			},
+			"journal_after": "Get back to BETA with the MacGuffin doll."
+
+		},
+		"step03_backtothedrunk":
+		{
+			"prompt": "Return the doll to the old drunk.",
+			"taskid": "step03_backtothedrunk",
+			"conditions":
+			[
+				{
+					"test": "location",
+					"target": {
+						"locid": "ENOCH",
+						"roomid": "MAINST"
+					}
+				},
+				{
+					"test": "completed",
+					"target": "step02_retrieval"
+				}
+			],
+			"scene":
+			{
+				"type": "narrative",
+				"data":
+				{
+					"text":
+					[
+						"«Thank you!» says the old man, tears in his eyes.\n«Now I can prove who I am and get back where I belong.»",
+						"He seems to transform as he straightens his back and stands, and you recognise the typical lines of one of the oldest dynasties in the kingdom.\n«You did a great service to me, and you did it out of kindness.\n«Should you ever need any help, come to my house. You will receive it.»",
+						"You walk away with the reassuring knowledge of having an ally in this city."
+					]
+				}
+			}
+		}
+
+	}
+
+}
