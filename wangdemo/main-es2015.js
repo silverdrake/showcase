@@ -4767,7 +4767,7 @@ let StorytellerComponent = class StorytellerComponent {
             if (!!scene.driver) {
                 scene.driver.setCompleted();
             }
-            if (!!scene.narrative) {
+            if (!!scene.narrative && scene.narrative instanceof _rpg_engine_scenes_meta_scene__WEBPACK_IMPORTED_MODULE_16__["MetaScene"]) {
                 // console.log("FINISHING SUB SCENE, UPDATE STATES in UBER SCENE!!!!!");
                 scene.narrative.moveOn();
                 // console.log("updated narrative for sub scene", scene.narrative.returnStates());
