@@ -654,6 +654,7 @@ var __extends = (this && this.__extends) || (function () {
                     this.fileref = fileref;
                     this.conditions = new Map();
                     this.completers = [];
+                    this.completed = false;
                     this.states = new Map();
                 }
                 QuestRef.fromJSON = function (src, fileref) {
@@ -698,7 +699,7 @@ var __extends = (this && this.__extends) || (function () {
                     for (var _i = 0, _a = this.conditions.keys(); _i < _a.length; _i++) {
                         var taskid = _a[_i];
                         // let task = this.tasks.get(taskid);
-                        console.log("checking quest task ", taskid, " w conditions", this.conditions, "for ", this.conditions);
+                        // console.log("checking quest task ", taskid, " w conditions", this.conditions, "for ", this.conditions);
                         if ((!this.isTaskCompleted(taskid)) && this.conditions.has(taskid)) {
                             var satisfied = true;
                             for (var _b = 0, _c = this.conditions.get(taskid); _b < _c.length; _b++) {
@@ -736,7 +737,7 @@ var __extends = (this && this.__extends) || (function () {
                     this.target = target_value;
                 }
                 QuestTaskCondition.prototype.verifyCondition = function (game, quest) {
-                    console.log("checking condition ", this, " type ", this.type, " target ", this.target);
+                    // console.log("checking condition ", this, " type ", this.type, " target ", this.target);
                     if (this.type === QuestTaskConditionType.LOCATION) {
                         return this.verifyConditionLocation(game, quest);
                     }
@@ -754,7 +755,7 @@ var __extends = (this && this.__extends) || (function () {
                 // NOTE: we might want to subclass conditions if the handling becomes more complex
                 QuestTaskCondition.prototype.verifyConditionLocation = function (game, quest) {
                     try {
-                        console.log("matching pos ", game.hero.pos, game.hero.locpos, "w", this.target);
+                        // console.log("matching pos ", game.hero.pos, game.hero.locpos, "w", this.target);
                         var loc = game.worldmap.getLocationById(this.target["locid"]);
                         var hasloc = game.hero.pos != null && game.hero.pos.matches(loc.pos);
                         if (hasloc && this.target["roomid"]) {
@@ -881,7 +882,7 @@ var __extends = (this && this.__extends) || (function () {
                         "choice": SceneFactory.createSceneStoryBranch,
                         "skill": SceneFactory.createSceneSkillTest
                     };
-                    console.log("generating scen from json: ", src["type"], src["data"]);
+                    // console.log("generating scen from json: ", src["type"], src["data"]);
                     try {
                         return GENERATORS_BYTYPE[src["type"]](src["data"]);
                     }
@@ -904,7 +905,7 @@ var __extends = (this && this.__extends) || (function () {
                     return new _scenes_narration__WEBPACK_IMPORTED_MODULE_1__["Narration"](null, null, paragraphs, images);
                 };
                 SceneFactory.createSceneStoryBranch = function (src) {
-                    console.warn("generating STORYBRANCH scene from ", src);
+                    // console.warn ("generating STORYBRANCH scene from ", src);
                     var generated = new _scenes_story_branch__WEBPACK_IMPORTED_MODULE_3__["StoryBranch"](null);
                     generated.prompt = src["prompt"];
                     for (var _i = 0, _a = src["options"]; _i < _a.length; _i++) {
@@ -936,7 +937,7 @@ var __extends = (this && this.__extends) || (function () {
                         var json_scene = _a[_i];
                         var sceneid = json_scene["id"];
                         var scene = SceneFactory.fromJSON(json_scene);
-                        console.log("Generated sceneobject ", scene, " w id " + sceneid);
+                        // console.log("Generated sceneobject ", scene, " w id " + sceneid);
                         scene.setNarrative(generated);
                         if (scene != null) {
                             generated.addScene(scene, sceneid);
@@ -950,12 +951,12 @@ var __extends = (this && this.__extends) || (function () {
                 };
                 SceneFactory.createSceneBranchingMeta = function (src) {
                     var generated = new _scenes_branching_meta_scene__WEBPACK_IMPORTED_MODULE_2__["BranchingMetaScene"](null);
-                    console.log("Creating BMS from ", src);
+                    // console.log("Creating BMS from ", src);
                     for (var _i = 0, _a = src["scenes"]; _i < _a.length; _i++) {
                         var json_scene = _a[_i];
                         var sceneid = json_scene["id"];
                         var scene = SceneFactory.fromJSON(json_scene);
-                        console.log("QUEST", "Generated sceneobject ", scene, " w id " + sceneid);
+                        // console.log("QUEST", "Generated sceneobject ", scene, " w id " + sceneid);
                         if (scene != null) {
                             scene.setNarrative(generated);
                             generated.addScene(scene, sceneid);
@@ -1930,27 +1931,44 @@ var __extends = (this && this.__extends) || (function () {
             var WanderGameState = /** @class */ (function () {
                 function WanderGameState() {
                 }
-                WanderGameState.applyGameState = function (state, game) {
-                    // modifies game in place with vars from GameState saved data
-                };
                 WanderGameState.loadFromBrowser = function () {
                     console.log("loading game state from browser WebStorage");
                     var loaded = localStorage.getItem(WanderGameState.KEY_SAVESTATE_DATA);
                     console.log("loaded", loaded);
                     if (loaded !== null) {
                         loaded = JSON.parse(loaded);
+                        if (!loaded["qstates"]) {
+                            loaded["qstates"] = {};
+                        }
                     }
-                    // TODO: create proper structure (actual WanderGameState object)
                     return loaded;
                 };
                 WanderGameState.saveToBrowser = function (game) {
                     console.log("saving game state to browser for Game");
                     console.log("saving hero state, position", game.hero.pos);
+                    var qstates = {};
+                    for (var _i = 0, _a = game.quests.values(); _i < _a.length; _i++) {
+                        var quest = _a[_i];
+                        var tasks = {};
+                        // console.log("saving state for quest ", quest.questid, quest);
+                        // console.log(quest.states.keys());
+                        for (var _b = 0, _c = quest.states.keys(); _b < _c.length; _b++) {
+                            var taskid = _c[_b];
+                            // console.log("checking quest ",quest.questid,"task", taskid);
+                            tasks[taskid] = quest.states.get(taskid);
+                        }
+                        qstates[quest.questid] = {
+                            "tasks": tasks,
+                            "completed": quest.completed
+                        };
+                    }
                     var savegame = {
                         hero: {
                             position: [game.hero.pos.x, game.hero.pos.y]
-                        }
+                        },
+                        quests: qstates
                     };
+                    console.log("saving game as ", savegame);
                     localStorage.setItem(WanderGameState.KEY_SAVESTATE_DATA, JSON.stringify(savegame));
                 };
                 return WanderGameState;
@@ -2508,7 +2526,7 @@ var __extends = (this && this.__extends) || (function () {
                     return new WorldPosition(this.x + x, this.y + y);
                 };
                 WorldPosition.prototype.matches = function (other) {
-                    console.log("checking if we have a match between ", this, "and", other);
+                    // console.log("checking if we have a match between ", this, "and", other);
                     return this.x === other.x && this.y === other.y;
                 };
                 WorldPosition.getRelativeGeneralDirection = function (pfrom, pto) {
@@ -2826,10 +2844,10 @@ var __extends = (this && this.__extends) || (function () {
                     var domElem = componentRef.hostView.rootNodes[0];
                     document.body.appendChild(domElem);
                     this.sceneRef = componentRef;
-                    console.log("SceneUI.sceneRef: ", this.sceneRef);
-                    console.log("SceneUI.sceneRef.instance: ", this.sceneRef.instance);
+                    // console.log("SceneUI.sceneRef: ", this.sceneRef);
+                    // console.log("SceneUI.sceneRef.instance: ", this.sceneRef.instance);
                     this.sceneRef.instance.controller = this.stref.getStoryteller();
-                    console.log("SceneUI.sceneRef.childCompo: ", this.sceneRef.instance.componentRef);
+                    // console.log("SceneUI.sceneRef.childCompo: ", this.sceneRef.instance.componentRef);
                     this.sceneRef.instance.onClose.subscribe(function () {
                         console.log("running ONCLOSE");
                         _this.removeSceneUI();
@@ -4100,13 +4118,13 @@ var __extends = (this && this.__extends) || (function () {
                     var qtrefs = [];
                     for (var _i = 0, quests_1 = quests; _i < quests_1.length; _i++) {
                         var quest = quests_1[_i];
-                        console.log("checking quest", quest);
+                        // console.log("checking quest", quest);
                         var available = quest.getAvailableTasks(this.sceneref.game);
-                        console.log("found available tasks", available);
+                        // console.log("found available tasks", available);
                         var qtasks = [];
                         for (var _a = 0, available_1 = available; _a < available_1.length; _a++) {
                             var taskid = available_1[_a];
-                            console.log("TASK AVAILABLE: ", taskid, "for quest", quest);
+                            // console.log("TASK AVAILABLE: ", taskid, "for quest", quest, "w state", quest.states.get(taskid));
                             // this.st
                             // prompts.push(quest.loadTask(taskid));
                             qtrefs.push({
@@ -4123,7 +4141,7 @@ var __extends = (this && this.__extends) || (function () {
                             var qtask = tasks_1[_i];
                             prompts.push(qtask);
                         }
-                        console.log("TownUI reaction to qtasks load", tasks, " to prompts ", prompts);
+                        // console.log("TownUI reaction to qtasks load", tasks," to prompts ", prompts);
                         ui.taskprompts = prompts;
                     });
                 };
@@ -4667,13 +4685,23 @@ var __extends = (this && this.__extends) || (function () {
                     _rpg_engine_wander_game_state__WEBPACK_IMPORTED_MODULE_10__["WanderGameState"].saveToBrowser(this.game);
                 };
                 StorytellerComponent.prototype.doLoadGame = function () {
-                    console.log("Loading game state...");
+                    // console.log("Loading game state...");
                     var loaded = _rpg_engine_wander_game_state__WEBPACK_IMPORTED_MODULE_10__["WanderGameState"].loadFromBrowser();
-                    console.log("loaded game state ", loaded);
+                    // console.log("loaded game state ", loaded);
                     if (!Object(util__WEBPACK_IMPORTED_MODULE_12__["isUndefined"])(loaded) && loaded !== null) {
                         var pos = loaded["hero"]["position"];
                         this.game.hero.setCoordinates(new _rpg_engine_world_world_position__WEBPACK_IMPORTED_MODULE_11__["WorldPosition"](pos[0], pos[1]));
                         this.game.setActiveScene(null);
+                        var qstates = loaded["quests"];
+                        for (var questid in qstates) {
+                            var quest = this.game.quests.get(questid);
+                            for (var taskid in qstates[questid]["tasks"]) {
+                                var tstate = qstates[questid]["tasks"][taskid];
+                                // console.log("setting ", taskid, "to state", tstate, "in", quest.states);
+                                quest.states.set(taskid, tstate);
+                            }
+                            quest.completed = qstates[questid]["completed"];
+                        }
                         this.checkUpdateSceneRender();
                     }
                 };

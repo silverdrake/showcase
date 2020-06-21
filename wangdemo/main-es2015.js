@@ -639,6 +639,7 @@ class QuestRef {
         this.fileref = fileref;
         this.conditions = new Map();
         this.completers = [];
+        this.completed = false;
         this.states = new Map();
     }
     static fromJSON(src, fileref) {
@@ -680,7 +681,7 @@ class QuestRef {
         let available = [];
         for (let taskid of this.conditions.keys()) {
             // let task = this.tasks.get(taskid);
-            console.log("checking quest task ", taskid, " w conditions", this.conditions, "for ", this.conditions);
+            // console.log("checking quest task ", taskid, " w conditions", this.conditions, "for ", this.conditions);
             if ((!this.isTaskCompleted(taskid)) && this.conditions.has(taskid)) {
                 let satisfied = true;
                 for (let current of this.conditions.get(taskid)) {
@@ -720,7 +721,7 @@ class QuestTaskCondition {
         this.target = target_value;
     }
     verifyCondition(game, quest) {
-        console.log("checking condition ", this, " type ", this.type, " target ", this.target);
+        // console.log("checking condition ", this, " type ", this.type, " target ", this.target);
         if (this.type === QuestTaskConditionType.LOCATION) {
             return this.verifyConditionLocation(game, quest);
         }
@@ -738,7 +739,7 @@ class QuestTaskCondition {
     // NOTE: we might want to subclass conditions if the handling becomes more complex
     verifyConditionLocation(game, quest) {
         try {
-            console.log("matching pos ", game.hero.pos, game.hero.locpos, "w", this.target);
+            // console.log("matching pos ", game.hero.pos, game.hero.locpos, "w", this.target);
             let loc = game.worldmap.getLocationById(this.target["locid"]);
             let hasloc = game.hero.pos != null && game.hero.pos.matches(loc.pos);
             if (hasloc && this.target["roomid"]) {
@@ -876,7 +877,7 @@ class SceneFactory {
             "choice": SceneFactory.createSceneStoryBranch,
             "skill": SceneFactory.createSceneSkillTest
         };
-        console.log("generating scen from json: ", src["type"], src["data"]);
+        // console.log("generating scen from json: ", src["type"], src["data"]);
         try {
             return GENERATORS_BYTYPE[src["type"]](src["data"]);
         }
@@ -899,7 +900,7 @@ class SceneFactory {
         return new _scenes_narration__WEBPACK_IMPORTED_MODULE_1__["Narration"](null, null, paragraphs, images);
     }
     static createSceneStoryBranch(src) {
-        console.warn("generating STORYBRANCH scene from ", src);
+        // console.warn ("generating STORYBRANCH scene from ", src);
         const generated = new _scenes_story_branch__WEBPACK_IMPORTED_MODULE_3__["StoryBranch"](null);
         generated.prompt = src["prompt"];
         for (let optdesc of src["options"]) {
@@ -928,7 +929,7 @@ class SceneFactory {
         for (let json_scene of src["scenes"]) {
             let sceneid = json_scene["id"];
             let scene = SceneFactory.fromJSON(json_scene);
-            console.log("Generated sceneobject ", scene, " w id " + sceneid);
+            // console.log("Generated sceneobject ", scene, " w id " + sceneid);
             scene.setNarrative(generated);
             if (scene != null) {
                 generated.addScene(scene, sceneid);
@@ -942,11 +943,11 @@ class SceneFactory {
     }
     static createSceneBranchingMeta(src) {
         let generated = new _scenes_branching_meta_scene__WEBPACK_IMPORTED_MODULE_2__["BranchingMetaScene"](null);
-        console.log("Creating BMS from ", src);
+        // console.log("Creating BMS from ", src);
         for (let json_scene of src["scenes"]) {
             let sceneid = json_scene["id"];
             let scene = SceneFactory.fromJSON(json_scene);
-            console.log("QUEST", "Generated sceneobject ", scene, " w id " + sceneid);
+            // console.log("QUEST", "Generated sceneobject ", scene, " w id " + sceneid);
             if (scene != null) {
                 scene.setNarrative(generated);
                 generated.addScene(scene, sceneid);
@@ -1947,27 +1948,42 @@ __webpack_require__.r(__webpack_exports__);
  * Saves game state to a SINGLE save space
  */
 class WanderGameState {
-    static applyGameState(state, game) {
-        // modifies game in place with vars from GameState saved data
-    }
     static loadFromBrowser() {
         console.log("loading game state from browser WebStorage");
         let loaded = localStorage.getItem(WanderGameState.KEY_SAVESTATE_DATA);
         console.log("loaded", loaded);
         if (loaded !== null) {
             loaded = JSON.parse(loaded);
+            if (!loaded["qstates"]) {
+                loaded["qstates"] = {};
+            }
         }
-        // TODO: create proper structure (actual WanderGameState object)
         return loaded;
     }
     static saveToBrowser(game) {
         console.log("saving game state to browser for Game");
         console.log("saving hero state, position", game.hero.pos);
+        let qstates = {};
+        for (let quest of game.quests.values()) {
+            let tasks = {};
+            // console.log("saving state for quest ", quest.questid, quest);
+            // console.log(quest.states.keys());
+            for (let taskid of quest.states.keys()) {
+                // console.log("checking quest ",quest.questid,"task", taskid);
+                tasks[taskid] = quest.states.get(taskid);
+            }
+            qstates[quest.questid] = {
+                "tasks": tasks,
+                "completed": quest.completed
+            };
+        }
         let savegame = {
             hero: {
                 position: [game.hero.pos.x, game.hero.pos.y]
-            }
+            },
+            quests: qstates
         };
+        console.log("saving game as ", savegame);
         localStorage.setItem(WanderGameState.KEY_SAVESTATE_DATA, JSON.stringify(savegame));
     }
 }
@@ -2550,7 +2566,7 @@ class WorldPosition {
         return new WorldPosition(this.x + x, this.y + y);
     }
     matches(other) {
-        console.log("checking if we have a match between ", this, "and", other);
+        // console.log("checking if we have a match between ", this, "and", other);
         return this.x === other.x && this.y === other.y;
     }
     static getRelativeGeneralDirection(pfrom, pto) {
@@ -2902,10 +2918,10 @@ let SceneUIService = class SceneUIService {
         const domElem = componentRef.hostView.rootNodes[0];
         document.body.appendChild(domElem);
         this.sceneRef = componentRef;
-        console.log("SceneUI.sceneRef: ", this.sceneRef);
-        console.log("SceneUI.sceneRef.instance: ", this.sceneRef.instance);
+        // console.log("SceneUI.sceneRef: ", this.sceneRef);
+        // console.log("SceneUI.sceneRef.instance: ", this.sceneRef.instance);
         this.sceneRef.instance.controller = this.stref.getStoryteller();
-        console.log("SceneUI.sceneRef.childCompo: ", this.sceneRef.instance.componentRef);
+        // console.log("SceneUI.sceneRef.childCompo: ", this.sceneRef.instance.componentRef);
         this.sceneRef.instance.onClose.subscribe(() => {
             console.log("running ONCLOSE");
             this.removeSceneUI();
@@ -4265,12 +4281,12 @@ let TownUIComponent = class TownUIComponent extends _scene_renderer__WEBPACK_IMP
         let quests = this.sceneref.game.quests.values();
         let qtrefs = [];
         for (let quest of quests) {
-            console.log("checking quest", quest);
+            // console.log("checking quest", quest);
             let available = quest.getAvailableTasks(this.sceneref.game);
-            console.log("found available tasks", available);
+            // console.log("found available tasks", available);
             let qtasks = [];
             for (let taskid of available) {
-                console.log("TASK AVAILABLE: ", taskid, "for quest", quest);
+                // console.log("TASK AVAILABLE: ", taskid, "for quest", quest, "w state", quest.states.get(taskid));
                 // this.st
                 // prompts.push(quest.loadTask(taskid));
                 qtrefs.push({
@@ -4286,7 +4302,7 @@ let TownUIComponent = class TownUIComponent extends _scene_renderer__WEBPACK_IMP
             for (let qtask of tasks) {
                 prompts.push(qtask);
             }
-            console.log("TownUI reaction to qtasks load", tasks, " to prompts ", prompts);
+            // console.log("TownUI reaction to qtasks load", tasks," to prompts ", prompts);
             ui.taskprompts = prompts;
         });
     }
@@ -4843,13 +4859,23 @@ let StorytellerComponent = class StorytellerComponent {
         _rpg_engine_wander_game_state__WEBPACK_IMPORTED_MODULE_10__["WanderGameState"].saveToBrowser(this.game);
     }
     doLoadGame() {
-        console.log("Loading game state...");
+        // console.log("Loading game state...");
         let loaded = _rpg_engine_wander_game_state__WEBPACK_IMPORTED_MODULE_10__["WanderGameState"].loadFromBrowser();
-        console.log("loaded game state ", loaded);
+        // console.log("loaded game state ", loaded);
         if (!Object(util__WEBPACK_IMPORTED_MODULE_12__["isUndefined"])(loaded) && loaded !== null) {
             let pos = loaded["hero"]["position"];
             this.game.hero.setCoordinates(new _rpg_engine_world_world_position__WEBPACK_IMPORTED_MODULE_11__["WorldPosition"](pos[0], pos[1]));
             this.game.setActiveScene(null);
+            let qstates = loaded["quests"];
+            for (let questid in qstates) {
+                let quest = this.game.quests.get(questid);
+                for (let taskid in qstates[questid]["tasks"]) {
+                    let tstate = qstates[questid]["tasks"][taskid];
+                    // console.log("setting ", taskid, "to state", tstate, "in", quest.states);
+                    quest.states.set(taskid, tstate);
+                }
+                quest.completed = qstates[questid]["completed"];
+            }
             this.checkUpdateSceneRender();
         }
     }
