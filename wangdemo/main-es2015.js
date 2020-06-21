@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"uiwrapper\" (click)=\"onOverlayClicked($event)\">\n\t<ng-template appInsertion> </ng-template>\n</div>\n\n<div id=gamecontrols>\n    \n    <a (click)=\"doLoadGame()\" >LOAD</a>\n        &nbsp;\n\t<a (click)=\"doSaveGame()\" >SAVE</a>\n\n\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"uiwrapper\" (click)=\"onOverlayClicked($event)\">\n\t<ng-template appInsertion> </ng-template>\n</div>\n\n<div id=gamecontrols>\n\n\t<a (click)=\"openCharSheet()\">CHAR</a>\n\t&nbsp;&nbsp;\n\n    <a (click)=\"doLoadGame()\" >LOAD</a>\n        &nbsp;\n\t<a (click)=\"doSaveGame()\" >SAVE</a>\n\n</div>\n\n<div id=\"charsheetmodal\" [class.visible]=\"this.showCharSheet\">\n\n\n\t<div id=\"charsheet\">\n\t\t<div id=\"charsheetcontrols\">\n\t\t\t<a (click)=\"closeCharSheet()\">CLOSE</a>\n\t\t</div>\n\n\t\t<div id=\"charsheetpage\">\n\t\t\t<ng-template charsheetInsertion></ng-template>\n\t\t</div>\n\n\t</div>\n</div>\n");
 
 /***/ }),
 
@@ -85,6 +85,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<div id=\"storyteller-outside\">\n\n\t<div id=\"storyteller-tester\">\n\t\t<p>story-tester works!</p>\n\n\n\t\t<div id=\"scenerender-test\"></div>\n\n\n\t\t<button (click)=\"loadGreenScreen()\">GREEN</button>\n\t\t<button (click)=\"loadBlueScreen()\">BLUE</button>\n\t</div>\n\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/charsheet/quest-journal/quest-journal.component.html":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/charsheet/quest-journal/quest-journal.component.html ***!
+  \************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"questlist\" >\n\n\t<ul>\n\t\t<li *ngFor=\"let entry of this.game.quests | keyvalue\">\n\t\t\t{{entry.value.journal_title}} ({{entry.value.completed}}):\n\t\t\t<span *ngIf=\"!entry.value.completed\">{{entry.value.journal_entry}}</span>\n\t\t\t<span *ngIf=\"entry.value.completed\">COMPLETED</span>\n\t\t</li>\n\t</ul>\n\n</div>\n");
 
 /***/ }),
 
@@ -535,17 +548,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scene_ui_scene_ui_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./scene-ui/scene-ui.component */ "./src/app/scene-ui/scene-ui.component.ts");
 /* harmony import */ var _story_tester_scenes_test_green_screen_test_green_screen_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./story-tester/scenes/test-green-screen/test-green-screen.component */ "./src/app/story-tester/scenes/test-green-screen/test-green-screen.component.ts");
 /* harmony import */ var _story_tester_scenes_test_blue_screen_test_blue_screen_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./story-tester/scenes/test-blue-screen/test-blue-screen.component */ "./src/app/story-tester/scenes/test-blue-screen/test-blue-screen.component.ts");
-/* harmony import */ var _scene_ui_scene_ui_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./scene-ui/scene-ui.module */ "./src/app/scene-ui/scene-ui.module.ts");
-/* harmony import */ var _story_tester_story_tester_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./story-tester/story-tester.component */ "./src/app/story-tester/story-tester.component.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _storyteller_scenes_world_map_view_world_map_view_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./storyteller/scenes/world-map-view/world-map-view.component */ "./src/app/storyteller/scenes/world-map-view/world-map-view.component.ts");
-/* harmony import */ var _storyteller_scenes_journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./storyteller/scenes/journey-step/journey-step.component */ "./src/app/storyteller/scenes/journey-step/journey-step.component.ts");
-/* harmony import */ var _storyteller_scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./storyteller/scenes/town-ui/town-ui.component */ "./src/app/storyteller/scenes/town-ui/town-ui.component.ts");
-/* harmony import */ var _storyteller_scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./storyteller/scenes/roaming-step/roaming-step.component */ "./src/app/storyteller/scenes/roaming-step/roaming-step.component.ts");
-/* harmony import */ var _storyteller_scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./storyteller/scenes/passage-through/passage-through.component */ "./src/app/storyteller/scenes/passage-through/passage-through.component.ts");
-/* harmony import */ var _storyteller_scenes_narration_pages_narration_pages_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./storyteller/scenes/narration-pages/narration-pages.component */ "./src/app/storyteller/scenes/narration-pages/narration-pages.component.ts");
-/* harmony import */ var _storyteller_scenes_story_choice_story_choice_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./storyteller/scenes/story-choice/story-choice.component */ "./src/app/storyteller/scenes/story-choice/story-choice.component.ts");
-/* harmony import */ var _storyteller_scenes_skill_action_skill_action_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./storyteller/scenes/skill-action/skill-action.component */ "./src/app/storyteller/scenes/skill-action/skill-action.component.ts");
+/* harmony import */ var _story_tester_story_tester_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./story-tester/story-tester.component */ "./src/app/story-tester/story-tester.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _storyteller_scenes_world_map_view_world_map_view_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./storyteller/scenes/world-map-view/world-map-view.component */ "./src/app/storyteller/scenes/world-map-view/world-map-view.component.ts");
+/* harmony import */ var _storyteller_scenes_journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./storyteller/scenes/journey-step/journey-step.component */ "./src/app/storyteller/scenes/journey-step/journey-step.component.ts");
+/* harmony import */ var _storyteller_scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./storyteller/scenes/town-ui/town-ui.component */ "./src/app/storyteller/scenes/town-ui/town-ui.component.ts");
+/* harmony import */ var _storyteller_scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./storyteller/scenes/roaming-step/roaming-step.component */ "./src/app/storyteller/scenes/roaming-step/roaming-step.component.ts");
+/* harmony import */ var _storyteller_scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./storyteller/scenes/passage-through/passage-through.component */ "./src/app/storyteller/scenes/passage-through/passage-through.component.ts");
+/* harmony import */ var _storyteller_scenes_narration_pages_narration_pages_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./storyteller/scenes/narration-pages/narration-pages.component */ "./src/app/storyteller/scenes/narration-pages/narration-pages.component.ts");
+/* harmony import */ var _storyteller_scenes_story_choice_story_choice_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./storyteller/scenes/story-choice/story-choice.component */ "./src/app/storyteller/scenes/story-choice/story-choice.component.ts");
+/* harmony import */ var _storyteller_scenes_skill_action_skill_action_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./storyteller/scenes/skill-action/skill-action.component */ "./src/app/storyteller/scenes/skill-action/skill-action.component.ts");
+/* harmony import */ var _storyteller_charsheet_quest_journal_quest_journal_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./storyteller/charsheet/quest-journal/quest-journal.component */ "./src/app/storyteller/charsheet/quest-journal/quest-journal.component.ts");
+/* harmony import */ var _scene_ui_scene_ui_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./scene-ui/scene-ui.module */ "./src/app/scene-ui/scene-ui.module.ts");
+
 
 
 
@@ -575,36 +590,41 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _storyteller_storyteller_component__WEBPACK_IMPORTED_MODULE_5__["StorytellerComponent"],
             _story_tester_scenes_test_green_screen_test_green_screen_component__WEBPACK_IMPORTED_MODULE_7__["TestGreenScreenComponent"],
             _story_tester_scenes_test_blue_screen_test_blue_screen_component__WEBPACK_IMPORTED_MODULE_8__["TestBlueScreenComponent"],
-            _story_tester_story_tester_component__WEBPACK_IMPORTED_MODULE_10__["StoryTesterComponent"],
-            _storyteller_scenes_world_map_view_world_map_view_component__WEBPACK_IMPORTED_MODULE_12__["WorldMapViewComponent"],
-            _storyteller_scenes_journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_13__["JourneyStepComponent"],
-            _storyteller_scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_14__["TownUIComponent"],
-            _storyteller_scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_15__["RoamingStepComponent"],
-            _storyteller_scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_16__["PassageThroughComponent"],
-            _storyteller_scenes_narration_pages_narration_pages_component__WEBPACK_IMPORTED_MODULE_17__["NarrationPagesComponent"],
-            _storyteller_scenes_story_choice_story_choice_component__WEBPACK_IMPORTED_MODULE_18__["StoryChoiceComponent"],
-            _storyteller_scenes_skill_action_skill_action_component__WEBPACK_IMPORTED_MODULE_19__["SkillActionComponent"],
+            _story_tester_story_tester_component__WEBPACK_IMPORTED_MODULE_9__["StoryTesterComponent"],
+            _storyteller_scenes_world_map_view_world_map_view_component__WEBPACK_IMPORTED_MODULE_11__["WorldMapViewComponent"],
+            _storyteller_scenes_journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_12__["JourneyStepComponent"],
+            _storyteller_scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_13__["TownUIComponent"],
+            _storyteller_scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_14__["RoamingStepComponent"],
+            _storyteller_scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_15__["PassageThroughComponent"],
+            _storyteller_scenes_narration_pages_narration_pages_component__WEBPACK_IMPORTED_MODULE_16__["NarrationPagesComponent"],
+            _storyteller_scenes_story_choice_story_choice_component__WEBPACK_IMPORTED_MODULE_17__["StoryChoiceComponent"],
+            _storyteller_scenes_skill_action_skill_action_component__WEBPACK_IMPORTED_MODULE_18__["SkillActionComponent"],
+            _storyteller_charsheet_quest_journal_quest_journal_component__WEBPACK_IMPORTED_MODULE_19__["QuestJournalComponent"],
         ],
         imports: [
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"],
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
-            _scene_ui_scene_ui_module__WEBPACK_IMPORTED_MODULE_9__["SceneUIModule"]
+            _scene_ui_scene_ui_module__WEBPACK_IMPORTED_MODULE_20__["SceneUIModule"]
         ],
         providers: [],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
+        exports: [
+            _storyteller_charsheet_quest_journal_quest_journal_component__WEBPACK_IMPORTED_MODULE_19__["QuestJournalComponent"]
+        ],
         entryComponents: [
             _scene_ui_scene_ui_component__WEBPACK_IMPORTED_MODULE_6__["SceneUIComponent"],
             _story_tester_scenes_test_green_screen_test_green_screen_component__WEBPACK_IMPORTED_MODULE_7__["TestGreenScreenComponent"],
             _story_tester_scenes_test_blue_screen_test_blue_screen_component__WEBPACK_IMPORTED_MODULE_8__["TestBlueScreenComponent"],
-            _storyteller_scenes_world_map_view_world_map_view_component__WEBPACK_IMPORTED_MODULE_12__["WorldMapViewComponent"],
-            _storyteller_scenes_journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_13__["JourneyStepComponent"],
-            _storyteller_scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_15__["RoamingStepComponent"],
-            _storyteller_scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_14__["TownUIComponent"],
-            _storyteller_scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_16__["PassageThroughComponent"],
-            _storyteller_scenes_narration_pages_narration_pages_component__WEBPACK_IMPORTED_MODULE_17__["NarrationPagesComponent"],
-            _storyteller_scenes_story_choice_story_choice_component__WEBPACK_IMPORTED_MODULE_18__["StoryChoiceComponent"],
-            _storyteller_scenes_skill_action_skill_action_component__WEBPACK_IMPORTED_MODULE_19__["SkillActionComponent"]
+            _storyteller_scenes_world_map_view_world_map_view_component__WEBPACK_IMPORTED_MODULE_11__["WorldMapViewComponent"],
+            _storyteller_scenes_journey_step_journey_step_component__WEBPACK_IMPORTED_MODULE_12__["JourneyStepComponent"],
+            _storyteller_scenes_roaming_step_roaming_step_component__WEBPACK_IMPORTED_MODULE_14__["RoamingStepComponent"],
+            _storyteller_scenes_town_ui_town_ui_component__WEBPACK_IMPORTED_MODULE_13__["TownUIComponent"],
+            _storyteller_scenes_passage_through_passage_through_component__WEBPACK_IMPORTED_MODULE_15__["PassageThroughComponent"],
+            _storyteller_scenes_narration_pages_narration_pages_component__WEBPACK_IMPORTED_MODULE_16__["NarrationPagesComponent"],
+            _storyteller_scenes_story_choice_story_choice_component__WEBPACK_IMPORTED_MODULE_17__["StoryChoiceComponent"],
+            _storyteller_scenes_skill_action_skill_action_component__WEBPACK_IMPORTED_MODULE_18__["SkillActionComponent"],
+            _storyteller_charsheet_quest_journal_quest_journal_component__WEBPACK_IMPORTED_MODULE_19__["QuestJournalComponent"]
         ]
     })
 ], AppModule);
@@ -641,6 +661,8 @@ class QuestRef {
         this.completers = [];
         this.completed = false;
         this.states = new Map();
+        this.journal_entry = null;
+        this.journal_title = questid;
     }
     static fromJSON(src, fileref) {
         let generated = new QuestRef(src["questid"], fileref);
@@ -652,6 +674,8 @@ class QuestRef {
                     taskconditions.push(_quest_task_condition__WEBPACK_IMPORTED_MODULE_1__["QuestTaskCondition"].fromJSON(conditionraw));
                 }
             }
+            generated.journal_title = src["title"];
+            generated.journal_entry = src["journal"];
             // an unconditional task would appear ALWAYS
             if (taskconditions.length > 0) {
                 generated.conditions.set(taskid, taskconditions);
@@ -668,6 +692,8 @@ class QuestRef {
         // let ctask = this.loadTask(taskid);
         // TODO: re-add journal entry
         // this.journal_entry = task.journal_after;
+        this.journal_entry = task.journal_after;
+        console.log("updating quest journal from task", task, task.journal_after);
         let returnstates = task.getReturnStates();
         // Map<String, Integer> returnstates = ctask.getReturnStates();
         for (let tasksceneid of returnstates.keys()) {
@@ -836,7 +862,7 @@ class QuestTask {
         let taskid = src["taskid"];
         let scene = _scene_factory__WEBPACK_IMPORTED_MODULE_1__["SceneFactory"].fromJSON(src["scene"]);
         let prompt = src["prompt"];
-        let journal_after = !src["journal_after"] ? src["journal_after"] : null;
+        let journal_after = !!src["journal_after"] ? src["journal_after"] : null;
         let task = new QuestTask(taskid, scene, prompt, journal_after);
         return task;
     }
@@ -2605,6 +2631,38 @@ class WorldPosition {
 
 /***/ }),
 
+/***/ "./src/app/scene-ui/char-sheet.directive.ts":
+/*!**************************************************!*\
+  !*** ./src/app/scene-ui/char-sheet.directive.ts ***!
+  \**************************************************/
+/*! exports provided: CharSheetDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CharSheetDirective", function() { return CharSheetDirective; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let CharSheetDirective = class CharSheetDirective {
+    constructor(viewContainerRef) {
+        this.viewContainerRef = viewContainerRef;
+    }
+};
+CharSheetDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"] }
+];
+CharSheetDirective = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
+        selector: '[charsheetInsertion]',
+    })
+], CharSheetDirective);
+
+
+
+/***/ }),
+
 /***/ "./src/app/scene-ui/insertion.directive.ts":
 /*!*************************************************!*\
   !*** ./src/app/scene-ui/insertion.directive.ts ***!
@@ -2717,7 +2775,7 @@ class SceneRef {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".uiwrapper {\n  display: flex;\n  flex-direction: column;\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background: transparent;\n  align-items: center;\n  justify-content: center;\n}\n\n#gamecontrols {\n  position: fixed;\n  top: 0;\n  right: 0;\n  text-align: right;\n  border-bottom: 1px solid black;\n  border-left: 1px solid black;\n  border-bottom-left-radius: 8px;\n  padding: 4px 8px 4px 16px;\n  background-image: url(\"/assets/ui/temporaryparchment.jpg\");\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3NjZW5lLXVpL3NjZW5lLXVpLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zY2VuZS11aS9zY2VuZS11aS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQUE7RUFDQSxzQkFBQTtFQUNBLGVBQUE7RUFDQSxNQUFBO0VBQ0EsU0FBQTtFQUNBLE9BQUE7RUFDQSxRQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0FDQ0Y7O0FER0E7RUFFRSxlQUFBO0VBQ0EsTUFBQTtFQUNBLFFBQUE7RUFDQSxpQkFBQTtFQUNBLDhCQUFBO0VBQ0EsNEJBQUE7RUFDQSw4QkFBQTtFQUNBLHlCQUFBO0VBQ0QsMERBQUE7QUNERCIsImZpbGUiOiJzcmMvYXBwL3NjZW5lLXVpL3NjZW5lLXVpLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnVpd3JhcHBlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiAwO1xuICBib3R0b206IDA7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cblxuI2dhbWVjb250cm9sc1xue1xuICBwb3NpdGlvbjogICBmaXhlZDtcbiAgdG9wOiAgICAgICAgMDtcbiAgcmlnaHQ6ICAgICAgMDtcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XG4gIGJvcmRlci1ib3R0b206ICAgICAxcHggc29saWQgYmxhY2s7XG4gIGJvcmRlci1sZWZ0OiAgICAgMXB4IHNvbGlkIGJsYWNrO1xuICBib3JkZXItYm90dG9tLWxlZnQtcmFkaXVzOiA4cHg7XG4gIHBhZGRpbmc6ICAgICAgNHB4IDhweCA0cHggMTZweDtcblx0YmFja2dyb3VuZC1pbWFnZTogdXJsKFwiL2Fzc2V0cy91aS90ZW1wb3JhcnlwYXJjaG1lbnQuanBnXCIpO1xuXG4gIC8vIHotaW5kZXg6XHRcdDk5OTk5OTk7XG59XG4iLCIudWl3cmFwcGVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDA7XG4gIGJvdHRvbTogMDtcbiAgbGVmdDogMDtcbiAgcmlnaHQ6IDA7XG4gIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cblxuI2dhbWVjb250cm9scyB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiAwO1xuICByaWdodDogMDtcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbiAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBibGFjaztcbiAgYm9yZGVyLWJvdHRvbS1sZWZ0LXJhZGl1czogOHB4O1xuICBwYWRkaW5nOiA0cHggOHB4IDRweCAxNnB4O1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIvYXNzZXRzL3VpL3RlbXBvcmFyeXBhcmNobWVudC5qcGdcIik7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".uiwrapper {\n  display: flex;\n  flex-direction: column;\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background: transparent;\n  align-items: center;\n  justify-content: center;\n}\n\n#gamecontrols {\n  position: fixed;\n  top: 0;\n  right: 0;\n  text-align: right;\n  border-bottom: 1px solid black;\n  border-left: 1px solid black;\n  border-bottom-left-radius: 8px;\n  padding: 4px 8px 4px 16px;\n}\n\n#charsheetmodal {\n  position: fixed;\n  bottom: 0;\n  top: 0;\n  right: 0;\n  left: 0;\n  background-color: rgba(0, 0, 0, 0.56);\n  display: none;\n}\n\n#charsheetmodal.visible {\n  display: block;\n  bottom: 0;\n  top: 0;\n  right: 0;\n  left: 0;\n  background-color: rgba(0, 0, 0, 0.56);\n}\n\n#charsheetcontrols {\n  position: absolute;\n  top: 0;\n  right: 0;\n  padding: 4px 8px;\n  border-left: 1px solid black;\n  border-bottom: 1px solid black;\n  border-bottom-left-radius: 4px;\n}\n\n#charsheet {\n  position: fixed;\n  bottom: 0;\n  left: 10vw;\n  right: 10vw;\n  height: 60vh;\n  background-image: url(\"/assets/ui/temporaryparchment.jpg\");\n  border: 1px solid #803b0c;\n  border-top-left-radius: 8px;\n  border-top-right-radius: 8px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3NjZW5lLXVpL3NjZW5lLXVpLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zY2VuZS11aS9zY2VuZS11aS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQUE7RUFDQSxzQkFBQTtFQUNBLGVBQUE7RUFDQSxNQUFBO0VBQ0EsU0FBQTtFQUNBLE9BQUE7RUFDQSxRQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0FDQ0Y7O0FER0E7RUFFRSxlQUFBO0VBQ0EsTUFBQTtFQUNBLFFBQUE7RUFDQSxpQkFBQTtFQUNBLDhCQUFBO0VBQ0EsNEJBQUE7RUFDQSw4QkFBQTtFQUNBLHlCQUFBO0FDREY7O0FEVUE7RUFFQyxlQUFBO0VBQ0EsU0FBQTtFQUNBLE1BQUE7RUFDQSxRQUFBO0VBQ0EsT0FBQTtFQUNBLHFDQUFBO0VBQ0EsYUFBQTtBQ1JEOztBRFdBO0VBRUMsY0FBQTtFQUNBLFNBQUE7RUFDQSxNQUFBO0VBQ0EsUUFBQTtFQUNBLE9BQUE7RUFDQSxxQ0FBQTtBQ1REOztBRFlBO0VBRUMsa0JBQUE7RUFDQSxNQUFBO0VBQ0EsUUFBQTtFQUNBLGdCQUFBO0VBQ0EsNEJBQUE7RUFDQSw4QkFBQTtFQUNBLDhCQUFBO0FDVkQ7O0FEYUE7RUFFQyxlQUFBO0VBQ0EsU0FBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLDBEQUFBO0VBQ0EseUJBQUE7RUFDQSwyQkFBQTtFQUNBLDRCQUFBO0FDWEQiLCJmaWxlIjoic3JjL2FwcC9zY2VuZS11aS9zY2VuZS11aS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi51aXdyYXBwZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHRvcDogMDtcbiAgYm90dG9tOiAwO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG5cbiNnYW1lY29udHJvbHNcbntcbiAgcG9zaXRpb246ICAgZml4ZWQ7XG4gIHRvcDogICAgICAgIDA7XG4gIHJpZ2h0OiAgICAgIDA7XG4gIHRleHQtYWxpZ246IHJpZ2h0O1xuICBib3JkZXItYm90dG9tOiAgICAgMXB4IHNvbGlkIGJsYWNrO1xuICBib3JkZXItbGVmdDogICAgIDFweCBzb2xpZCBibGFjaztcbiAgYm9yZGVyLWJvdHRvbS1sZWZ0LXJhZGl1czogOHB4O1xuICBwYWRkaW5nOiAgICAgIDRweCA4cHggNHB4IDE2cHg7XG5cdC8vYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiL2Fzc2V0cy91aS90ZW1wb3JhcnlwYXJjaG1lbnQuanBnXCIpO1xuXG4gIC8vIHotaW5kZXg6XHRcdDk5OTk5OTk7XG59XG5cblxuXG5cbiNjaGFyc2hlZXRtb2RhbFxue1xuXHRwb3NpdGlvbjpcdFx0Zml4ZWQ7XG5cdGJvdHRvbTpcdFx0XHQwO1xuXHR0b3A6XHRcdFx0MDtcblx0cmlnaHQ6XHRcdFx0MDtcblx0bGVmdDpcdFx0XHQwO1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuNTYpO1xuXHRkaXNwbGF5OiBub25lO1xufVxuXG4jY2hhcnNoZWV0bW9kYWwudmlzaWJsZVxue1xuXHRkaXNwbGF5Olx0XHRibG9jaztcblx0Ym90dG9tOlx0XHRcdDA7XG5cdHRvcDpcdFx0XHQwO1xuXHRyaWdodDpcdFx0XHQwO1xuXHRsZWZ0Olx0XHRcdDA7XG5cdGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwgMCwgMCwgMC41Nik7XG59XG5cbiNjaGFyc2hlZXRjb250cm9sc1xue1xuXHRwb3NpdGlvbjpcdFx0YWJzb2x1dGU7XG5cdHRvcDpcdFx0XHQwO1xuXHRyaWdodDpcdFx0XHQwO1xuXHRwYWRkaW5nOlx0XHQ0cHggOHB4O1xuXHRib3JkZXItbGVmdDpcdFx0XHQxcHggc29saWQgYmxhY2s7XG5cdGJvcmRlci1ib3R0b206XHRcdFx0MXB4IHNvbGlkIGJsYWNrO1xuXHRib3JkZXItYm90dG9tLWxlZnQtcmFkaXVzOiA0cHg7XG59XG5cbiNjaGFyc2hlZXRcbntcblx0cG9zaXRpb246XHRmaXhlZDtcblx0Ym90dG9tOlx0XHQwO1xuXHRsZWZ0Olx0XHQxMHZ3O1xuXHRyaWdodDpcdFx0MTB2dztcblx0aGVpZ2h0Olx0XHQ2MHZoO1xuXHRiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIvYXNzZXRzL3VpL3RlbXBvcmFyeXBhcmNobWVudC5qcGdcIik7XG5cdGJvcmRlcjpcdFx0MXB4IHNvbGlkICM4MDNiMGM7XG5cdGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDhweDtcblx0Ym9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDhweDtcbn1cbiIsIi51aXdyYXBwZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHRvcDogMDtcbiAgYm90dG9tOiAwO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG4jZ2FtZWNvbnRyb2xzIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDA7XG4gIHJpZ2h0OiAwO1xuICB0ZXh0LWFsaWduOiByaWdodDtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIGJsYWNrO1xuICBib3JkZXItbGVmdDogMXB4IHNvbGlkIGJsYWNrO1xuICBib3JkZXItYm90dG9tLWxlZnQtcmFkaXVzOiA4cHg7XG4gIHBhZGRpbmc6IDRweCA4cHggNHB4IDE2cHg7XG59XG5cbiNjaGFyc2hlZXRtb2RhbCB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgYm90dG9tOiAwO1xuICB0b3A6IDA7XG4gIHJpZ2h0OiAwO1xuICBsZWZ0OiAwO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuNTYpO1xuICBkaXNwbGF5OiBub25lO1xufVxuXG4jY2hhcnNoZWV0bW9kYWwudmlzaWJsZSB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBib3R0b206IDA7XG4gIHRvcDogMDtcbiAgcmlnaHQ6IDA7XG4gIGxlZnQ6IDA7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwgMCwgMCwgMC41Nik7XG59XG5cbiNjaGFyc2hlZXRjb250cm9scyB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICByaWdodDogMDtcbiAgcGFkZGluZzogNHB4IDhweDtcbiAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBibGFjaztcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIGJsYWNrO1xuICBib3JkZXItYm90dG9tLWxlZnQtcmFkaXVzOiA0cHg7XG59XG5cbiNjaGFyc2hlZXQge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGJvdHRvbTogMDtcbiAgbGVmdDogMTB2dztcbiAgcmlnaHQ6IDEwdnc7XG4gIGhlaWdodDogNjB2aDtcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiL2Fzc2V0cy91aS90ZW1wb3JhcnlwYXJjaG1lbnQuanBnXCIpO1xuICBib3JkZXI6IDFweCBzb2xpZCAjODAzYjBjO1xuICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiA4cHg7XG4gIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiA4cHg7XG59Il19 */");
 
 /***/ }),
 
@@ -2735,6 +2793,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 /* harmony import */ var _insertion_directive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./insertion.directive */ "./src/app/scene-ui/insertion.directive.ts");
+/* harmony import */ var _char_sheet_directive__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./char-sheet.directive */ "./src/app/scene-ui/char-sheet.directive.ts");
+/* harmony import */ var _storyteller_charsheet_quest_journal_quest_journal_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../storyteller/charsheet/quest-journal/quest-journal.component */ "./src/app/storyteller/charsheet/quest-journal/quest-journal.component.ts");
+
+
 
 
 
@@ -2749,6 +2811,7 @@ let SceneUIComponent = class SceneUIComponent {
         this.cd = cd;
         this._onClose = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         this.onClose = this._onClose.asObservable();
+        this.showCharSheet = false;
     }
     // LIFECYCLE
     // note: ngOnInit not strictly necessary for this use
@@ -2770,13 +2833,16 @@ let SceneUIComponent = class SceneUIComponent {
         viewContainerRef.clear();
         this.componentRef = viewContainerRef.createComponent(componentFactory);
     }
+    // charsheet loading, could probably be merged with loadChildComponent
+    loadCharSheetComponent(componentType) {
+        let componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentType);
+        let viewContainerRef = this.charsheetPoint.viewContainerRef;
+        viewContainerRef.clear();
+        this.componentRef = viewContainerRef.createComponent(componentFactory);
+    }
     // for dialog-like behaviour, revise
     onOverlayClicked(evt) {
-        // close the scene
         console.warn("on overlay click");
-        // console.log("closing sceneref");
-        // console.log("removing ", this.componentRef);
-        // this.componentRef.destroy();
     }
     onDialogClicked(evt) {
         evt.stopPropagation();
@@ -2790,6 +2856,17 @@ let SceneUIComponent = class SceneUIComponent {
         console.log("Loading game state... to outer Storyteller", this.controller);
         this.controller.doLoadGame();
     }
+    openCharSheet() {
+        this.loadCharSheetComponent(_storyteller_charsheet_quest_journal_quest_journal_component__WEBPACK_IMPORTED_MODULE_5__["QuestJournalComponent"]);
+        this.controller.openCharSheet();
+        console.log("opening char sheet");
+        this.showCharSheet = true;
+    }
+    closeCharSheet() {
+        console.log("closing char sheet");
+        this.controller.closeCharSheet();
+        this.showCharSheet = false;
+    }
 };
 SceneUIComponent.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ComponentFactoryResolver"] },
@@ -2798,6 +2875,9 @@ SceneUIComponent.ctorParameters = () => [
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_insertion_directive__WEBPACK_IMPORTED_MODULE_3__["InsertionDirective"], { static: false })
 ], SceneUIComponent.prototype, "insertionPoint", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_char_sheet_directive__WEBPACK_IMPORTED_MODULE_4__["CharSheetDirective"], { static: false })
+], SceneUIComponent.prototype, "charsheetPoint", void 0);
 SceneUIComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-scene-ui',
@@ -2825,6 +2905,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var _insertion_directive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./insertion.directive */ "./src/app/scene-ui/insertion.directive.ts");
 /* harmony import */ var _scene_ui_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scene-ui.component */ "./src/app/scene-ui/scene-ui.component.ts");
+/* harmony import */ var _char_sheet_directive__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./char-sheet.directive */ "./src/app/scene-ui/char-sheet.directive.ts");
+
 
 
 
@@ -2835,7 +2917,7 @@ let SceneUIModule = class SceneUIModule {
 SceneUIModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]],
-        declarations: [_scene_ui_component__WEBPACK_IMPORTED_MODULE_4__["SceneUIComponent"], _insertion_directive__WEBPACK_IMPORTED_MODULE_3__["InsertionDirective"]],
+        declarations: [_scene_ui_component__WEBPACK_IMPORTED_MODULE_4__["SceneUIComponent"], _insertion_directive__WEBPACK_IMPORTED_MODULE_3__["InsertionDirective"], _char_sheet_directive__WEBPACK_IMPORTED_MODULE_5__["CharSheetDirective"]],
         entryComponents: [_scene_ui_component__WEBPACK_IMPORTED_MODULE_4__["SceneUIComponent"]],
     })
 ], SceneUIModule);
@@ -2860,6 +2942,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scene_ref__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scene-ref */ "./src/app/scene-ui/scene-ref.ts");
 /* harmony import */ var _scene_injector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scene-injector */ "./src/app/scene-ui/scene-injector.ts");
 /* harmony import */ var _storyteller_storyteller_interface__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../storyteller/storyteller-interface */ "./src/app/storyteller/storyteller-interface.ts");
+/* harmony import */ var _storyteller_charsheet_quest_journal_quest_journal_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../storyteller/charsheet/quest-journal/quest-journal.component */ "./src/app/storyteller/charsheet/quest-journal/quest-journal.component.ts");
+
 
 
 
@@ -2935,6 +3019,20 @@ let SceneUIService = class SceneUIService {
         console.log("removing scene ref ", this.sceneRef);
         this.appRef.detachView(this.sceneRef.hostView);
         this.sceneRef.destroy();
+    }
+    openCharSheet() {
+        const map = new WeakMap();
+        // map.set(DialogConfig, config);
+        // add the DialogRef to dependency injection
+        map.set(_storyteller_storyteller_interface__WEBPACK_IMPORTED_MODULE_5__["StorytellerInterface"], this.stref);
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(_storyteller_charsheet_quest_journal_quest_journal_component__WEBPACK_IMPORTED_MODULE_6__["QuestJournalComponent"]);
+        const injector = new _scene_injector__WEBPACK_IMPORTED_MODULE_4__["SceneInjector"](this.injector, map);
+        const componentRef = componentFactory.create(injector);
+        console.warn("used injector ", injector, " to add component", componentRef, "w hostview", componentRef.hostView);
+        this.appRef.attachView(componentRef.hostView);
+        const domElem = componentRef.hostView.rootNodes[0];
+        document.body.appendChild(domElem);
+        componentRef.instance.controller = this.stref.getStoryteller();
     }
 };
 SceneUIService.ctorParameters = () => [
@@ -3212,6 +3310,60 @@ class TesterScene extends _rpg_engine_wander_scene__WEBPACK_IMPORTED_MODULE_1__[
         return false;
     }
 }
+
+
+/***/ }),
+
+/***/ "./src/app/storyteller/charsheet/quest-journal/quest-journal.component.scss":
+/*!**********************************************************************************!*\
+  !*** ./src/app/storyteller/charsheet/quest-journal/quest-journal.component.scss ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0b3J5dGVsbGVyL2NoYXJzaGVldC9xdWVzdC1qb3VybmFsL3F1ZXN0LWpvdXJuYWwuY29tcG9uZW50LnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/storyteller/charsheet/quest-journal/quest-journal.component.ts":
+/*!********************************************************************************!*\
+  !*** ./src/app/storyteller/charsheet/quest-journal/quest-journal.component.ts ***!
+  \********************************************************************************/
+/*! exports provided: QuestJournalComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuestJournalComponent", function() { return QuestJournalComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _storyteller_interface__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../storyteller-interface */ "./src/app/storyteller/storyteller-interface.ts");
+
+
+
+let QuestJournalComponent = class QuestJournalComponent {
+    constructor(storytellerinterface = null) {
+        console.warn("creating charsheet w controller interface", storytellerinterface);
+        this.controller = storytellerinterface.getStoryteller();
+        this.game = this.controller.game;
+    }
+    ngOnInit() {
+        console.warn("showing charsheet w controller", this.controller);
+    }
+};
+QuestJournalComponent.ctorParameters = () => [
+    { type: _storyteller_interface__WEBPACK_IMPORTED_MODULE_2__["StorytellerInterface"] }
+];
+QuestJournalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-quest-journal',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./quest-journal.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storyteller/charsheet/quest-journal/quest-journal.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./quest-journal.component.scss */ "./src/app/storyteller/charsheet/quest-journal/quest-journal.component.scss")).default]
+    })
+], QuestJournalComponent);
+
 
 
 /***/ }),
@@ -4687,7 +4839,7 @@ class StorytellerInterface {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#st-page {\n  background-image: url(\"/assets/ui/temporaryparchment.jpg\");\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3N0b3J5dGVsbGVyL3N0b3J5dGVsbGVyLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zdG9yeXRlbGxlci9zdG9yeXRlbGxlci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVDLDBEQUFBO0FDQUQiLCJmaWxlIjoic3JjL2FwcC9zdG9yeXRlbGxlci9zdG9yeXRlbGxlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNzdC1wYWdlXG57XG5cdGJhY2tncm91bmQtaW1hZ2U6IHVybChcIi9hc3NldHMvdWkvdGVtcG9yYXJ5cGFyY2htZW50LmpwZ1wiKTtcbn1cblxuIiwiI3N0LXBhZ2Uge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIvYXNzZXRzL3VpL3RlbXBvcmFyeXBhcmNobWVudC5qcGdcIik7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("#st-page {\n  background-image: url(\"/assets/ui/temporaryparchment.jpg\");\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RyYWtlL0NvZGUvV2FuZGVyL1dhbmRlckFORy9zcmMvYXBwL3N0b3J5dGVsbGVyL3N0b3J5dGVsbGVyLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zdG9yeXRlbGxlci9zdG9yeXRlbGxlci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVDLDBEQUFBO0FDQUQiLCJmaWxlIjoic3JjL2FwcC9zdG9yeXRlbGxlci9zdG9yeXRlbGxlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNzdC1wYWdlXG57XG5cdGJhY2tncm91bmQtaW1hZ2U6IHVybChcIi9hc3NldHMvdWkvdGVtcG9yYXJ5cGFyY2htZW50LmpwZ1wiKTtcbn1cbiIsIiNzdC1wYWdlIHtcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiL2Fzc2V0cy91aS90ZW1wb3JhcnlwYXJjaG1lbnQuanBnXCIpO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -4741,6 +4893,7 @@ let StorytellerComponent = class StorytellerComponent {
         this.sceneui = sceneui;
         this.http = http;
         this.loader = new _support_res_loader__WEBPACK_IMPORTED_MODULE_15__["ResLoader"](http);
+        this.usingCharSheet = false;
     }
     ngOnInit() {
         this.sceneui.bindStoryTellerUI(this.getInterface());
@@ -4881,6 +5034,12 @@ let StorytellerComponent = class StorytellerComponent {
     }
     getInterface() {
         return new _storyteller_interface__WEBPACK_IMPORTED_MODULE_13__["StorytellerInterface"](this);
+    }
+    openCharSheet() {
+        this.usingCharSheet = true;
+    }
+    closeCharSheet() {
+        this.usingCharSheet = false;
     }
 };
 StorytellerComponent.ctorParameters = () => [
