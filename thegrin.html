@@ -36,20 +36,18 @@ Any modern Doom port should do, but you need to have the original game data (you
 
 <dl>
     <dt>Doom2 (doom2.wad)</dt><dd>needed to run the levels at all.</dd>
-    <dt>Doom (doom.wad)</dt><dd>needed to get the proper background music for some levels (mixed up the original order) with an older launcher, probably not needed w GZDoom or Doomsday command lines.</dd>
+    <dt>Doom (doom.wad)</dt><dd>needed to get the proper background music for some levels (mixed up the original order), use it as a PWAD in the launcher.</dd>
 </dl>
 
-I'm assuming you know how to launch Doom with some extra files or have a loader in place, but here's a couple examples from my Linux box ($PATH_IWADS being a directory where you have both the original Doom WADS), launched from the directory where you unpack the zips:
+I'm assuming you know how to launch Doom with some extra files or have a loader in place, but here's an example from my Linux box ($PATH_IWADS being a directory where you have both the original Doom WADS), with GZDoom launched from the directory where you unpack the zips:
 <dl>
-    <dt>ZDoom</dt><dd>zdoom -wnd -iwad $PATH_IWADS -game TheGrin -file graphtx3.wad GrinMusicSel.wad nb_flats.wad NB_RECOL.WAD q1tex.wad TheGrin-0.9.5.wad</dd>
-    <dt>GZDoom</dt><dd>gzdoom -wnd -iwad $PATH_IWADS/doom2.wad -file graphtx3.wad GrinMusicSel.wad nb_flats.wad NB_RECOL.WAD q1tex.wad TheGrin-0.9.5.wad</dd>
-    <dt>Doomsday</dt><dd>doomsday -wnd -iwad $PATH_IWADS -game doom2 -file graphtx3.wad GrinMusicSel.wad nb_flats.wad NB_RECOL.WAD q1tex.wad TheGrin-0.9.5.wad</dd>
+    <dt>GZDoom</dt><dd>gzdoom -wnd -iwad $PATH_IWADS/doom2.wad -file $PATH_IWADS/doom.wad graphtx3.wad nb_flats.wad NB_RECOL.WAD q1tex.wad TheGrin-0.9.5.1.wad</dd>
 </dl>
 
 <h2>Files</h2>
 
 <dl>
-    <dt><a href="thegrin_data/TheGrin-0.9.5.wad.zip">The Grin WAD</a></dt><dd>the levels I made, from MAP01 to MAP09</dd>
+    <dt><a href="thegrin_data/TheGrin-0.9.5.1.zip">The Grin WAD</a></dt><dd>the levels I made, from MAP01 to MAP09</dd>
     <dt><a href="thegrin_data/thegrin_supportwads.zip">Support WADs</a></dt><dd>the external WAD files I used for textures and such, so you don't have to hunt them down yourselves. I take no credit for anything you find in here, of course.</dd>
 </dl>
 
